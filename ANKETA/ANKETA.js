@@ -37,7 +37,7 @@ function newAnketa() {
     вы на пенсии: ${retired}`);
 }
 
-// newAnketa();
+newAnketa();
 
 
 // function treeSum(arr) {
