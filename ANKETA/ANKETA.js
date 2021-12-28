@@ -37,31 +37,31 @@ function newAnketa() {
     вы на пенсии: ${retired}`);
 }
 
-newAnketa();
+// newAnketa();
 
 
-function treeSum(arr) {
+// function treeSum(arr) {
 
-    let numbers = [];
+//     let numbers = [];
    
-    for(let item of arr) {
+//     for(let item of arr) {
        
-        if (typeof item === 'number'){
-         numbers.push(item);
-        } else {
-         numbers.push(treeSum(item));
-        } 
-    }
+//         if (typeof item === 'number'){
+//          numbers.push(item);
+//         } else {
+//          numbers.push(treeSum(item));
+//         } 
+//     }
     
-    let sum = 0;
-    for (let number of numbers) {
-        sum += number;
-    }
-    return sum;
-}
+//     let sum = 0;
+//     for (let number of numbers) {
+//         sum += number;
+//     }
+//     return sum;
+// }
            
-alert(treeSum([ 5, 7, 
-    [ 4, [2], 8, [1,3], 2 ], 
-    [ 9, [] ], 
-    1, 8
-]));
+// alert(treeSum([ 5, 7, 
+//     [ 4, [2], 8, [1,3], 2 ], 
+//     [ 9, [] ], 
+//     1, 8
+// ]));
