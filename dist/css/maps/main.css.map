@@ -1,1 +1,0 @@
-{"version":3,"file":"../main.css","sources":["main.scss"],"sourcesContent":["body * {\n  outline: 0px solid lightgrey;\n}\nh1 {text-align: center;}\n\n"],"names":[],"mappings":"AAAA,AAAA,IAAI,CAAC,CAAC,CAAC;EACL,OAAO,EAAE,mBAAmB,GAC7B;;AACD,AAAA,EAAE,CAAC;EAAC,UAAU,EAAE,MAAM,GAAG"}
