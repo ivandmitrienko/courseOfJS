@@ -1,2 +1,7 @@
+body * {
+  outline: 0px solid lightgrey; }
+
+h1 {
+  text-align: center; }
 
 /*# sourceMappingURL=maps/main.css.map */

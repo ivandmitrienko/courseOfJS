@@ -1,67 +1,38 @@
-"use strict"
 
-function newAnketa() {
+// 1     |    *
+// 2     |   ***
+// 3     |  *****
+// 4     | *******
+// 5     |*********
+// 6     | *******
+// 7     |  *****
+// 8     |   ***
+// 9     |    *
 
-    let name, patronymic, surname, age, gender, retired;
+function stars(lines) {
+    var maxStars = lines * 2 - 1;
 
-    do{
-        surname = prompt("Введите Вашу фамилию", ""); 
-    } while (parseFloat(surname) || surname === null || surname === "");
-
-    do{
-        name = prompt("Введите Ваше имя", ""); 
-    } while (parseFloat(name) || name === null || name === "");
-
-    do{
-        patronymic = prompt("Введите Вашу отчество", ""); 
-    } while (parseFloat(patronymic) || patronymic === null || patronymic === "");
-
-    do{
-        age = +prompt("Введите Ваш возвраст", ""); 
-    } while (!isFinite(age) || age === null || age === "");
-
-    gender = confirm ("Ваш пол мужской?") ? "мужской" : "женский";
-
-    if (gender == "мужской" && age >= 63) 
-    retired = "да";
-    else if (gender == "женский" && age >= 58)
-    retired = "да";
-    else    
-    retired = "нет"; 
+    for (var i = 0; i < lines; i++) {
+        var res = '';
+        for (var j = 0; j < (maxStars - (i * 2) - 1)/2; j++) {
+            res += ' ';
+        }
+        for (var j = 0; j < (i + 1) * 2 - 1; j++) {
+            res += '*';
+        }
         
-    alert(`ваше ФИО: ${surname} ${name} ${patronymic}
-    ваш возраст в годах: ${age}
-    ваш возраст в днях: ${age * 365}
-    через 5 лет вам будет: ${age + 5}
-    ваш пол: ${gender}
-    вы на пенсии: ${retired}`);
-}
-
-newAnketa();
-
-
-function treeSum(arr) {
-
-    let numbers = [];
-   
-    for(let item of arr) {
-       
-        if (typeof item === 'number'){
-         numbers.push(item);
-        } else {
-         numbers.push(treeSum(item));
-        } 
+    console.log(res);    
     }
-    
-    let sum = 0;
-    for (let number of numbers) {
-        sum += number;
+    for (var i = 1; i < lines; i++) {
+        var res = '';
+        for (var j = 0; j < i; j++) {
+            res += ' ';
+        }
+        for (var j = 0; j < (maxStars - (i * 2)); j++) {
+            res += '*';
+        }
+        
+    console.log(res);    
     }
-    return sum;
 }
-           
-alert(treeSum([ 5, 7, 
-    [ 4, [2], 8, [1,3], 2 ], 
-    [ 9, [] ], 
-    1, 8
-]));
+stars(5)
