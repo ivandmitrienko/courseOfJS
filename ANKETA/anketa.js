@@ -2,7 +2,7 @@
 
 function newAnketa() {
 
-    let name, patronymic, surname, age, gender, retired;
+    let name, patronymic, surname, age, gender, retired, retired_confirm;
 
     do{
         surname = prompt("Введите Вашу фамилию", ""); 
@@ -20,48 +20,31 @@ function newAnketa() {
         age = +prompt("Введите Ваш возвраст", ""); 
     } while (!isFinite(age) || age === null || age === "");
 
-    gender = confirm ("Ваш пол мужской?") ? "мужской" : "женский";
+    gender = confirm("Ваш пол - мужской?");
 
-    if (gender == "мужской" && age >= 63) 
-    retired = "да";
-    else if (gender == "женский" && age >= 58)
-    retired = "да";
-    else    
-    retired = "нет"; 
+    gender ? retired = 63: retired = 58;
+
+    if(retired == 63 && age >= retired || retired == 58 && age >= retired) {
+        retired_confirm = "да";
+    } else {
+        retired_confirm = "нет"
+    }
+      
+    if(gender){
+        gender = "мужской";
+    } else {
+        gender = "женский";
+    }
+    
+
         
     alert(`ваше ФИО: ${surname} ${name} ${patronymic}
     ваш возраст в годах: ${age}
     ваш возраст в днях: ${age * 365}
     через 5 лет вам будет: ${age + 5}
     ваш пол: ${gender}
-    вы на пенсии: ${retired}`);
+    вы на пенсии: ${retired_confirm}`);
+
 }
 
 newAnketa();
-
-
-// function treeSum(arr) {
-
-//     let numbers = [];
-   
-//     for(let item of arr) {
-       
-//         if (typeof item === 'number'){
-//          numbers.push(item);
-//         } else {
-//          numbers.push(treeSum(item));
-//         } 
-//     }
-    
-//     let sum = 0;
-//     for (let number of numbers) {
-//         sum += number;
-//     }
-//     return sum;
-// }
-           
-// alert(treeSum([ 5, 7, 
-//     [ 4, [2], 8, [1,3], 2 ], 
-//     [ 9, [] ], 
-//     1, 8
-// ]));
