@@ -18,7 +18,7 @@ function newAnketa() {
 
     do{
         age = prompt("Введите Ваш возвраст","" );
-        ageIsNumber = parseInt(age) 
+        ageIsNumber = parseInt(age); 
     } while (!age || isNaN(ageIsNumber));
 
     askGender = confirm("Ваш пол - мужской?");
