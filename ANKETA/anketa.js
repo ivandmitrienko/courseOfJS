@@ -17,8 +17,8 @@ function newAnketa() {
     } while (parseFloat(patronymic) || patronymic === null || patronymic === "");
 
     do{
-        age = prompt("Введите Ваш возвраст", ""); 
-    } while (!isFinite(age) || age === null || age === "");
+        age = +prompt("Введите Ваш возвраст", ""); 
+    } while (isNaN(age)||age == null || age == "");
 
     askGender = confirm("Ваш пол - мужской?");
 
@@ -28,9 +28,8 @@ function newAnketa() {
         gender = "женский";
     }
 
-    retired =  (askGender) ? 63: 58;
 
-    if(retired == 63 && age >= retired || retired == 58 && age >= retired) {
+    if(askGender == true && age >= 63 || askGender == false && age >= 58) {
         retired_confirm = "да";
     } else {
         retired_confirm = "нет"
