@@ -20,8 +20,8 @@ function treeSum(arr) {
    
    
    
-treeSum([ 5, 7, 
+alert(treeSum([ 5, 7, 
    [ 4, [2], 8, [1,3], 2 ], 
    [ 9, [] ], 
    1, 8
- ]);
+ ]));
