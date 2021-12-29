@@ -28,7 +28,7 @@ function newAnketa() {
         gender = "женский";
     }
 
-    retired = (age >= 63) ? 63: 58;
+    retired =  (askGender) ? 63: 58;
 
     if(retired == 63 && age >= retired || retired == 58 && age >= retired) {
         retired_confirm = "да";
