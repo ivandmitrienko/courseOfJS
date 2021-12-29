@@ -1,21 +1,17 @@
 function treeSum(arr) {
 
-    let numbers = [];
+    let sum = 0;
    
     for(let item of arr) {
        
-        if (typeof item === 'number'){
-         numbers.push(item);
+        if (typeof item == 'object'){
+         sum += treeSum(item);
         } else {
-         numbers.push(treeSum(item));
+            sum += item;
         } 
     }
     
-    let sum = 0;
-
-    for (let number of numbers) {
-       sum += number;
-    }
+   
 
     return sum;
 }
