@@ -18,7 +18,7 @@ function newAnketa() {
 
     do{
         age = +prompt("Введите Ваш возвраст", ""); 
-    } while (isNaN(age)||age == null || age == "");
+    } while (isNaN(age) || age == null || age == "");
 
     askGender = confirm("Ваш пол - мужской?");
 
