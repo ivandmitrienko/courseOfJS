@@ -17,8 +17,9 @@ function newAnketa() {
     } while (parseFloat(patronymic) || patronymic === null || patronymic === "");
 
     do{
-        age = +prompt("Введите Ваш возвраст", ""); 
-    } while (isNaN(age) || age == null || age == "");
+        age = prompt("Введите Ваш возвраст","" );
+        ageIsNumber = parseInt(age) 
+    } while (!age || isNaN(ageIsNumber));
 
     askGender = confirm("Ваш пол - мужской?");
 
@@ -37,9 +38,9 @@ function newAnketa() {
       
      
     alert(`ваше ФИО: ${surname} ${name} ${patronymic}
-ваш возраст в годах: ${age}
-ваш возраст в днях: ${age * 365}
-через 5 лет вам будет: ${age + 5}
+ваш возраст в годах: ${ageIsNumber}
+ваш возраст в днях: ${ageIsNumber * 365}
+через 5 лет вам будет: ${ageIsNumber + 5}
 ваш пол: ${gender}
 вы на пенсии: ${retired_confirm}`);
 
