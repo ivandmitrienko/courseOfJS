@@ -17,8 +17,8 @@ function newAnketa() {
     } while (parseFloat(patronymic) || patronymic === null || patronymic === "");
 
     do{
-        age = prompt("Введите Ваш возвраст","" );
-        ageIsNumber = parseInt(age); 
+        age = prompt("Введите Вашs возвраст","" );
+        ageIsNumber = Number(age); 
     } while (!age || isNaN(ageIsNumber));
 
     askGender = confirm("Ваш пол - мужской?");
