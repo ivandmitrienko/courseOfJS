@@ -2,7 +2,7 @@
 
 function newAnketa() {
 
-    let name, patronymic, surname, age, askGender, gender, male, female, retired, retired_confirm;
+    let name, patronymic, surname, age, ageIsNumber, askGender, gender, male, female, retired, retired_confirm;
 
     do{
         surname = prompt("Введите Вашу фамилию", ""); 
