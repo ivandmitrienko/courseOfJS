@@ -2,7 +2,7 @@
 
 function newAnketa() {
 
-    let name, patronymic, surname, age, gender, male, female, retired, retired_confirm;
+    let name, patronymic, surname, age, askGender, gender, male, female, retired, retired_confirm;
 
     do{
         surname = prompt("Введите Вашу фамилию", ""); 
@@ -20,17 +20,15 @@ function newAnketa() {
         age = prompt("Введите Ваш возвраст", ""); 
     } while (!isFinite(age) || age === null || age === "");
 
-    gender = confirm("Ваш пол - мужской?") ? male: female;
+    askGender = confirm("Ваш пол - мужской?");
 
-    if(gender){
-        male = "мужской";
+     if(askGender){
+        gender = "мужской";
     } else {
-        female = "женский";
+        gender = "женский";
     }
 
-    retired = (age <= 63)? 63: 58;
-
-    // gender ? retired = 63: retired = 58;
+    retired = (age >= 63) ? 63: 58;
 
     if(retired == 63 && age >= retired || retired == 58 && age >= retired) {
         retired_confirm = "да";
@@ -38,10 +36,7 @@ function newAnketa() {
         retired_confirm = "нет"
     }
       
-   
-    
-
-        
+     
     alert(`ваше ФИО: ${surname} ${name} ${patronymic}
 ваш возраст в годах: ${+age}
 ваш возраст в днях: ${+age * 365}
