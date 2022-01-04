@@ -1,7 +1,5 @@
 "use strict"
 
-let str = prompt("Пожалуйста, введите строку","");
-
 function vowelsTen() {
 
     let vowels = ["а", "о", "и", "е", "ё", "э", "ы", "у", "ю", "я"];
@@ -18,4 +16,4 @@ function vowelsTen() {
     return count;
 }
 
-console.log(vowelsTen(str));
+console.log(vowelsTen(let str = prompt("Пожалуйста, введите строку","")));
