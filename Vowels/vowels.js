@@ -1,8 +1,10 @@
-function vowelsTen () {
+"use strict"
+
+let str = prompt("Пожалуйста, введите строку","");
+
+function vowelsTen() {
 
     let vowels = ["а", "о", "и", "е", "ё", "э", "ы", "у", "ю", "я"];
-        
-    let str = prompt("Пожалуйста, введите строку","");
 
     str = str.toLowerCase();
 
@@ -16,4 +18,4 @@ function vowelsTen () {
     return count;
 }
 
-console.log(vowelsTen());
+console.log(vowelsTen(str));
