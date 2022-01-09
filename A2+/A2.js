@@ -2,19 +2,26 @@
 
 function user(str) {
 
-  while(str.indexOf(" ") === 0) {
-    
-    str = str.substring(1);       
+  let sumFirstSpaces = 0;
+  let sumLastSpaces = 0;
+ 
+
+  for(let i = 0; i < str.length; i++) {
+
+     if(str.charAt(i) === " ") sumFirstSpaces++;
+     else break; 
   }
 
-  while(str[str.length - 1] === " ") {
-    
-    str = str.slice(0, -1);
-       
+   for(let j = 1; j < str.length; j++) {
+
+    if(str[str.length - j] === " ") sumLastSpaces++;
+     else break;
   }
 
-   return str = "*" + str + "*";
+  str = str.slice(sumFirstSpaces, - sumLastSpaces); 
+
+  return str;
 }
 
-console.log(user(prompt("Пожалуйста, введите строку")));
+console.log("*" + user(prompt("Пожалуйста, введите строку")) + "*");
 
