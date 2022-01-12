@@ -29,11 +29,12 @@ function user(str) {
      console.log("В строке нет пробелов !!!");
      return str = str.slice(0);
      } else {
+       console.log("Пробелы в начале и в конце строки удалены.")
        str = str.slice(sumFirstSpaces, sumLastSpaces);
      }
 
   return str;
-  
+
 }
 
 console.log("*" + user(prompt("Пожалуйста, введите строку")) + "*");
