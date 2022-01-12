@@ -12,7 +12,7 @@ function user(str) {
      else break;
 
      if(sumFirstSpaces === str.length ) { 
-       console.log("Строка состоит только из пробелов !!!");
+       console.log("Ваша строка состоит только из пробелов !!!");
        return str = str.slice(sumFirstSpaces, str.length);
        } else {
        continue;
@@ -26,10 +26,10 @@ function user(str) {
   }
 
    if(sumFirstSpaces === 0 && sumLastSpaces === str.length) {
-     console.log("В строке нет пробелов !!!");
+     console.log("В Вашей строке нет пробелов !!!");
      return str = str.slice(0);
      } else {
-       console.log("Пробелы в начале и (или) в конце строки удалены.")
+       console.log("Пробелы в начале и (или) в конце Вашей строки удалены.")
        str = str.slice(sumFirstSpaces, sumLastSpaces);
      }
 
