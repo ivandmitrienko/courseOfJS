@@ -5,8 +5,7 @@ function user(str) {
   let sumFirstSpaces = 0;
 
   if(!str) {
-    console.log("Ваша строка пуста !!!");
-    return str;
+    throw new Error("Ваша строка пуста !!!");
    }
  
   for(let i = 0; i < str.length; i++) {
@@ -14,10 +13,9 @@ function user(str) {
      if(str.charAt(i) === " ") sumFirstSpaces++;
      else break;
   }
-
+  
   if(sumFirstSpaces === str.length ) { 
-       console.log("Ваша строка состоит только из пробелов !!!");
-       return str;
+       throw new Error("Ваша строка состоит только из пробелов !!!");
      }
 
    let sumLastSpaces = str.length;
