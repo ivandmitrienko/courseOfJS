@@ -5,7 +5,8 @@ function user(str) {
   let sumFirstSpaces = 0;
 
   if(!str) {
-    throw new Error("Ваша строка пуста!");
+    console.log("Ваша строка пуста!");
+    return "";
    }
  
   for(let i = 0; i < str.length; i++) {
