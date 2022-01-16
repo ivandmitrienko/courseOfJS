@@ -35,7 +35,7 @@ function vowelsTenReduce(str) {
     str = str.toLowerCase().split("");
 
 
-//     let arrFilter = str.reduce((count, v) => vowels.includes(v) ? count + 1 : count, 0);
+//     let arrReduce = str.reduce((count, v) => vowels.includes(v) ? count + 1 : count, 0);
 
     let arrReduce = str.reduce((count, v) => {if(vowels.includes(v)) {return count + 1}
     else { return count}}, 0);
