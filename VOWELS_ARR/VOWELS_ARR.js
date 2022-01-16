@@ -15,9 +15,6 @@ function vowelsTenForEach(str) {
     return count; 
 }
 
-
-
-
 function vowelsTenFilter(str) {
 
     let vowels = ["а", "о", "и", "е", "ё", "э", "ы", "у", "ю", "я"];
@@ -26,11 +23,9 @@ function vowelsTenFilter(str) {
 
     let count = 0;
 
-    let arr = str.filter((v) => vowels.includes(v));
-
-   
-  
-    return arr.length;
+    let arrFilter = str.filter((v) => vowels.includes(v));
+     
+    return arrFilter.length;
 }
 
 
