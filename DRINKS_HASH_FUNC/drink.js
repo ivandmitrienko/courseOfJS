@@ -4,15 +4,16 @@
 
     function drinkInputInfo() {
     
-        let alcohol;
-    
-        let drinkName = prompt("Какое название напитка?");
-    
-        let drinkAlcohol = confirm(drinkName + " - алкогольный напиток или нет?\nok - алкогольный\nотмена - без алкогольный");
-    
-        let drinkRecipe = prompt("Какой рецепт напитка?");
-    
-        drinkStorage(drinkName, drinkAlcohol);
+        var drinkName = prompt("Напишите название напитка");
+
+		var drinkDescribe = {};
+
+		drinkDescribe.alcohol = confirm(drinkName + " - 'Это алкогольный напиток или нет?\nok - алкогольный\nотмена - без алкогольный");
+
+		drinkDescribe.recipe = prompt("Напишите рецепт напитка - " + drinkName);
+        
+	    drinkStorage.addValue(drinkName, drinkDescribe);
+	   
     
     }
 

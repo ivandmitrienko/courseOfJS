@@ -26,7 +26,7 @@
          }
         }    
  
-     self.getKeys() = function() {
+     self.getKeys = function() {
          return Object.keys(privateHash);
         }
 
