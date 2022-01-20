@@ -1,4 +1,4 @@
-(function() {
+// (function() {
 
     "use strict";
 
@@ -37,4 +37,4 @@
 
 let drinkStorage = new HashStorageFunc();
 
-})();
+// })();
