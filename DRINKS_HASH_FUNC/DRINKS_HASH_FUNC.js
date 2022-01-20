@@ -2,7 +2,7 @@
 
     "use strict";
 
-    function HashStorageFunc() {
+       function HashStorageFunc() {
     
         let self = this;
         let privateHash = {};
@@ -29,5 +29,25 @@
         self.getKeys() = function() {
             return Object.keys(privateHash);
         }
+
+        let drinkStorage = new HashStorageFunc();
+
+        function drinkInputInfo() {
+
+            let alcohol;
+
+            let drinkName = prompt("Какое название напитка?");
+
+            let drinkAlcohol = conferm(drinkName + " - алкогольный напиток или нет?\nok - алкогольный\nотмена - без алкогольный");
+
+            let drinkRecipe = prompt("Какой рецепт напитка?");
+
+            drinkStorage(drinkName, drinkAlcohol);
+
+        }
+
+
     }
-})();  
+})();
+
+ 
