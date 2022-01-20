@@ -30,24 +30,27 @@
          return Object.keys(privateHash);
      }
 
-      let drinkStorage = new HashStorageFunc();
-
       
- function drinkInputInfo() {
+    
 
-         let alcohol;
+}
 
-         let drinkName = prompt("Какое название напитка?");
+let drinkStorage = new HashStorageFunc();
+     
 
-         let drinkAlcohol = confirm(drinkName + " - алкогольный напиток или нет?\nok - алкогольный\nотмена - без алкогольный");
+function drinkInputInfo() {
 
-         let drinkRecipe = prompt("Какой рецепт напитка?");
+    let alcohol;
 
-         drinkStorage(drinkName, drinkAlcohol);
+    let drinkName = prompt("Какое название напитка?");
 
-     }
+    let drinkAlcohol = confirm(drinkName + " - алкогольный напиток или нет?\nok - алкогольный\nотмена - без алкогольный");
 
- }
+    let drinkRecipe = prompt("Какой рецепт напитка?");
+
+    drinkStorage(drinkName, drinkAlcohol);
+
+}
 
 // })();
  
