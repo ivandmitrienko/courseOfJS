@@ -42,8 +42,6 @@
 
         let drinkNameDelete = prompt("Напишите название напитка");
 
-        let drinkText = document.getElementById("drinkText");
-
         if((drinkStorage.deleteValue(drinkNameDelete)) === true) {
             drinkText.innerHTML = "напиток " + drinkNameDelete + " удален )";
         } else {
