@@ -44,19 +44,21 @@
 
         let drinkText = document.getElementById("drinkText");
 
-        if(drinkStorage.deleteValue(drinkNameDelete) === true) {
-            drinkText.innerHTML = "напиток" + drinkNameDelete + "удален)";
+        if((drinkStorage.deleteValue(drinkNameDelete)) === true) {
+            drinkText.innerHTML = "напиток " + drinkNameDelete + " удален )";
         } else {
-            drinkText.innerHTML = "напиток" + drinkNameDelete + "не найден(";
+            drinkText.innerHTML = "Такой напиток не найден (";
         }
 
-
-
-
-
-
-
     }
+
+    let drinkNamesCoctails = document.getElementById("names-coctails");
+
+    drinkNamesCoctails.onclick = function(){
+        drinkText.innerHTML = drinkStorage.getKeys().join(", ");
+    }
+
+
 
 
 
