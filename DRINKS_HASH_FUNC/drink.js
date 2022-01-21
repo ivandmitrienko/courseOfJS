@@ -6,19 +6,36 @@
    
     drinkInputInfo.onclick = function() {
     
-        var drinkName = prompt("Напишите название напитка");
+        let drinkNameAdd = prompt("Напишите название напитка");
 
-		var drinkDescribe = {};
+		let drinkDescribe = {};
 
-		drinkDescribe.alcohol = confirm(drinkName + " - 'Это алкогольный напиток или нет?\nok - алкогольный\nотмена - без алкогольный");
+		drinkDescribe.alcohol = confirm(drinkNameAdd + " - 'Это алкогольный напиток или нет?\nok - алкогольный\nотмена - без алкогольный");
 
-		drinkDescribe.recipe = prompt("Напишите рецепт напитка - " + drinkName);
+		drinkDescribe.recipe = prompt("Напишите рецепт напитка - " + drinkNameAdd);
 
-	    drinkStorage.addValue(drinkName, drinkDescribe);
-        
-	    console.log(drinkStorage.getValue(drinkName));
-	   
-    
+	    drinkStorage.addValue(drinkNameAdd, drinkDescribe);  
     }
+
+    let drinkGetInfo = document.getElementById("get-coctail");
+
+    drinkGetInfo.onclick = function(){
+    	
+        let drinkNameGet = prompt("Напишите название напитка");
+
+        let drinkText = document.getElementById("drinkText");
+
+        let drinkAnswer = drinkStorage.getValue(drinkNameGet);
+
+        if (drinkStorage.getValue(drinkNameGet) !== undefined) {
+			drinkText.innerHTML = "напиток: " + drinkNameGet + 
+								   "<br>" + "алкогольный: " + (drinkAnswer.alcohol === true ? "да" : "нет") + 
+								   "<br>" + "Рецепт: " + (drinkAnswer.recipe ? drinkAnswer.recipe : "к сожалению РЕЦЕПТА НЕТ");
+		} else {
+			drinkText.innerHTML = "В хранилище такой напиток ОТСУТСТВУЕТ!";
+		}
+    }
+
+    
 
 // })();
