@@ -19,7 +19,7 @@
         }    
  
      self.deleteValue = function(key) {
-         if(!(key in privateHash)) {delete privateHash[key];
+         if(key in privateHash) {delete privateHash[key];
          return true;
          } else { 
          return false;
