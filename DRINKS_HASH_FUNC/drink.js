@@ -29,7 +29,7 @@
 
         if (drinkStorage.getValue(drinkNameGet) !== undefined) {
 			drinkText.innerHTML = "напиток: " + drinkNameGet + 
-								   "<br>" + "алкогольный: " + (drinkAnswer.alcohol === true ? "да" : "нет") + 
+								   "<br>" + "алкогольный: " + (drinkAnswer.alcohol ? "да" : "нет") + 
 								   "<br>" + "Рецепт: " + (drinkAnswer.recipe ? drinkAnswer.recipe : "к сожалению РЕЦЕПТА НЕТ");
 		} else {
 			drinkText.innerHTML = "Нет такого напитка(";
