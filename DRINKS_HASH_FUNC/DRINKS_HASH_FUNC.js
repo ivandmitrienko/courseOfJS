@@ -29,10 +29,6 @@
      self.getKeys = function() {
          return Object.keys(privateHash);
         }
-
-      
-    
-
     }
 
 let drinkStorage = new HashStorageFunc();
