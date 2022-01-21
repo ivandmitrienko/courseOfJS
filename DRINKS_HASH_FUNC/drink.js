@@ -2,7 +2,7 @@
 
     "use strict";  
 
-    let drinkInputInfo = document.getElementById('add-coctail');
+    let drinkInputInfo = document.getElementsByClassName('add-coctail');
    
     drinkInputInfo.onclick = function() {
     
@@ -17,13 +17,13 @@
 	    drinkStorage.addValue(drinkNameAdd, drinkDescribe);  
     }
 
-    let drinkGetInfo = document.getElementById("get-coctail");
+    let drinkGetInfo = document.ggetElementsByClassName("get-coctail");
 
     drinkGetInfo.onclick = function(){
     	
         let drinkNameGet = prompt("Напишите название напитка");
 
-        let drinkText = document.getElementById("drinkText");
+        let drinkText = document.ggetElementsByClassName("drinkText");
 
         let drinkAnswer = drinkStorage.getValue(drinkNameGet);
 
@@ -32,9 +32,11 @@
 								   "<br>" + "алкогольный: " + (drinkAnswer.alcohol === true ? "да" : "нет") + 
 								   "<br>" + "Рецепт: " + (drinkAnswer.recipe ? drinkAnswer.recipe : "к сожалению РЕЦЕПТА НЕТ");
 		} else {
-			drinkText.innerHTML = "В хранилище такой напиток ОТСУТСТВУЕТ!";
+			drinkText.innerHTML = "Нет такого напитка(";
 		}
     }
+
+    // let drinkDeleteInfo = document.getElementById
 
     
 
