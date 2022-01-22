@@ -27,7 +27,7 @@
 
         let drinkAnswer = drinkStorage.getValue(drinkNameGet);
 
-        if (drinkAnswe) {
+        if (drinkAnswer) {
 			drinkText.innerHTML = "напиток: " + drinkNameGet + 
 								   "<br>" + "алкогольный: " + (drinkAnswer.alcohol ? "да" : "нет") + 
 								   "<br>" + "Рецепт: " + (drinkAnswer.recipe ? drinkAnswer.recipe : "к сожалению РЕЦЕПТА НЕТ");
