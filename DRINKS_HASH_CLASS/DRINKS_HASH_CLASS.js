@@ -2,7 +2,7 @@
 
     "use strict";
 
-    class HashStorageFunc() {
+    class HashStorageFunc {
          
      constructor() {
         this.privateHash = {};
