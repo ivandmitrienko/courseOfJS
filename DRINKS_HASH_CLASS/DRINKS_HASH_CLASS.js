@@ -2,23 +2,25 @@
 
     "use strict";
 
-    function HashStorageFunc() {
+    class HashStorageFunc() {
+         
+     constructor() {
+        this.privateHash = {};
+     } 
+     
  
-     let self = this;
-     let privateHash = {};
- 
-     self.addValue = function(key, value) {
+     addValue(key, value) {
          privateHash[key] = value;
         }
  
-     self.getValue = function(key) {
+     getValue(key) {
          if(key in privateHash) {return privateHash[key];
          } else {
              return undefined;
          }
         }    
  
-     self.deleteValue = function(key) {
+     deleteValue(key) {
          if(key in privateHash) {delete privateHash[key];
          return true;
          } else { 
@@ -26,7 +28,7 @@
          }
         }    
  
-     self.getKeys = function() {
+     getKeys() {
          return Object.keys(privateHash);
         }
     }
