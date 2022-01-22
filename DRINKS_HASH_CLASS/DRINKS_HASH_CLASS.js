@@ -5,23 +5,24 @@
     class HashStorageFunc {
          
      constructor() {
+
         this.privateHash = {};
      } 
      
  
      addValue(key, value) {
-         privateHash[key] = value;
+         this.privateHash[key] = value;
         }
  
      getValue(key) {
-         if(key in privateHash) {return privateHash[key];
+         if(key in this.privateHash) {return this.privateHash[key];
          } else {
              return undefined;
          }
         }    
  
      deleteValue(key) {
-         if(key in privateHash) {delete privateHash[key];
+         if(key in this.privateHash) {delete this.privateHash[key];
          return true;
          } else { 
          return false;
@@ -29,7 +30,7 @@
         }    
  
      getKeys() {
-         return Object.keys(privateHash);
+         return Object.keys(this.privateHash);
         }
     }
 
