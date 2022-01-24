@@ -49,3 +49,5 @@ function vowelsTenReduce(str) {
 console.log(vowelsTenForEach(prompt("Пожалуйста, введите строку","")));
 console.log(vowelsTenFilter(prompt("Пожалуйста, введите строку","")));
 console.log(vowelsTenReduce(prompt("Пожалуйста, введите строку","")));
+
+// goood!!!
