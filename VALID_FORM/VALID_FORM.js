@@ -1,5 +1,13 @@
+const { create } = require("browser-sync");
+
 function creatNewForm(structureForm, numberForm) {
-    
+    structureForm.forEach(v => {
+        let lab = createElements('label');
+        lab.innerHTML = v.label;
+        numberForm.appendChild(lab);
+        
+
+    })
     
 }
 
