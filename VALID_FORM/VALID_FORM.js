@@ -2,91 +2,115 @@
 
 function creatNewForm(structureForm, numberForm) {
 
-  // let d = document.getElementsByTagName('div');
-  // d[0].style.maxWidth = '660px';
+  let d = document.getElementsByTagName('div');
+  d[0].style.maxWidth = '660px';
 
   structureForm.forEach((v) => {
-      let lab = document.createElement('label');
-      lab.innerHTML = v.label;
-      numberForm.appendChild(lab);
-      if(v.kind === 'longtext') {
+    let lab = document.createElement('label');
+    lab.innerHTML = v.label;
+    numberForm.appendChild(lab);
+    if(v.kind === 'longtext') {
+      let inp = document.createElement('input');
+      inp.type = 'text';
+      inp.style.cssText = 'width: 453px; margin-left: 5px';
+      if(v.name === 'sitename') {
+        inp.name = 'sitename';
+      }
+      if(v.name === 'siteurl') {
+        inp.name = 'siteurl';
+      }
+      if(v.name === 'lastname') {
+        inp.name = 'lastname';
+      }
+      if(v.name === 'firstname') {
+        inp.name = 'firstname';
+      }
+      if(v.name === 'secondname') {
+        inp.name = 'secondname';
+      }
+      numberForm.appendChild(inp);
+      let br = document.createElement('br');
+      numberForm.appendChild(br);
+    }
+    if(v.kind === 'number') {
+      let inp = document.createElement('input');
+      inp.type = 'number';
+      inp.style.cssText = 'width: 80px; margin-left: 5px';
+      if(v.name === 'visitors') {
+        inp.name = 'visitors';
+      }
+      if(v.name === 'age') {
+        inp.name = 'age';
+      }
+      numberForm.appendChild(inp);
+      let br = document.createElement('br');
+      numberForm.appendChild(br);
+    }
+    if(v.kind === 'shorttext') {
+      let inp = document.createElement('input');
+      inp.type = 'email';
+      inp.name = 'email';
+      inp.style.css = 'width: 200px; margin-left: 5px';
+      numberForm.appendChild(inp);
+      let br = document.createElement('br');
+      numberForm.appendChild(br);
+    }
+    if(v.kind === 'combo') {
+      let sel = document.createElement('select');
+      sel.name = 'division';
+      numberForm.appendChild(sel);
+      let br = document.createElement('br');
+      numberForm.appendChild(br);
+      v.variants.forEach((vDown) => {
+        let opt = document.createElement('option');
+        opt.value = vDown.value;
+        opt.text = vDown.text;
+        if(vDown.text === 'бытовая техника') {
+          opt.selected = 'бытовая техника';
+        }
+        sel.appendChild(opt);
+      })
+    }
+    if(v.kind === 'radio') {
+      v.variants.forEach((vDown) => {
         let inp = document.createElement('input');
-        inp.type = 'text';
-        inp.style.cssText = 'width: 453px; margin-left: 5px';
-        if(v.name === 'sitename') {
-          inp.name = 'sitename';
-        }
-        if(v.name === 'siteurl') {
-          inp.name = 'siteurl';
-        }
-        if(v.name === 'lastname') {
-          inp.name = 'lastname';
-        }
-        if(v.name === 'firstname') {
-          inp.name = 'firstname';
-        }
-        if(v.name === 'secondname') {
-          inp.name = 'secondname';
-        }
-        numberForm.appendChild(inp);
-        let br = document.createElement('br');
+        inp.type = 'radio';
+        inp.name = 'payment';
+        inp.value = vDown.value;
+        numberForm.appendChild(inp);  
+        let sp = document.createElement('span');
+        sp.innerHTML = vDown.text;
+        numberForm.appendChild(sp);
+      })
+      let br = document.createElement('br');
         numberForm.appendChild(br);
-      }
-      if(v.kind === 'number') {
-        let inp = document.createElement('input');
-        inp.type = 'number';
-        inp.style.cssText = 'width: 80px; margin-left: 5px';
-        if(v.name === 'visitors') {
-          inp.name = 'visitors';
-        }
-        if(v.name === 'age') {
-          inp.name = 'age';
-        }
-        numberForm.appendChild(inp);
-        let br = document.createElement('br');
-        numberForm.appendChild(br);
-      }
-      if(v.kind === 'shorttext') {
-        let inp = document.createElement('input');
-        inp.type = 'email';
-        inp.name = 'email';
-        inp.style.css = 'width: 200px; margin-left: 5px';
-        numberForm.appendChild(inp);
-        let br = document.createElement('br');
-        numberForm.appendChild(br);
-      }
-      if(v.kind === 'combo') {
-        let sel = document.createElement('select');
-        sel.name = 'division';
-        numberForm.appendChild(sel);
-        let br = document.createElement('br');
-        numberForm.appendChild(br);
-        v.variants.forEach((vDown) => {
-          let opt = document.createElement('option');
-          opt.value = vDown.value;
-          opt.text = vDown.text;
-          if(vDown.text === 'бытовая техника') {
-            opt.selected = 'бытовая техника';
-          }
-          sel.appendChild(opt);
-        })
-      }
-      if(v.kind === 'radio') {
-        v.variants.forEach((vDown) => {
-          let inp = document.createElement('input');
-          inp.type = 'radio';
-          inp.name = 'payment';
-          inp.value = vDown.value;
-          numberForm.appendChild(inp);
-          let sp = document.createElement('span');
-          sp.innerHTML = vDown.text;
-          inp.appendChild(sp);
-        })
+    }
+    if (v.kind === 'check') {
+      let inp = document.createElement('input');
+      inp.type = 'checkbox';
+      inp.name = 'votes';
+      inp.checked = 'true';
+      numberForm.appendChild(inp);
+      let br = document.createElement('br');
+      numberForm.appendChild(br);
+    }
+    if(v.kind === 'memo') {
+      let textar = document.createElement('textarea');
+      textar.name = 'description';
+      textar.style.cssText = 'height: 50px; width: 608px';
+      numberForm.appendChild(textar);
+      let br = document.createElement('br');
+      numberForm.appendChild(br);
+    }
+    // if(v.kind === 'submit') {
+    //   let inp = document.createElement('input');
+    //   inp.type = 'button';
+    //   inp.value = v.value;
+    //   numberForm.appendChild(inp);
+    //   let br = document.createElement('br');
+    //   numberForm.appendChild(br);
+    // }
 
-        let br = document.createElement('br');
-          numberForm.appendChild(br);
-          
-      }
      
       
   })
