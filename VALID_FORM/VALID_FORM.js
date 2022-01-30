@@ -2,15 +2,15 @@
 
 function creatNewForm(structureForm, numberForm) {
     structureForm.forEach((v) => {
-        let lab = createElement('label');
+        let lab = document.createElement('label');
         lab.innerHTML = v.label;
         numberForm.appendChild(lab);
         if(v.kind === 'longtext') {
-          let inp = createElement('input');
+          let inp = document.createElement('input');
           inp.type = 'text';
           input.style.cssText = 'width: 453px; margin-left: 5px';
           numberForm.appendChild(inp);
-          let br = createElement('br');
+          let br = document.createElement('br');
           numberForm.appendChild(br);
 
         }
