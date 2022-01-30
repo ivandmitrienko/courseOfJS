@@ -1,23 +1,50 @@
 "use strict"
 
 function creatNewForm(structureForm, numberForm) {
-    structureForm.forEach((v) => {
-        let lab = document.createElement('label');
-        lab.innerHTML = v.label;
-        numberForm.appendChild(lab);
-        if(v.kind === 'longtext') {
-          let inp = document.createElement('input');
-          inp.type = 'text';
-          input.style.cssText = 'width: 453px; margin-left: 5px';
-          numberForm.appendChild(inp);
-          let br = document.createElement('br');
-          numberForm.appendChild(br);
 
+  let d = document.getElementsByTagName('div');
+  d[0].style.maxWidth = '660px';
+
+  structureForm.forEach((v) => {
+      let lab = document.createElement('label');
+      lab.innerHTML = v.label;
+      numberForm.appendChild(lab);
+      if(v.kind === 'longtext') {
+        let inp = document.createElement('input');
+        inp.type = 'text';
+        inp.style.cssText = 'width: 453px; margin-left: 5px';
+        if(v.name === 'sitename') {
+          inp.name = 'sitename';
         }
-
-        
-
-    })
+        if(v.name === 'siteurl') {
+          inp.name = 'siteurl';
+        }
+        if(v.name === 'lastname') {
+          inp.name = 'lastname';
+        }
+        if(v.name === 'firstname') {
+          inp.name = 'firstname';
+        }
+        numberForm.appendChild(inp);
+        let br = document.createElement('br');
+        numberForm.appendChild(br);
+      }
+      if(v.kind === 'number') {
+        let inp = document.createElement('input');
+        inp.type = 'number';
+        inp.style.cssText = 'width: 80px; margin-left: 5px';
+        if(v.name === 'visitors') {
+          inp.name = 'visitors';
+        }
+        if(v.name === 'age') {
+          inp.name = 'age';
+        }
+        numberForm.appendChild(inp);
+        let br = document.createElement('br');
+        numberForm.appendChild(br);
+      }
+      
+  })
     
 }
 
