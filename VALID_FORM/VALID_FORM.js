@@ -1,10 +1,19 @@
 "use strict"
 
 function creatNewForm(structureForm, numberForm) {
-    structureForm.forEach(v => {
+    structureForm.forEach((v) => {
         let lab = createElements('label');
         lab.innerHTML = v.label;
         numberForm.appendChild(lab);
+        if(v.kind === 'longtext') {
+          let inp = createElements('input');
+          inp.type = 'text';
+          input.style.cssText = 'width: 453px; margin-left: 5px';
+          numberForm.appendChild(inp);
+          let br = createElements('br');
+          numberForm.appendChild(br);
+
+        }
 
         
 
