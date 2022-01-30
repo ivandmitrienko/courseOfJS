@@ -112,7 +112,9 @@ function creatNewForm(structureForm, numberForm) {
       numberForm.appendChild(br);
     }   
   })
-    
+   
+  let form1 = document.forms.formOne;
+  form1.style.marginBottom = '40px';
 }
 
 
