@@ -2,8 +2,8 @@
 
 function creatNewForm(structureForm, numberForm) {
 
-  let d = document.getElementsByTagName('div');
-  d[0].style.maxWidth = '660px';
+  // let d = document.getElementsByTagName('div');
+  // d[0].style.maxWidth = '660px';
 
   structureForm.forEach((v) => {
       let lab = document.createElement('label');
@@ -25,6 +25,9 @@ function creatNewForm(structureForm, numberForm) {
         if(v.name === 'firstname') {
           inp.name = 'firstname';
         }
+        if(v.name === 'secondname') {
+          inp.name = 'secondname';
+        }
         numberForm.appendChild(inp);
         let br = document.createElement('br');
         numberForm.appendChild(br);
@@ -43,6 +46,38 @@ function creatNewForm(structureForm, numberForm) {
         let br = document.createElement('br');
         numberForm.appendChild(br);
       }
+      if(v.kind === 'shorttext') {
+        let inp = document.createElement('input');
+        inp.type = 'email';
+        inp.name = 'email';
+        inp.style.css = 'width: 200px; margin-left: 5px';
+        numberForm.appendChild(inp);
+        let br = document.createElement('br');
+        numberForm.appendChild(br);
+      }
+      if(v.kind === 'combo') {
+        let sel = document.createElement('select');
+        sel.name = 'division';
+        numberForm.appendChild(sel);
+        let br = document.createElement('br');
+        numberForm.appendChild(br);
+        v.variants.forEach((vDown) => {
+          let opt = document.createElement('option');
+          opt.value = vDown.value;
+          opt.text = vDown.text;
+          if(vDown.text === 'бытовая техника') {
+            opt.selected = 'бытовая техника';
+          }
+          sel.appendChild(opt);
+        })
+      }
+      if(v.kind === radio) {
+        let inp = document.createElement('input');
+        inp.type = 'radio';
+        inp.name = 'payment';
+        
+      }
+     
       
   })
     
