@@ -71,11 +71,21 @@ function creatNewForm(structureForm, numberForm) {
           sel.appendChild(opt);
         })
       }
-      if(v.kind === radio) {
-        let inp = document.createElement('input');
-        inp.type = 'radio';
-        inp.name = 'payment';
-        
+      if(v.kind === 'radio') {
+        v.variants.forEach((vDown) => {
+          let inp = document.createElement('input');
+          inp.type = 'radio';
+          inp.name = 'payment';
+          inp.value = vDown.value;
+          numberForm.appendChild(inp);
+          let sp = document.createElement('span');
+          sp.innerHTML = vDown.text;
+          inp.appendChild(sp);
+        })
+
+        let br = document.createElement('br');
+          numberForm.appendChild(br);
+          
       }
      
       
