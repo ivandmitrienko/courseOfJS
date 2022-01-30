@@ -1,4 +1,4 @@
-"use strict"
+// "use strict"
 
 // function creatNewForm(structureForm, numberForm) {
 //     structureForm.forEach(v => {
@@ -126,7 +126,7 @@ function creatNewForm(fD, fE) {
    
     });
   }
-  
+
 
 creatNewForm([
     {label:'Название сайта:',kind:'longtext',name:'sitename'},
@@ -140,7 +140,7 @@ creatNewForm([
     {label:'Разрешить отзывы:',kind:'check',name:'votes'},
     {label:'Описание сайта:',kind:'memo',name:'description'},
     {caption:'Опубликовать',kind:'submit'},
-  ], document.forms.form1);
+  ], document.forms.formOne);
 
   creatNewForm([
     {label:'Фамилия:',kind:'longtext',name:'lastname'},
@@ -148,4 +148,4 @@ creatNewForm([
     {label:'Отчество:',kind:'longtext',name:'secondname'},
     {label:'Возраст:',kind:'number',name:'age'},
     {caption:'Зарегистрироваться',kind:'submit'},
-  ], document.forms.form2);
+  ], document.forms.formTwo);
