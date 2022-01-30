@@ -102,17 +102,15 @@ function creatNewForm(structureForm, numberForm) {
       let br = document.createElement('br');
       numberForm.appendChild(br);
     }
-    // if(v.kind === 'submit') {
-    //   let inp = document.createElement('input');
-    //   inp.type = 'button';
-    //   inp.value = v.value;
-    //   numberForm.appendChild(inp);
-    //   let br = document.createElement('br');
-    //   numberForm.appendChild(br);
-    // }
-
-     
-      
+    if(v.kind === 'submit') {
+      lab.remove();
+      let inp = document.createElement('input');
+      inp.type = 'button';
+      inp.value = v.caption;
+      numberForm.appendChild(inp);
+      let br = document.createElement('br');
+      numberForm.appendChild(br);
+    }   
   })
     
 }
