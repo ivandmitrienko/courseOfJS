@@ -1,10 +1,11 @@
-const { create } = require("browser-sync");
+"use strict"
 
 function creatNewForm(structureForm, numberForm) {
     structureForm.forEach(v => {
         let lab = createElements('label');
         lab.innerHTML = v.label;
         numberForm.appendChild(lab);
+
         
 
     })
