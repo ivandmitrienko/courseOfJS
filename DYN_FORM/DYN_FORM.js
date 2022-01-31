@@ -13,21 +13,7 @@ function creatNewForm(structureForm, numberForm) {
       let inp = document.createElement('input');
       inp.type = 'text';
       inp.style.cssText = 'width: 453px; margin-left: 5px';
-      if(v.name === 'sitename') {
-        inp.name = 'sitename';
-      }
-      if(v.name === 'siteurl') {
-        inp.name = 'siteurl';
-      }
-      if(v.name === 'lastname') {
-        inp.name = 'lastname';
-      }
-      if(v.name === 'firstname') {
-        inp.name = 'firstname';
-      }
-      if(v.name === 'secondname') {
-        inp.name = 'secondname';
-      }
+      inp.name = v.name;
       numberForm.appendChild(inp);
       let br = document.createElement('br');
       numberForm.appendChild(br);
@@ -36,12 +22,7 @@ function creatNewForm(structureForm, numberForm) {
       let inp = document.createElement('input');
       inp.type = 'number';
       inp.style.cssText = 'width: 80px; margin-left: 5px';
-      if(v.name === 'visitors') {
-        inp.name = 'visitors';
-      }
-      if(v.name === 'age') {
-        inp.name = 'age';
-      }
+      inp.name = v.name;
       numberForm.appendChild(inp);
       let br = document.createElement('br');
       numberForm.appendChild(br);
