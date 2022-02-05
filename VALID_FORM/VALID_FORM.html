@@ -3,9 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VALID_FORM</title>
 </head>
 <body>
-  
+  <div>
+    <form method="post" enctype="multipart/form-data" action="https://fe.it-academy.by/TestForm.php">
+      <div><label for=""> Разработчики: <input type="text" name="author" style='width: 453px'></label><span></span></div>
+      <br>
+      <div><label for="">Название сайта: <input type="text" name="title" style='width: 453px'></label><span></span></div>
+      <br>
+      <div><label for="">URL сайта: <input type="text" name="url" style='width: 300px'></label><span></span></div>
+      <br>
+      <div><label for="">Дата запуска сайта: <input type="date" name="startdate" style='width: 160px'></label><span></span></div>
+      <br>
+      <div><label for="">Посетителей в сутки: <input type="number" name="persons" style='width: 80px'></label><span></span></div>
+      <br>
+      <div><label for="">E-mail для связи: <input type="email" name="mail" style='width: 180px'></label><span></span></div>
+      <br>
+      <div><label for="">Рубрика каталога: <select name="rubric">
+        <option value="1">здоровье</option>
+        <option value="2">домашний уют</option>
+        <option value="3">бытовая техника</option>
+      </select></label><span></span></div>
+      <br>
+      <div><label for="">Размещение: 
+      <input type="radio" id=deployment11 name="deployment" value="11"> бесплатное
+      <input type="radio" name="deployment" value="22"> платное
+      <input type="radio" name="deployment" value="33"> VIP
+      </label><span></span></div>
+      <br>
+      <div><label for="">Разрешить отзывы: <input type="checkbox" name="comments"></label><span></span></div>
+      <br>
+      <div><label for="">Описание сайта: <br> <textarea name="article" style="width: 608px; height: 50px"></textarea></label><span></span></div>
+      <br>
+      <div><input type="submit" value="Опубликовать"></div>
+    </form>
+  </div>
+  <script src="./VALID_FORM.js"></script>
 </body>
 </html>
