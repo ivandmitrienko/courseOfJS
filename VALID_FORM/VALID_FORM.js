@@ -12,13 +12,17 @@ form.addEventListener('submit',validateInfoForm,false);
 function validateInfoForm(EO) {
     EO=EO||window.event;
     EO.preventDefault();
+    let errors = document.getElementsByTagName('span');
+    for (let j = 0; j < errors.length; j++) {
+        errors[j].innerHTML = '';
+    }
     for (let i = 0; i < fields.length; i++) {
         if (!(fields[i].value) ||  !(commentValue)){
             console.log(fields[i]);
-            let sp = document.createElement('span');
-            sp.innerHTML = 'неверно указаны данные!';
-            sp.style.color = 'red'
-            fields[i].after(sp);    
+            let error = document.createElement('span');
+            error.innerHTML = 'неверно указаны данные!';
+            error.style.color = 'red'
+            fields[i].after(error);    
         } else {
             // form.removeEventListener('submit',validateInfoForm,false);
         }
