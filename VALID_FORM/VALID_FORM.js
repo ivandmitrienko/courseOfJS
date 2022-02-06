@@ -44,6 +44,7 @@ function validateInfoForm(EO) {
              error.innerHTML = 'неверно указаны данные!';
              error.style.color = 'red';
              fields[i].after(error);
+             fields[i].focus()
              EO.preventDefault();
             } else {
                 continue;
