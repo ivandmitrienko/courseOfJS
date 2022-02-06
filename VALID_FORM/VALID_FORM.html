@@ -6,36 +6,34 @@
   </head>
 <body>
     <form method="post" enctype="multipart/form-data" action="https://fe.it-academy.by/TestForm.php" class="form1">
-       Разработчики: <input type="text" name="author" style='width: 453px; margin-right: 10px' class="field">
+       Разработчики: <input type="text" name="author" style='width: 453px; margin-right: 10px' id="field">
       <br>
-      Название сайта: <input type="text" name="title" style='width: 453px; margin-right: 10px' class="field">
+      Название сайта: <input type="text" name="title" style='width: 453px; margin-right: 10px' id="field">
       <br>
-      URL сайта: <input type="text" name="url" style='width: 300px; margin-right: 10px' class="field">
+      URL сайта: <input type="text" name="url" style='width: 300px; margin-right: 10px' id="field">
       <br>
-      Дата запуска сайта: <input type="date" name="startdate" style='width: 160px; margin-right: 10px' class="field">
+      Дата запуска сайта: <input type="date" name="startdate" style='width: 160px; margin-right: 10px' id="field">
       <br>
-      Посетителей в сутки: <input type="number" name="persons" style='width: 80px; margin-right: 10px' class="field">
+      Посетителей в сутки: <input type="number" name="persons" style='width: 80px; margin-right: 10px' id="field">
       <br>
-      E-mail для связи: <input type="email" name="mail" style='width: 180px; margin-right: 10px' class="field">
+      E-mail для связи: <input type="email" name="mail" style='width: 180px; margin-right: 10px' id="field">
       <br>
       Рубрика каталога: 
-      <select name="rubric"  class="field" style='margin-right: 10px'>
+      <select name="rubric"  id="field" style='margin-right: 10px'>
         <option></option>
         <option value="1">здоровье</option>
         <option value="2">домашний уют</option>
         <option value="3">бытовая техника</option>
       </select>
       <br>
-      <div class="field" style="display: inline-block">
         Размещение:
-          <input type="radio" id="deployment11" name="deployment"   value="11"> бесплатное
+          <input type="radio" id="field" name="deployment" value="11"> бесплатное
           <input type="radio" name="deployment" value="22" > платное
-          <input type="radio" name="deployment" value="33"  > VIP
-      </div>
+          <input type="radio" name="deployment" value="33" > VIP
       <br>
-      Разрешить отзывы: <input type="checkbox"  name="comments" class="field" style='margin-right: 10px'>
+      Разрешить отзывы: <input type="checkbox"  name="comments" style='margin-right: 10px' id="field">
       <br>
-      Описание сайта: <br> <textarea name="article" style="width: 608px; height: 50px; margin-right: 10px"  class="field"></textarea>
+      Описание сайта: <br> <textarea name="article" style="width: 608px; height: 50px; margin-right: 10px"  id="field"></textarea>
       <br>
       <input type="submit" value="Опубликовать">
     </form>
