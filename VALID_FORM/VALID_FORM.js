@@ -18,7 +18,7 @@ function validateInfoForm(EO) {
     for (let j = 0; j < errors.length; j++) {
         errors[j].innerHTML = '';
     }
-    
+
     for (let i = 0; i < fields.length; i++) {
         if (!fields[i].value){
              let error = document.createElement('span');
@@ -26,10 +26,10 @@ function validateInfoForm(EO) {
              error.style.color = 'red'
              fields[i].after(error);
              EO.preventDefault();
-
             } else {
-            continue;
-        } 
+                continue;
+            }
+         
 
 
         // } else if (!(commentValue)) || !(deploymentValue){
