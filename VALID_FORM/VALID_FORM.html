@@ -6,37 +6,38 @@
   </head>
 <body>
     <form method="post" enctype="multipart/form-data" action="https://fe.it-academy.by/TestForm.php" class="form1">
-      <div><label for=""> Разработчики: <input type="text" name="author" style='width: 453px' class="field"></label></div>
+       Разработчики: <input type="text" name="author" style='width: 453px; margin-right: 10px' class="field">
       <br>
-      <div><label for="">Название сайта: <input type="text" name="title" style='width: 453px' class="field"></label></div>
+      Название сайта: <input type="text" name="title" style='width: 453px; margin-right: 10px' class="field">
       <br>
-      <div><label for="">URL сайта: <input type="text" name="url" style='width: 300px' class="field"></label></div>
+      URL сайта: <input type="text" name="url" style='width: 300px; margin-right: 10px' class="field">
       <br>
-      <div><label for="">Дата запуска сайта: <input type="date" name="startdate" style='width: 160px' class="field"></label></div>
+      Дата запуска сайта: <input type="date" name="startdate" style='width: 160px; margin-right: 10px' class="field">
       <br>
-      <div><label for="">Посетителей в сутки: <input type="number" name="persons" style='width: 80px' class="field"></label></div>
+      Посетителей в сутки: <input type="number" name="persons" style='width: 80px; margin-right: 10px' class="field">
       <br>
-      <div><label for="">E-mail для связи: <input type="email" name="mail" style='width: 180px' class="field"></label></div>
+      E-mail для связи: <input type="email" name="mail" style='width: 180px; margin-right: 10px' class="field">
       <br>
-      <div><label for="">Рубрика каталога: 
-      <select name="rubric"  class="field">
+      Рубрика каталога: 
+      <select name="rubric"  class="field" style='margin-right: 10px'>
         <option></option>
         <option value="1">здоровье</option>
         <option value="2">домашний уют</option>
         <option value="3">бытовая техника</option>
-      </select></label></div>
+      </select>
       <br>
-      <div><label for="">Размещение: 
-      <input type="radio" id="deployment11" name="deployment"  class="field" value="11"> бесплатное
-      <input type="radio" name="deployment" value="22" > платное
-      <input type="radio" name="deployment" value="33"> VIP
-      </label></div>
+      <div class="field" style="display: inline-block">
+        Размещение:
+          <input type="radio" id="deployment11" name="deployment"   value="11"> бесплатное
+          <input type="radio" name="deployment" value="22" > платное
+          <input type="radio" name="deployment" value="33"  > VIP
+      </div>
       <br>
-      <div><label for="">Разрешить отзывы: <input type="checkbox" name="comments" class="field"></label></div>
+      Разрешить отзывы: <input type="checkbox"  name="comments" class="field" style='margin-right: 10px'>
       <br>
-      <div><label for="">Описание сайта: <br> <textarea name="article" style="width: 608px; height: 50px"  class="field"></textarea></label></div>
+      Описание сайта: <br> <textarea name="article" style="width: 608px; height: 50px; margin-right: 10px"  class="field"></textarea>
       <br>
-      <div><input type="submit" value="Опубликовать"></div>
+      <input type="submit" value="Опубликовать">
     </form>
     <script src="./VALID_FORM.js"></script>
 </body>
