@@ -4,7 +4,7 @@ let form = document.querySelector('.form1');
 form.addEventListener('submit',validateInfoForm,false);
 let fields = form.querySelectorAll('.field');
 
-let someQuestions;
+let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
 
 let authors = form.elements.author;
 let titles = form.elements.title;
@@ -18,7 +18,7 @@ let deployments = form.elements.deployment;
 
 function validateInfoForm(EO) {
 
-    let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
+    // let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
 
     let commentValue = comment.checked;
     let deploymentsValue = deployments.value;
@@ -32,7 +32,7 @@ function validateInfoForm(EO) {
     for (let i = 0; i < fields.length; i++) {
         if (!fields[i].value){
             arrEmptyField.push(fields[i]);
-            arrEmptyField[0].focus();
+            // arrEmptyField[0].focus();
             let error = document.createElement('span');
             error.innerHTML = 'empty field!';
             error.style.color = 'red';
@@ -46,7 +46,7 @@ function validateInfoForm(EO) {
     
     if(deploymentsValue == '') {
         arrEmptyField.push(deployments[0]);
-        arrEmptyField[0].focus();
+        // arrEmptyField[0].focus();
         let divSp = form.querySelector(".errorDiv");
         let error = document.createElement('span');
         error.innerHTML = 'empty field!';
@@ -57,13 +57,17 @@ function validateInfoForm(EO) {
 
     if(!(commentValue)) {
         arrEmptyField.push(comment);
-        arrEmptyField[0].focus();
+        // arrEmptyField[0].focus();
         let error = document.createElement('span');
         error.innerHTML = 'empty field!';
         error.style.color = 'red';
         comment.after(error);
         EO.preventDefault();
            
+    }
+
+    if(arrEmptyField.length) {
+        arrEmptyField[0].focus();
     }
 
     
@@ -85,7 +89,7 @@ function blurInfo() {
             }
             let authorsValue = authors.value;
             if(authorsValue.length > 15) { 
-            //  arrEmptyField.push(fields[k]);  
+             arrEmptyField.push(fields[k]);  
              let error = document.createElement('span');
              error.innerHTML = 'Just 15 letters!';
              error.style.color = 'red';
@@ -94,7 +98,7 @@ function blurInfo() {
             }
             let titlesValue = titles.value;
             if(titlesValue.length > 10) {
-            //  arrEmptyField.push(fields[k]);
+             arrEmptyField.push(fields[k]);
              let error = document.createElement('span');
              error.innerHTML = 'Just 10 letters!';
              error.style.color = 'red';
