@@ -84,8 +84,8 @@ function blurInfo() {
                 errors[j].innerHTML = '';
             }
             let authorsValue = authors.value;
-            if(authorsValue.length > 15) {
-             arrEmptyField.push(fields[k]);  
+            if(authorsValue.length > 15) { 
+            //  arrEmptyField.push(fields[k]);  
              let error = document.createElement('span');
              error.innerHTML = 'Just 15 letters!';
              error.style.color = 'red';
@@ -94,7 +94,7 @@ function blurInfo() {
             }
             let titlesValue = titles.value;
             if(titlesValue.length > 10) {
-             arrEmptyField.push(fields[k]);
+            //  arrEmptyField.push(fields[k]);
              let error = document.createElement('span');
              error.innerHTML = 'Just 10 letters!';
              error.style.color = 'red';
