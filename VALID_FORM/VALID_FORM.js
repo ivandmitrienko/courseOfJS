@@ -24,11 +24,11 @@ function validateInfoForm(EO) {
     let deploymentsValue = deployments.value;
 
     EO=EO||window.event;
-    // let errors = document.getElementsByTagName('span');
-    // for (let j = 0; j < errors.length; j++) {
-    //     errors[j].innerHTML = '';
-    // }
 
+    if(arrEmptyField.length) {
+        arrEmptyField[0].focus();
+    } 
+    
     for (let i = 0; i < fields.length; i++) {
         if (!fields[i].value){
             arrEmptyField.push(fields[i]);
@@ -66,9 +66,10 @@ function validateInfoForm(EO) {
            
     }
 
-    if(arrEmptyField.length !== 0) {
-        arrEmptyField[0].focus();
-    }
+    
+    
+
+    
 
     
  
@@ -82,7 +83,9 @@ function blurInfo() {
 
     for (let k = 0; k < fields.length; k++) {
         fields[k].onblur = function(EO) {
+
             EO=EO||window.event;
+
             let errors = document.getElementsByTagName('span');
             for (let j = 0; j < errors.length; j++) {
                 errors[j].innerHTML = '';
@@ -95,6 +98,8 @@ function blurInfo() {
              error.style.color = 'red';
              authors.after(error);
              EO.preventDefault();
+            } else {
+                arrEmptyField.splice(0);
             }
             let titlesValue = titles.value;
             if(titlesValue.length > 10) {
@@ -104,11 +109,17 @@ function blurInfo() {
              error.style.color = 'red';
              titles.after(error);
              EO.preventDefault();
+            } else {
+                arrEmptyField.splice(0);
             }
     
           
         }
     }
+
+    if(arrEmptyField.length) {
+        arrEmptyField[0].focus();
+    } 
 
 
 }
