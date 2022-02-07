@@ -22,10 +22,10 @@ function validateInfoForm(EO) {
     let deploymentsValue = deployments.value;
 
     EO=EO||window.event;
-    let errors = document.getElementsByTagName('span');
-    for (let j = 0; j < errors.length; j++) {
-        errors[j].innerHTML = '';
-    }
+    // let errors = document.getElementsByTagName('span');
+    // for (let j = 0; j < errors.length; j++) {
+    //     errors[j].innerHTML = '';
+    // }
 
     for (let i = 0; i < fields.length; i++) {
         if (!fields[i].value){
@@ -65,14 +65,6 @@ function validateInfoForm(EO) {
     }
 
 
-    
-    // if (arrMistakesFields.length) {
-
-    //     arrMistakesFields[0].focus();
-    //     EO.preventDefault();
-    // }  else  {
-    //     arrEmptyField[0].focus();
-    // }
 
 
 }
