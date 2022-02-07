@@ -3,7 +3,9 @@
 let form = document.querySelector('.form1');
 form.addEventListener('submit',validateInfoForm,false);
 let fields = form.querySelectorAll('.field');
-// fields[0].addEventListener('blur',blurInfoForm,false);
+
+let arrMistakesFields = [];
+
 let authors = form.elements.author;
 let titles = form.elements.title;
 let urls = form.elements.url;
@@ -65,10 +67,18 @@ function validateInfoForm(EO) {
     }
 
 
+    
+    if (arrMistakesFields.length) {
+        arrMistakesFields[0].focus();
+    }
+
 
 }
 
 function blurInfo() {
+
+    
+
     for (let k = 0; k < fields.length; k++) {
         fields[k].onblur = function(EO) {
             EO=EO||window.event;
@@ -78,17 +88,31 @@ function blurInfo() {
             }
             let authorsValue = authors.value;
             if(authorsValue.length > 15) {
+             arrMistakesFields.push(fields[k]);  
+             let error = document.createElement('span');
+             error.innerHTML = 'Just 15 letters!';
+             error.style.color = 'red';
+             authors.after(error);
+             EO.preventDefault();
+            }
+            let titlesValue = titles.value;
+            if(titlesValue.length > 10) {
              let error = document.createElement('span');
              error.innerHTML = 'Just 10 letters!';
              error.style.color = 'red';
-             authors.after(error);
-            } 
+             titles.after(error);
+             EO.preventDefault();
+            }
+
           
         }
     }
+
+    
 }
 
 blurInfo(fields);
+
 
 // fields[0].onblur = function(EO) {
 //     EO=EO||window.event;
