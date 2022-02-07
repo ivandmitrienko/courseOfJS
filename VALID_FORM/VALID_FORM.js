@@ -65,7 +65,7 @@ function validateInfoForm(EO) {
     }
 
 
-
+    blurInfo(fields);
 
 }
 
@@ -106,7 +106,7 @@ function blurInfo() {
     
 }
 
-blurInfo(fields);
+
 
 
 // fields[0].onblur = function(EO) {
