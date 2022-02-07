@@ -4,7 +4,7 @@ let form = document.querySelector('.form1');
 form.addEventListener('submit',validateInfoForm,false);
 let fields = form.querySelectorAll('.field');
 
-let arrMistakesFields = [];
+let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
 
 let authors = form.elements.author;
 let titles = form.elements.title;
@@ -17,8 +17,6 @@ let comment = form.elements.comments;
 let deployments = form.elements.deployment; 
 
 function validateInfoForm(EO) {
-
-    let arrEmptyField = []; // для поиска первого пустого поля
 
     let commentValue = comment.checked;
     let deploymentsValue = deployments.value;
@@ -69,8 +67,10 @@ function validateInfoForm(EO) {
 
     
     if (arrMistakesFields.length) {
+
         arrMistakesFields[0].focus();
-    }else{
+        EO.preventDefault();
+    }  else  {
         arrEmptyField[0].focus();
     }
 
@@ -90,15 +90,15 @@ function blurInfo() {
             }
             let authorsValue = authors.value;
             if(authorsValue.length > 15) {
-             arrMistakesFields.push(fields[k]);  
+             arrEmptyField.push(fields[k]);  
              let error = document.createElement('span');
              error.innerHTML = 'Just 15 letters!';
              error.style.color = 'red';
              authors.after(error);
-             EO.preventDefault();
             }
             let titlesValue = titles.value;
             if(titlesValue.length > 10) {
+             arrEmptyField.push(fields[k]); 
              let error = document.createElement('span');
              error.innerHTML = 'Just 10 letters!';
              error.style.color = 'red';
