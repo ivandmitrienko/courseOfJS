@@ -78,7 +78,7 @@ function validateInfoForm(EO) {
 
 }
 
-let arrMistakeField =[];
+
 
 function blurInfo() {
 
@@ -86,6 +86,8 @@ function blurInfo() {
         fields[k].onblur = function(EO) {
 
             EO=EO||window.event;
+
+            let arrMistakeField =[];
 
             let errors = document.getElementsByTagName('span');
             for (let j = 0; j < errors.length; j++) {
