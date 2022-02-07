@@ -4,7 +4,7 @@ let form = document.querySelector('.form1');
 form.addEventListener('submit',validateInfoForm,false);
 let fields = form.querySelectorAll('.field');
 
-let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
+let someQuestions;
 
 let authors = form.elements.author;
 let titles = form.elements.title;
@@ -17,6 +17,8 @@ let comment = form.elements.comments;
 let deployments = form.elements.deployment; 
 
 function validateInfoForm(EO) {
+
+    let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
 
     let commentValue = comment.checked;
     let deploymentsValue = deployments.value;
@@ -64,21 +66,22 @@ function validateInfoForm(EO) {
            
     }
 
-
-    blurInfo(fields);
-
+    
+ 
+ 
 }
 
 function blurInfo() {
 
-    
+    // let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
+
 
     for (let k = 0; k < fields.length; k++) {
         fields[k].onblur = function(EO) {
             EO=EO||window.event;
             let errors = document.getElementsByTagName('span');
-            for (let i = 0; i < errors.length; i++) {
-                errors[i].innerHTML = '';
+            for (let j = 0; j < errors.length; j++) {
+                errors[j].innerHTML = '';
             }
             let authorsValue = authors.value;
             if(authorsValue.length > 15) {
@@ -91,21 +94,22 @@ function blurInfo() {
             }
             let titlesValue = titles.value;
             if(titlesValue.length > 10) {
-             arrEmptyField.push(fields[k]); 
+             arrEmptyField.push(fields[k]);
              let error = document.createElement('span');
              error.innerHTML = 'Just 10 letters!';
              error.style.color = 'red';
              titles.after(error);
              EO.preventDefault();
             }
-
+    
           
         }
     }
 
-    
+
 }
 
+blurInfo(fields);
 
 
 
