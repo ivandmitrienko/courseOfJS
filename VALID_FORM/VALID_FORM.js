@@ -66,13 +66,13 @@ function validateInfoForm(EO) {
 
 
     
-    if (arrMistakesFields.length) {
+    // if (arrMistakesFields.length) {
 
-        arrMistakesFields[0].focus();
-        EO.preventDefault();
-    }  else  {
-        arrEmptyField[0].focus();
-    }
+    //     arrMistakesFields[0].focus();
+    //     EO.preventDefault();
+    // }  else  {
+    //     arrEmptyField[0].focus();
+    // }
 
 
 }
@@ -95,6 +95,7 @@ function blurInfo() {
              error.innerHTML = 'Just 15 letters!';
              error.style.color = 'red';
              authors.after(error);
+             EO.preventDefault();
             }
             let titlesValue = titles.value;
             if(titlesValue.length > 10) {
