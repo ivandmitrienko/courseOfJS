@@ -16,6 +16,8 @@ function validateInfoForm(EO) {
 
     let fields = form.querySelectorAll('.field');
 
+    let arrEmptyField = []; // для поиска первого пустого поля
+
     // let authorsValue = authors.value;
     // let titlesValue = titles.value;
     // let urlsValue = urls.value;
@@ -33,16 +35,19 @@ function validateInfoForm(EO) {
     }
 
     if(deploymentsValue == '') {
+        arrEmptyField.push(deployments[0]);
+        arrEmptyField[0].focus();
         let divSp = form.querySelector(".errorDiv");
         let error = document.createElement('span');
         error.innerHTML = 'empty field!';
         error.style.color = 'red';
         divSp.appendChild(error)
-        EO.preventDefault();
-           
-    }
+        EO.preventDefault();       
+    } 
 
     if(!(commentValue)) {
+        arrEmptyField.push(comment);
+        arrEmptyField[0].focus();
         let error = document.createElement('span');
         error.innerHTML = 'empty field!';
         error.style.color = 'red';
@@ -53,14 +58,15 @@ function validateInfoForm(EO) {
 
     for (let i = 0; i < fields.length; i++) {
         if (!fields[i].value){
+             arrEmptyField.push(fields[i]);
+             arrEmptyField[0].focus();
              let error = document.createElement('span');
              error.innerHTML = 'empty field!';
              error.style.color = 'red';
              fields[i].after(error);
-             fields[i].focus()
              EO.preventDefault();
             } else {
-                continue;
+              continue;
             }
          
 
