@@ -24,15 +24,11 @@ function validateInfoForm(EO) {
     let deploymentsValue = deployments.value;
 
     EO=EO||window.event;
-
-    if(arrEmptyField.length) {
-        arrEmptyField[0].focus();
-    } 
     
     for (let i = 0; i < fields.length; i++) {
         if (!fields[i].value){
             arrEmptyField.push(fields[i]);
-            // arrEmptyField[0].focus();
+            arrEmptyField[0].focus();
             let error = document.createElement('span');
             error.innerHTML = 'empty field!';
             error.style.color = 'red';
@@ -46,7 +42,6 @@ function validateInfoForm(EO) {
     
     if(deploymentsValue == '') {
         arrEmptyField.push(deployments[0]);
-        // arrEmptyField[0].focus();
         let divSp = form.querySelector(".errorDiv");
         let error = document.createElement('span');
         error.innerHTML = 'empty field!';
@@ -57,7 +52,6 @@ function validateInfoForm(EO) {
 
     if(!(commentValue)) {
         arrEmptyField.push(comment);
-        // arrEmptyField[0].focus();
         let error = document.createElement('span');
         error.innerHTML = 'empty field!';
         error.style.color = 'red';
@@ -68,7 +62,9 @@ function validateInfoForm(EO) {
 
     
     
-
+    if(arrEmptyField.length) {
+        arrEmptyField[0].focus();
+    } 
     
 
     
@@ -116,10 +112,6 @@ function blurInfo() {
           
         }
     }
-
-    if(arrEmptyField.length) {
-        arrEmptyField[0].focus();
-    } 
 
 
 }
