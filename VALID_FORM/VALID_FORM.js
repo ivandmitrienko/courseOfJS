@@ -4,7 +4,7 @@ let form = document.querySelector('.form1');
 form.addEventListener('submit',validateInfoForm,false);
 let fields = form.querySelectorAll('.field');
 
-let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
+
 
 let authors = form.elements.author;
 let titles = form.elements.title;
@@ -18,15 +18,22 @@ let deployments = form.elements.deployment;
 
 function validateInfoForm(EO) {
 
+    let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
+
     let commentValue = comment.checked;
     let deploymentsValue = deployments.value;
 
     EO=EO||window.event;
-    
+
+    let errors = document.getElementsByTagName('span');
+            for (let j = 0; j < errors.length; j++) {
+                errors[j].innerHTML = '';
+            }
+   
     for (let i = 0; i < fields.length; i++) {
         if (!fields[i].value){
             arrEmptyField.push(fields[i]);
-            arrEmptyField[0].focus();
+            // arrEmptyField[0].focus();
             let error = document.createElement('span');
             error.innerHTML = 'empty field!';
             error.style.color = 'red';
@@ -58,8 +65,10 @@ function validateInfoForm(EO) {
            
     }
 
+
     if(arrEmptyField.length) {
         arrEmptyField[0].focus();
+        EO.preventDefault();
     } 
 
 }
@@ -83,9 +92,7 @@ function blurInfo() {
              error.style.color = 'red';
              authors.after(error);
              EO.preventDefault();
-            } else {
-                arrEmptyField.splice(0);
-            }
+            } 
             let titlesValue = titles.value;
             if(titlesValue.length > 10) {
              arrEmptyField.push(fields[k]);
@@ -94,13 +101,15 @@ function blurInfo() {
              error.style.color = 'red';
              titles.after(error);
              EO.preventDefault();
-            } else {
-                arrEmptyField.splice(0);
-            }
-    
-          
+            } 
+     
         }
     }
+
+    // if(arrEmptyField.length) {
+    //     arrEmptyField[0].focus();
+    //     EO.preventDefault();
+    // } 
 
 
 }
