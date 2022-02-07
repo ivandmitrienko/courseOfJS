@@ -18,8 +18,6 @@ let deployments = form.elements.deployment;
 
 function validateInfoForm(EO) {
 
-    // let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
-
     let commentValue = comment.checked;
     let deploymentsValue = deployments.value;
 
@@ -60,22 +58,13 @@ function validateInfoForm(EO) {
            
     }
 
-    
-    
     if(arrEmptyField.length) {
         arrEmptyField[0].focus();
     } 
-    
 
-    
- 
- 
 }
 
 function blurInfo() {
-
-    // let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
-
 
     for (let k = 0; k < fields.length; k++) {
         fields[k].onblur = function(EO) {
