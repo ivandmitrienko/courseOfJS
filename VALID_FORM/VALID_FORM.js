@@ -64,51 +64,74 @@ function validateInfoForm(EO) {
            
     }
 
-    if (arrEmptyField.length !== 0) {
-        console.log(arrEmptyField[0]);
+    // arrMistakeField.concat(arrEmptyField);
+
+    // if (arrMistakeField.length !== 0) {
+    //     arrMistakeField[0].focus();
+    // }
+    
+     if (arrEmptyField.length !== 0) {
         arrEmptyField[0].focus();
-    }
+    }    
+
 
 }
 
-// function blurInfo() {
+let arrMistakeField =[];
 
-//     for (let k = 0; k < fields.length; k++) {
-//         fields[k].onblur = function(EO) {
-
-//             EO=EO||window.event;
-
-//             let errors = document.getElementsByTagName('span');
-//             for (let j = 0; j < errors.length; j++) {
-//                 errors[j].innerHTML = '';
-//             }
-//             let authorsValue = authors.value;
-//             if(authorsValue.length > 15) { 
-//              arrMistakeField.push(fields[0]);
-//              let error = document.createElement('span');
-//              error.innerHTML = 'Just 15 letters!';
-//              error.style.color = 'red';
-//              authors.after(error);
-//              EO.preventDefault();
-//             } 
-//             let titlesValue = titles.value;
-//             if(titlesValue.length > 10) {
-//              arrMistakeField.push(fields[1]);
-//              console.log(arrMistakeField);
-//              let error = document.createElement('span');
-//              error.innerHTML = 'Just 10 letters!';
-//              error.style.color = 'red';
-//              titles.after(error);
-//              EO.preventDefault();
-//             } 
-     
-//         }
-//     }
+// fields[0].onblur = function(EO) {
+//      EO=EO||window.event;
+//      let authorsValue = authors.value;
+//      if(authorsValue.length > 15) {
+//      let error = document.createElement('span');
+//      error.innerHTML = 'Just 15 letters!';
+//      error.style.color = 'red';
+//      authors.after(error);
+//      arrMistakeField.push(fields[0]);
+//     } 
 
 
 // }
 
-// blurInfo(fields);
+function blurInfo() {
+
+    for (let k = 0; k < fields.length; k++) {
+        fields[k].onblur = function(EO) {
+
+            EO=EO||window.event;
+
+            let errors = document.getElementsByTagName('span');
+            for (let j = 0; j < errors.length; j++) {
+                errors[j].innerHTML = '';
+            }
+            
+            let authorsValue = authors.value;
+            if(authorsValue.length > 15) { 
+             arrMistakeField.push(fields[k]);
+             let error = document.createElement('span');
+             error.innerHTML = 'Just 15 letters!';
+             error.style.color = 'red';
+             authors.after(error);
+             EO.preventDefault();
+            } 
+            let titlesValue = titles.value;
+            if(titlesValue.length > 10) {
+             arrMistakeField.push(fields[k]);
+             console.log(arrMistakeField);
+             let error = document.createElement('span');
+             error.innerHTML = 'Just 10 letters!';
+             error.style.color = 'red';
+             titles.after(error);
+             EO.preventDefault();
+            } 
+     
+        }
+    }
+
+
+}
+
+blurInfo(fields);
 
 // fields[0].onblur = function(EO) {
 //     EO=EO||window.event;
