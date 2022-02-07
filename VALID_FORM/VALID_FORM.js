@@ -66,7 +66,7 @@ function validateInfoForm(EO) {
            
     }
 
-    if(arrEmptyField.length) {
+    if(arrEmptyField.length !== 0) {
         arrEmptyField[0].focus();
     }
 
