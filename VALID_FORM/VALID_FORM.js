@@ -2,7 +2,6 @@
 
 let form = document.querySelector('.form1');
 form.addEventListener('submit',validateInfoForm,false);
-
 let authors = form.elements.author;
 let titles = form.elements.title;
 let urls = form.elements.url;
@@ -11,21 +10,19 @@ let numbers = form.elements.number;
 let mails = form.elements.mail;
 let rubrics = form.elements.rubric;
 let comment = form.elements.comments;
-let deployments = form.elements.deployment;
-
-
+let deployments = form.elements.deployment; 
 
 function validateInfoForm(EO) {
 
     let fields = form.querySelectorAll('.field');
-    
-    let authorsValue = authors.value;
-    let titlesValue = titles.value;
-    let urlsValue = urls.value;
-    let datesValue = dates.value;
-    let numbersValue = numbers.value;
-    let mailsValue =  mails.value;
-    let rubricsValue = rubrics.value;
+
+    // let authorsValue = authors.value;
+    // let titlesValue = titles.value;
+    // let urlsValue = urls.value;
+    // let datesValue = dates.value;
+    // let numbersValue = numbers.value;
+    // let mailsValue =  mails.value;
+    // let rubricsValue = rubrics.value;
     let commentValue = comment.checked;
     let deploymentsValue = deployments.value;
 
