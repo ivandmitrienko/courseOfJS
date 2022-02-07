@@ -3,14 +3,14 @@
 let form = document.querySelector('.form1');
 form.addEventListener('submit',validateInfoForm,false);
 
+let comment = form.elements.comments;
+let deployments = form.elements.deployment;
+
 function validateInfoForm(EO) {
 
     let fields = form.querySelectorAll('.field');
     
-    let comment = form.elements.comments;
     let commentValue = comment.checked;
-
-    let deployments = form.elements.deployment;
     let deploymentsValue = deployments.value;
 
     EO=EO||window.event;
@@ -22,7 +22,7 @@ function validateInfoForm(EO) {
     if(deploymentsValue == '') {
         let divSp = form.querySelector(".errorDiv");
         let error = document.createElement('span');
-        error.innerHTML = 'неверно указаны данные!';
+        error.innerHTML = 'empty field!';
         error.style.color = 'red';
         divSp.appendChild(error)
         EO.preventDefault();
@@ -31,7 +31,7 @@ function validateInfoForm(EO) {
 
     if(!(commentValue)) {
         let error = document.createElement('span');
-        error.innerHTML = 'неверно указаны данные!';
+        error.innerHTML = 'empty field!';
         error.style.color = 'red';
         comment.after(error);
         EO.preventDefault();
@@ -41,7 +41,7 @@ function validateInfoForm(EO) {
     for (let i = 0; i < fields.length; i++) {
         if (!fields[i].value){
              let error = document.createElement('span');
-             error.innerHTML = 'неверно указаны данные!';
+             error.innerHTML = 'empty field!';
              error.style.color = 'red';
              fields[i].after(error);
              fields[i].focus()
