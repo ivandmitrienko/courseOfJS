@@ -34,6 +34,21 @@ function validateInfoForm(EO) {
         errors[j].innerHTML = '';
     }
 
+    for (let i = 0; i < fields.length; i++) {
+        if (!fields[i].value){
+            arrEmptyField.push(fields[i]);
+            arrEmptyField[0].focus();
+            let error = document.createElement('span');
+            error.innerHTML = 'empty field!';
+            error.style.color = 'red';
+            fields[i].after(error);
+            EO.preventDefault();
+        } else {
+            continue;
+        }
+
+    }
+    
     if(deploymentsValue == '') {
         arrEmptyField.push(deployments[0]);
         arrEmptyField[0].focus();
@@ -55,26 +70,6 @@ function validateInfoForm(EO) {
         EO.preventDefault();
            
     }
-
-    for (let i = 0; i < fields.length; i++) {
-        if (!fields[i].value){
-             arrEmptyField.push(fields[i]);
-             arrEmptyField[0].focus();
-             let error = document.createElement('span');
-             error.innerHTML = 'empty field!';
-             error.style.color = 'red';
-             fields[i].after(error);
-             EO.preventDefault();
-            } else {
-              continue;
-            }
-         
-
-
-            // || deploymentsValue == '' || !(commentValue)
-        
-
-    }      
 
 
 
