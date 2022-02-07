@@ -26,9 +26,10 @@ function validateInfoForm(EO) {
     EO=EO||window.event;
 
     let errors = document.getElementsByTagName('span');
-            for (let j = 0; j < errors.length; j++) {
-                errors[j].innerHTML = '';
-            }
+
+    for (let j = 0; j < errors.length; j++) {
+        errors[j].innerHTML = '';
+    }
    
     for (let i = 0; i < fields.length; i++) {
         if (!fields[i].value){
@@ -64,13 +65,13 @@ function validateInfoForm(EO) {
            
     }
 
-    arrMistakeField.concat(arrEmptyField);
+    // arrMistakeField.concat(arrEmptyField);
 
     // if (arrMistakeField.length !== 0) {
     //     arrMistakeField[0].focus();
     // }
     
-     if (arrEmptyField.length !== 0) {
+    if (arrEmptyField.length !== 0) {
         arrEmptyField[0].focus();
     }    
 
@@ -78,20 +79,6 @@ function validateInfoForm(EO) {
 }
 
 let arrMistakeField =[];
-
-// fields[0].onblur = function(EO) {
-//      EO=EO||window.event;
-//      let authorsValue = authors.value;
-//      if(authorsValue.length > 15) {
-//      let error = document.createElement('span');
-//      error.innerHTML = 'Just 15 letters!';
-//      error.style.color = 'red';
-//      authors.after(error);
-//      arrMistakeField.push(fields[0]);
-//     } 
-
-
-// }
 
 function blurInfo() {
 
@@ -169,3 +156,16 @@ blurInfo(fields);
 
 // }
 
+// fields[0].onblur = function(EO) {
+    //      EO=EO||window.event;
+    //      let authorsValue = authors.value;
+    //      if(authorsValue.length > 15) {
+    //      let error = document.createElement('span');
+    //      error.innerHTML = 'Just 15 letters!';
+    //      error.style.color = 'red';
+    //      authors.after(error);
+    //      arrMistakeField.push(fields[0]);
+    //     } 
+    
+    
+    // }
