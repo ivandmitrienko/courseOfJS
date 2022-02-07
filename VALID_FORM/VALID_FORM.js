@@ -68,6 +68,42 @@ function validateInfoForm(EO) {
 
 }
 
+function blurInfo() {
+    for (let k = 0; k < fields.length; k++) {
+        fields[k].onblur = function(EO) {
+            EO=EO||window.event;
+            let errors = document.getElementsByTagName('span');
+            for (let i = 0; i < errors.length; i++) {
+                errors[i].innerHTML = '';
+            }
+            let authorsValue = authors.value;
+            if(authorsValue.length > 15) {
+             let error = document.createElement('span');
+             error.innerHTML = 'Just 10 letters!';
+             error.style.color = 'red';
+             authors.after(error);
+            } 
+          
+        }
+    }
+}
+
+blurInfo(fields);
+
+// fields[0].onblur = function(EO) {
+//     EO=EO||window.event;
+//     let authorsValue = authors.value;
+//     if(authorsValue.length > 15) {
+//      let error = document.createElement('span');
+//      error.innerHTML = 'Just 10 letters!';
+//      error.style.color = 'red';
+//      authors.after(error);
+//     } 
+  
+// }
+
+     
+
 // function blurInfoForm(EO) {
 //     EO=EO||window.event;
     
