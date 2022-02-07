@@ -2,6 +2,8 @@
 
 let form = document.querySelector('.form1');
 form.addEventListener('submit',validateInfoForm,false);
+let fields = form.querySelectorAll('.field');
+// fields[0].addEventListener('blur',blurInfoForm,false);
 let authors = form.elements.author;
 let titles = form.elements.title;
 let urls = form.elements.url;
@@ -14,17 +16,8 @@ let deployments = form.elements.deployment;
 
 function validateInfoForm(EO) {
 
-    let fields = form.querySelectorAll('.field');
-
     let arrEmptyField = []; // для поиска первого пустого поля
 
-    // let authorsValue = authors.value;
-    // let titlesValue = titles.value;
-    // let urlsValue = urls.value;
-    // let datesValue = dates.value;
-    // let numbersValue = numbers.value;
-    // let mailsValue =  mails.value;
-    // let rubricsValue = rubrics.value;
     let commentValue = comment.checked;
     let deploymentsValue = deployments.value;
 
@@ -74,3 +67,26 @@ function validateInfoForm(EO) {
 
 
 }
+
+// function blurInfoForm(EO) {
+//     EO=EO||window.event;
+    
+
+//     let authorsValue = authors.value;
+//     // let titlesValue = titles.value;
+//     // let urlsValue = urls.value;
+//     // let datesValue = dates.value;
+//     // let numbersValue = numbers.value;
+//     // let mailsValue =  mails.value;
+//     // let rubricsValue = rubrics.value;
+
+//     if(authorsValue.length > 2) {
+//         let error = document.createElement('span');
+//         error.innerHTML = 'fuck!';
+//         error.style.color = 'red';
+//         authors.after(error);
+//     }
+
+
+// }
+
