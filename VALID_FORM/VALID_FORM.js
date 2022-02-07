@@ -64,7 +64,7 @@ function validateInfoForm(EO) {
            
     }
 
-    // arrMistakeField.concat(arrEmptyField);
+    arrMistakeField.concat(arrEmptyField);
 
     // if (arrMistakeField.length !== 0) {
     //     arrMistakeField[0].focus();
@@ -104,7 +104,7 @@ function blurInfo() {
             for (let j = 0; j < errors.length; j++) {
                 errors[j].innerHTML = '';
             }
-            
+
             let authorsValue = authors.value;
             if(authorsValue.length > 15) { 
              arrMistakeField.push(fields[k]);
