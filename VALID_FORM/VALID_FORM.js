@@ -70,6 +70,8 @@ function validateInfoForm(EO) {
     
     if (arrMistakesFields.length) {
         arrMistakesFields[0].focus();
+    }else{
+        arrEmptyField[0].focus();
     }
 
 
