@@ -30,6 +30,7 @@ function validateInfoForm(EO) {
 
         if(errors[j].innerHTML === 'Just 15 letters!') {
             arrEmptyField.push(fields[j]);
+            EO.preventDefault();
             continue;
         } else {
         errors[j].innerHTML = '';
@@ -91,8 +92,6 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                 error.style.color = 'red';
                 v.after(error);
                 EO.preventDefault();
-                // console.log(v.nextSibling);
-
 
             }   
         }
