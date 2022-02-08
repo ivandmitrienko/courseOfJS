@@ -24,23 +24,21 @@ function validateInfoForm(EO) {
 
     EO=EO||window.event;
 
-    // let errors = document.getElementsByTagName('span');
+    let errors = document.getElementsByTagName('span');
 
-    // for (let j = 0; j < errors.length; j++) {
-    //     if(errors[j].previousSibling) {
-    //         continue;
-    //     } else {
-    //     errors[j].innerHTML = '';
-    //     }
-    // }
+    for (let j = 0; j < errors.length; j++) {
+
+        if(errors[j].innerHTML === 'Just 15 letters!') {
+            arrEmptyField.push(fields[j]);
+            continue;
+        } else {
+        errors[j].innerHTML = '';
+        }
+    }
    
     for (let i = 0; i < fields.length; i++) {
-        if (fields[i].previousSibling) {
-            console.log(fields[i].nextSibling);
-             continue;
-
-            }    
-        else if (!fields[i].value){
+        
+        if (!fields[i].value){
             arrEmptyField.push(fields[i]);
             let error = document.createElement('span');
             error.innerHTML = 'empty field!';
@@ -48,9 +46,6 @@ function validateInfoForm(EO) {
             fields[i].after(error);
             EO.preventDefault();
         }    
-        // } else {
-        //     continue;
-        // }
 
     }
     
@@ -78,7 +73,6 @@ function validateInfoForm(EO) {
     if (arrEmptyField.length !== 0) {
         arrEmptyField[0].focus();
     }    
-
 
 }
 
