@@ -24,17 +24,18 @@ function validateInfoForm(EO) {
 
     EO=EO||window.event;
 
-    let errors = document.getElementsByTagName('span');
+    // let errors = document.getElementsByTagName('span');
 
     for (let j = 0; j < errors.length; j++) {
+        if(errors[j].previousSibling) {
+            continue;
+        } else {
         errors[j].innerHTML = '';
+        }
     }
    
-    for (let i = 0; i < fields.length; i++) {
-        if(fields[i].nextSibling) {
-            continue
-        }
-        else if (!fields[i].value){
+    for (let i = 0; i < fields.length; i++) {      
+         if (!fields[i].value){
             arrEmptyField.push(fields[i]);
             let error = document.createElement('span');
             error.innerHTML = 'empty field!';
@@ -90,6 +91,7 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                 error.style.color = 'red';
                 v.after(error);
                 EO.preventDefault();
+                // console.log(v.nextSibling);
 
 
             }   
