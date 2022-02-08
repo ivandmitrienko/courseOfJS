@@ -73,7 +73,18 @@ function validateInfoForm(EO) {
 
 }
 
+function fieldsOnblurForm(fieldsdBlur) {
 
+fieldsdBlur.forEach((v) => {(v).onblur = function(){
+    if([v].value == authorsValue) {
+    let error = document.createElement('span');
+    error.innerHTML = 'dssveld!';
+    error.style.color = 'red';
+    v.after(error);}
+
+}})}
+
+fieldsOnblurForm(fields);
 
 
 // let arrMistakeField =[];
