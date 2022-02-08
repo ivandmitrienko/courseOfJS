@@ -8,8 +8,8 @@ let authors = form.elements.author;
 
 let titles = form.elements.title;
 let urls = form.elements.url;
-let dates = form.elements.date;
-let numbers = form.elements.number;
+let dates = form.elements.startdate;
+let numbers = form.elements.persons;
 let mails = form.elements.mail;
 let rubrics = form.elements.rubric;
 let comment = form.elements.comments;
@@ -29,7 +29,7 @@ function validateInfoForm(EO) {
     for (let j = 0; j < errors.length; j++) {
 
         if(errors[j].innerHTML === 'Just 30 letters!' || errors[j].innerHTML === 'Just 15 letters!'
-        || errors[j].innerHTML === 'Please, add ".com" !') {
+        || errors[j].innerHTML === 'Please, add ".com" !' || errors[j].innerHTML === 'More than 100 visitors !') {
             arrEmptyField.push(fields[j]);
             EO.preventDefault();
             continue;
@@ -115,16 +115,15 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                 EO.preventDefault();
             }
         }
-        // if(v.name == numbers.name) {
-        //     let numbersValue = numbers.value;
-        //     if(numbersValue < 3){
-        //         let error = document.createElement('span');
-        //         error.innerHTML = 'Please, add ".com" !';
-        //         error.style.color = 'red';
-        //         v.after(error);
-        //         EO.preventDefault();
-        //     }
-        // }    
+        if(v.name == numbers.name) {
+            if(v.value < 100){
+                let error = document.createElement('span');
+                error.innerHTML = 'More than 100 visitors !';
+                error.style.color = 'red';
+                v.after(error);
+                EO.preventDefault();
+            }
+        }    
         
         
 
