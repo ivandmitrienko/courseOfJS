@@ -80,20 +80,29 @@ function validateInfoForm(EO) {
 function fieldsOnblurForm(fieldsdBlur) {
 
 fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
-        EO=EO||window.event;  
+        EO=EO||window.event; 
+        if(v.nextSibling) {
+            v.nextSibling.innerHTML = '';
+        } 
         if(v.name == authors.name) {
-            let authorsValue = authors.value;
-            if(v.nextSibling) {
-                v.nextSibling.innerHTML = '';
-            }  
-            if(authorsValue.length > 15){
+            let authorsValue = authors.value;  
+            if(authorsValue.length > 30){
+                let error = document.createElement('span');
+                error.innerHTML = 'Just 30 letters!';
+                error.style.color = 'red';
+                v.after(error);
+                EO.preventDefault();
+
+            }
+            let titlesValue = titles.value;
+            if(titlesValue.length > 15){
                 let error = document.createElement('span');
                 error.innerHTML = 'Just 15 letters!';
                 error.style.color = 'red';
                 v.after(error);
                 EO.preventDefault();
+            }
 
-            }   
         }
     }})
  
@@ -111,7 +120,7 @@ fieldsOnblurForm(fields);
 
 
 //     
-//     // let titlesValue = titles.value;
+//     // 
 //     // let urlsValue = urls.value;
 //     // let datesValue = dates.value;
 //     // let numbersValue = numbers.value;
