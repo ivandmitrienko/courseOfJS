@@ -134,13 +134,17 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
             
         }    
         if(v.name == numbers.name) {
-            if(v.value < 100){
-                let error = document.createElement('span');
-                error.innerHTML = 'More than 100 visitors !';
-                error.style.color = 'red';
-                v.after(error);
-                EO.preventDefault();
+            if(v.value){
+                if(v.value < 100){
+                    let error = document.createElement('span');
+                    error.innerHTML = 'More than 100 visitors !';
+                    error.style.color = 'red';
+                    v.after(error);
+                    EO.preventDefault();
+                }
+
             }
+            
         }       
 
 
