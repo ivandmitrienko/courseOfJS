@@ -81,10 +81,13 @@ function validateInfoForm(EO) {
 function fieldsOnblurForm(fieldsdBlur) {
 
 fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
+
         EO=EO||window.event; 
+
         if(v.nextSibling) {
             v.nextSibling.innerHTML = '';
         } 
+        
         if(v.name == authors.name) {
             let authorsValue = authors.value;  
             if(authorsValue.length > 30){
@@ -106,14 +109,14 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                 EO.preventDefault();
             }
         }
-        if(v.name == urls.name) {
-            if(v.value.indexOf('.com') === -1){
-                let error = document.createElement('span');
-                error.innerHTML = 'Please, add ".com" !';
-                error.style.color = 'red';
-                v.after(error);
-                EO.preventDefault();
-            }
+        // if(v.name == urls.name) {
+        //     if(v.value.indexOf('.com') === -1){
+        //         let error = document.createElement('span');
+        //         error.innerHTML = 'Please, add ".com" !';
+        //         error.style.color = 'red';
+        //         v.after(error);
+        //         EO.preventDefault();
+        //     }
         }
         if(v.name == numbers.name) {
             if(v.value < 100){
