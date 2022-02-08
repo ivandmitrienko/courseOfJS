@@ -29,7 +29,7 @@ function validateInfoForm(EO) {
     for (let j = 0; j < errors.length; j++) {
 
         if(errors[j].innerHTML === 'Just 30 letters!' || errors[j].innerHTML === 'Just 15 letters!'
-        || errors[j].innerHTML === 'More 10 letters!') {
+        || errors[j].innerHTML === 'Just 10 letters!') {
             arrEmptyField.push(fields[j]);
             EO.preventDefault();
             continue;
@@ -111,16 +111,16 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
         }
         if(v.name == urls.name) {
             let urlsValue = urls.value;
-            if(urlsValue.length < 10){
+            if(urlsValue.length > 10){
                 let error = document.createElement('span');
-                error.innerHTML = 'More 10 letters!';
+                error.innerHTML = 'Just 10 letters!';
                 error.style.color = 'red';
                 v.after(error);
                 EO.preventDefault();
             }
         }
         if(v.name == dates.name) {
-            if(dates.min < dates.value < dates.max){
+            if(v.min < v.value < v.max){
                 let error = document.createElement('span');
                 error.innerHTML = 'More 10 letters!';
                 error.style.color = 'red';
