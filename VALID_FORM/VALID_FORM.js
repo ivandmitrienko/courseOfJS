@@ -33,7 +33,7 @@ function validateInfoForm(EO) {
    
     for (let i = 0; i < fields.length; i++) {
         if (!fields[i].value){
-            arrEmptyField.splice(-1,0,fields[i]);
+            arrEmptyField.push(fields[i]);
             let error = document.createElement('span');
             error.innerHTML = 'empty field!';
             error.style.color = 'red';
@@ -46,7 +46,7 @@ function validateInfoForm(EO) {
     }
     
     if(deploymentsValue == '') {
-        arrEmptyField.splice(-1,0,fields[i]);
+        arrEmptyField.splice(-1,0,deployments);
         let divSp = form.querySelector(".errorDiv");
         let error = document.createElement('span');
         error.innerHTML = 'empty field!';
@@ -56,7 +56,7 @@ function validateInfoForm(EO) {
     } 
 
     if(!(commentValue)) {
-        arrEmptyField.push(comment);
+        arrEmptyField.splice(-1,0,comment);
         let error = document.createElement('span');
         error.innerHTML = 'empty field!';
         error.style.color = 'red';
@@ -73,19 +73,24 @@ function validateInfoForm(EO) {
 
 }
 
-// function fieldsOnblurForm(fieldsdBlur) {
+function fieldsOnblurForm(fieldsdBlur) {
 
-// fieldsdBlur.forEach((v) => {(v).onblur = function(){
-//     if(v.name === authors.name) {
+fieldsdBlur.forEach((v) => {(v).onblur = function(){
 
-//     let error = document.createElement('span');
-//     error.innerHTML = 'dssveld!';
-//     error.style.color = 'red';
-//     v.after(error);}
+        if(v.name == authors.name) {
+            
+            let error = document.createElement('span');
+            error.innerHTML = 'dssveld!';
+            error.style.color = 'red';
+            v.after(error);
+            
+        }
+    }})
+ 
+             
+}
 
-// }})}
-
-// fieldsOnblurForm(fields);
+fieldsOnblurForm(fields);
 
 
 // let arrMistakeField =[];
