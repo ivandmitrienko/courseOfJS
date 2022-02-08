@@ -104,10 +104,19 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                 v.after(error);
                 EO.preventDefault();
             }
-        } 
+        }
+        if(v.name == urls.name) {
+                if(v.innerHTML.indexOf('com') === -1){
+                    let error = document.createElement('span');
+                    error.innerHTML = 'Please, add "com" !';
+                    error.style.color = 'red';
+                    v.after(error);
+                    EO.preventDefault();
+                }
+            }  
         
         
-        
+
     }})
  
              
