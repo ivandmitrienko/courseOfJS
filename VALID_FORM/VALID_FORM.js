@@ -29,7 +29,8 @@ function validateInfoForm(EO) {
     for (let j = 0; j < errors.length; j++) {
 
         if(errors[j].innerHTML === 'Just 30 letters!' || errors[j].innerHTML === 'Just 15 letters!'
-        || errors[j].innerHTML === 'Just 10 letters!' || errors[j].innerHTML === 'Just after "May"!') {
+        || errors[j].innerHTML === 'Just 10 letters!' || errors[j].innerHTML === 'Just after "May"!'
+        || errors[j].innerHTML === "More than 100 visitors !") {
             arrEmptyField.push(fields[j]);
             EO.preventDefault();
             continue;
@@ -131,31 +132,23 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                 }
             }
             
-            // var day   = dob.getDate(); 
-             
-            // var year  = dob.getFullYear();
+        }    
+        if(v.name == numbers.name) {
+            if(v.value < 100){
+                let error = document.createElement('span');
+                error.innerHTML = 'More than 100 visitors !';
+                error.style.color = 'red';
+                v.after(error);
+                EO.preventDefault();
+            }
+        }       
 
 
-
-            // if("2022-01-01" < v.value < "2022-03-01"){
-            //     let error = document.createElement('span');
-            //     error.innerHTML = 'More 10 letters!';
-            //     error.style.color = 'red';
-            //     v.after(error);
-            //     EO.preventDefault();
-            // }
-        }
+           
+    
 
 
-        // if(v.name == numbers.name) {
-        //     if(v.value < 100){
-        //         let error = document.createElement('span');
-        //         error.innerHTML = 'More than 100 visitors !';
-        //         error.style.color = 'red';
-        //         v.after(error);
-        //         EO.preventDefault();
-        //     }
-        // }    
+        
         
         
 
