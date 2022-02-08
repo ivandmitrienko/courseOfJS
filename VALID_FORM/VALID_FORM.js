@@ -124,6 +124,7 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                 EO.preventDefault();
             }
         }
+        
         // if(v.name == numbers.name) {
         //     if(v.value < 100){
         //         let error = document.createElement('span');
