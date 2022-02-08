@@ -106,7 +106,7 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
             }
         }
         if(v.name == urls.name) {
-                if(v.innerHTML.indexOf('com') === -1){
+                if(v.value.indexOf('com') === -1){
                     let error = document.createElement('span');
                     error.innerHTML = 'Please, add "com" !';
                     error.style.color = 'red';
