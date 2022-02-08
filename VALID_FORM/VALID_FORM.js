@@ -29,7 +29,7 @@ function validateInfoForm(EO) {
     for (let j = 0; j < errors.length; j++) {
 
         if(errors[j].innerHTML === 'Just 30 letters!' || errors[j].innerHTML === 'Just 15 letters!'
-        || errors[j].innerHTML === 'Please, add ".com" !' || errors[j].innerHTML === 'More than 100 visitors !') {
+        || errors[j].innerHTML === 'More 10 letters!') {
             arrEmptyField.push(fields[j]);
             EO.preventDefault();
             continue;
@@ -83,12 +83,11 @@ function fieldsOnblurForm(fieldsdBlur) {
 fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
 
         EO=EO||window.event; 
-
-        if(v.nextSibling) {
-            v.nextSibling.innerHTML = '';
-        } 
         
         if(v.name == authors.name) {
+            if(v.nextSibling) {
+                v.nextSibling.innerHTML = '';
+            } 
             let authorsValue = authors.value;  
             if(authorsValue.length > 30){
                 let error = document.createElement('span');
@@ -100,6 +99,9 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
             }    
         }
         if(v.name == titles.name) {
+            if(v.nextSibling) {
+                v.nextSibling.innerHTML = '';
+            } 
         let titlesValue = titles.value;
             if(titlesValue.length > 15){
                 let error = document.createElement('span');
@@ -109,24 +111,28 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                 EO.preventDefault();
             }
         }
-        // if(v.name == urls.name) {
-        //     if(v.value.indexOf('.com') === -1){
-        //         let error = document.createElement('span');
-        //         error.innerHTML = 'Please, add ".com" !';
-        //         error.style.color = 'red';
-        //         v.after(error);
-        //         EO.preventDefault();
-        //     }
-        }
-        if(v.name == numbers.name) {
-            if(v.value < 100){
+        if(v.name == urls.name) {
+            if(v.nextSibling) {
+                v.nextSibling.innerHTML = '';
+            } 
+            let urlsValue = urls.value;
+            if(urlsValue.length < 10){
                 let error = document.createElement('span');
-                error.innerHTML = 'More than 100 visitors !';
+                error.innerHTML = 'More 10 letters!';
                 error.style.color = 'red';
                 v.after(error);
                 EO.preventDefault();
             }
-        }    
+        }
+        // if(v.name == numbers.name) {
+        //     if(v.value < 100){
+        //         let error = document.createElement('span');
+        //         error.innerHTML = 'More than 100 visitors !';
+        //         error.style.color = 'red';
+        //         v.after(error);
+        //         EO.preventDefault();
+        //     }
+        // }    
         
         
 
@@ -151,4 +157,4 @@ fieldsOnblurForm(fields);
 //     // let mailsValue =  mails.value;
 //     // let rubricsValue = rubrics.value;
 
-//    
+//     
