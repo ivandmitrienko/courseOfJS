@@ -86,6 +86,8 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                 error.innerHTML = 'Just 15 letters!';
                 error.style.color = 'red';
                 v.after(error);
+                EO.preventDefault();
+
 
             }   
         }
