@@ -26,25 +26,31 @@ function validateInfoForm(EO) {
 
     // let errors = document.getElementsByTagName('span');
 
-    for (let j = 0; j < errors.length; j++) {
-        if(errors[j].previousSibling) {
-            continue;
-        } else {
-        errors[j].innerHTML = '';
-        }
-    }
+    // for (let j = 0; j < errors.length; j++) {
+    //     if(errors[j].previousSibling) {
+    //         continue;
+    //     } else {
+    //     errors[j].innerHTML = '';
+    //     }
+    // }
    
-    for (let i = 0; i < fields.length; i++) {      
-         if (!fields[i].value){
+    for (let i = 0; i < fields.length; i++) {
+        if (fields[i].previousSibling) {
+            console.log(fields[i].nextSibling);
+             continue;
+
+            }    
+        else if (!fields[i].value){
             arrEmptyField.push(fields[i]);
             let error = document.createElement('span');
             error.innerHTML = 'empty field!';
             error.style.color = 'red';
             fields[i].after(error);
             EO.preventDefault();
-        } else {
-            continue;
-        }
+        }    
+        // } else {
+        //     continue;
+        // }
 
     }
     
