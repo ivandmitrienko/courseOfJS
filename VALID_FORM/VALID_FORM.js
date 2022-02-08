@@ -5,7 +5,6 @@ form.addEventListener('submit',validateInfoForm,false);
 let fields = form.querySelectorAll('.field');
 
 let authors = form.elements.author;
-let authorsValue = authors.value;
 
 let titles = form.elements.title;
 let urls = form.elements.url;
@@ -75,15 +74,20 @@ function validateInfoForm(EO) {
 
 function fieldsOnblurForm(fieldsdBlur) {
 
-fieldsdBlur.forEach((v) => {(v).onblur = function(){
-
+fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
+        EO=EO||window.event;  
         if(v.name == authors.name) {
-            
-            let error = document.createElement('span');
-            error.innerHTML = 'dssveld!';
-            error.style.color = 'red';
-            v.after(error);
-            
+            let authorsValue = authors.value;
+            if(v.nextSibling) {
+                v.nextSibling.innerHTML = '';
+            }  
+            if(authorsValue.length > 15){
+                let error = document.createElement('span');
+                error.innerHTML = 'Just 15 letters!';
+                error.style.color = 'red';
+                v.after(error);
+
+            }   
         }
     }})
  
