@@ -28,7 +28,7 @@ function validateInfoForm(EO) {
 
     for (let j = 0; j < errors.length; j++) {
 
-        if(errors[j].innerHTML === 'Just 15 letters!') {
+        if(errors[j].innerHTML === 'Just 30 letters!' || errors[j].innerHTML === 'Just 15 letters!') {
             arrEmptyField.push(fields[j]);
             EO.preventDefault();
             continue;
@@ -93,8 +93,10 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                 v.after(error);
                 EO.preventDefault();
 
-            }
-            let titlesValue = titles.value;
+            }    
+        }
+        if(v.name == titles.name) {
+        let titlesValue = titles.value;
             if(titlesValue.length > 15){
                 let error = document.createElement('span');
                 error.innerHTML = 'Just 15 letters!';
@@ -102,8 +104,10 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                 v.after(error);
                 EO.preventDefault();
             }
-
-        }
+        } 
+        
+        
+        
     }})
  
              
