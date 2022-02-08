@@ -31,7 +31,10 @@ function validateInfoForm(EO) {
     }
    
     for (let i = 0; i < fields.length; i++) {
-        if (!fields[i].value){
+        if(fields[i].nextSibling) {
+            continue
+        }
+        else if (!fields[i].value){
             arrEmptyField.push(fields[i]);
             let error = document.createElement('span');
             error.innerHTML = 'empty field!';
