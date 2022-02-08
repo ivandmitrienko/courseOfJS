@@ -107,14 +107,24 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
             }
         }
         if(v.name == urls.name) {
-                if(v.value.indexOf('.com') === -1){
-                    let error = document.createElement('span');
-                    error.innerHTML = 'Please, add ".com" !';
-                    error.style.color = 'red';
-                    v.after(error);
-                    EO.preventDefault();
-                }
-            }  
+            if(v.value.indexOf('.com') === -1){
+                let error = document.createElement('span');
+                error.innerHTML = 'Please, add ".com" !';
+                error.style.color = 'red';
+                v.after(error);
+                EO.preventDefault();
+            }
+        }
+        // if(v.name == numbers.name) {
+        //     let numbersValue = numbers.value;
+        //     if(numbersValue < 3){
+        //         let error = document.createElement('span');
+        //         error.innerHTML = 'Please, add ".com" !';
+        //         error.style.color = 'red';
+        //         v.after(error);
+        //         EO.preventDefault();
+        //     }
+        // }    
         
         
 
@@ -133,11 +143,9 @@ fieldsOnblurForm(fields);
      
 
 
-//     
-//     // 
-//     // let urlsValue = urls.value;
+
 //     // let datesValue = dates.value;
-//     // let numbersValue = numbers.value;
+//     // 
 //     // let mailsValue =  mails.value;
 //     // let rubricsValue = rubrics.value;
 
