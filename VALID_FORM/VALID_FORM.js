@@ -33,7 +33,7 @@ function validateInfoForm(EO) {
    
     for (let i = 0; i < fields.length; i++) {
         if (!fields[i].value){
-            arrEmptyField.push(fields[i]);
+            arrEmptyField.splice(-1,0,fields[i]);
             let error = document.createElement('span');
             error.innerHTML = 'empty field!';
             error.style.color = 'red';
@@ -46,7 +46,7 @@ function validateInfoForm(EO) {
     }
     
     if(deploymentsValue == '') {
-        arrEmptyField.push(deployments[0]);
+        arrEmptyField.splice(-1,0,fields[i]);
         let divSp = form.querySelector(".errorDiv");
         let error = document.createElement('span');
         error.innerHTML = 'empty field!';
@@ -73,18 +73,19 @@ function validateInfoForm(EO) {
 
 }
 
-function fieldsOnblurForm(fieldsdBlur) {
+// function fieldsOnblurForm(fieldsdBlur) {
 
-fieldsdBlur.forEach((v) => {(v).onblur = function(){
-    if([v].value == authorsValue) {
-    let error = document.createElement('span');
-    error.innerHTML = 'dssveld!';
-    error.style.color = 'red';
-    v.after(error);}
+// fieldsdBlur.forEach((v) => {(v).onblur = function(){
+//     if(v.name === authors.name) {
 
-}})}
+//     let error = document.createElement('span');
+//     error.innerHTML = 'dssveld!';
+//     error.style.color = 'red';
+//     v.after(error);}
 
-fieldsOnblurForm(fields);
+// }})}
+
+// fieldsOnblurForm(fields);
 
 
 // let arrMistakeField =[];
