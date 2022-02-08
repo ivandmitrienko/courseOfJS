@@ -29,7 +29,7 @@ function validateInfoForm(EO) {
     for (let j = 0; j < errors.length; j++) {
 
         if(errors[j].innerHTML === 'Just 30 letters!' || errors[j].innerHTML === 'Just 15 letters!'
-        || errors[j].innerHTML === 'Just 10 letters!') {
+        || errors[j].innerHTML === 'Just 10 letters!' || errors[j].innerHTML === 'Just after "May"!') {
             arrEmptyField.push(fields[j]);
             EO.preventDefault();
             continue;
@@ -120,14 +120,30 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
             }
         }
         if(v.name == dates.name) {
-            console.log("2022-01-01" < v.value < "2022-03-01")
-            if("2022-01-01" < v.value < "2022-03-01"){
-                let error = document.createElement('span');
-                error.innerHTML = 'More 10 letters!';
-                error.style.color = 'red';
-                v.after(error);
-                EO.preventDefault();
+            if(v.value){
+                let arrDates =v.value.split('-');
+                if(arrDates[1] < 5){
+                    let error = document.createElement('span');
+                    error.innerHTML = 'Just after "May"!';
+                    error.style.color = 'red';
+                    v.after(error);
+                    EO.preventDefault();
+                }
             }
+            
+            // var day   = dob.getDate(); 
+             
+            // var year  = dob.getFullYear();
+
+
+
+            // if("2022-01-01" < v.value < "2022-03-01"){
+            //     let error = document.createElement('span');
+            //     error.innerHTML = 'More 10 letters!';
+            //     error.style.color = 'red';
+            //     v.after(error);
+            //     EO.preventDefault();
+            // }
         }
 
 
