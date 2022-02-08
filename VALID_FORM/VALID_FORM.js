@@ -120,7 +120,8 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
             }
         }
         if(v.name == dates.name) {
-            if(v.min < v.value < v.max){
+            console.log("2022-01-01" < v.value < "2022-03-01")
+            if("2022-01-01" < v.value < "2022-03-01"){
                 let error = document.createElement('span');
                 error.innerHTML = 'More 10 letters!';
                 error.style.color = 'red';
