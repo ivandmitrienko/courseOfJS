@@ -90,35 +90,43 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
         }  
         
         if(v.name == authors.name) {   
-            let authorsValue = authors.value;  
-            if(authorsValue.length > 30){
-                let error = document.createElement('span');
-                error.innerHTML = 'Just 30 letters!';
-                error.style.color = 'red';
-                v.after(error);
-                EO.preventDefault();
-
-            }    
+            let authorsValue = authors.value;
+            if(authorsValue) {
+                if(authorsValue.length > 30){
+                    let error = document.createElement('span');
+                    error.innerHTML = 'Just 30 letters!';
+                    error.style.color = 'red';
+                    v.after(error);
+                    EO.preventDefault();
+    
+                }    
+            }              
         }
         if(v.name == titles.name) {
         let titlesValue = titles.value;
-            if(titlesValue.length > 15){
-                let error = document.createElement('span');
-                error.innerHTML = 'Just 15 letters!';
-                error.style.color = 'red';
-                v.after(error);
-                EO.preventDefault();
-            }
+            if(titlesValue){
+                if(titlesValue.length > 15){
+                    let error = document.createElement('span');
+                    error.innerHTML = 'Just 15 letters!';
+                    error.style.color = 'red';
+                    v.after(error);
+                    EO.preventDefault();
+                }
+            }   
         }
         if(v.name == urls.name) {
             let urlsValue = urls.value;
-            if(urlsValue.length > 10){
-                let error = document.createElement('span');
-                error.innerHTML = 'Just 10 letters!';
-                error.style.color = 'red';
-                v.after(error);
-                EO.preventDefault();
+            if(urlsValue){
+                if(urlsValue.length > 10){
+                    let error = document.createElement('span');
+                    error.innerHTML = 'Just 10 letters!';
+                    error.style.color = 'red';
+                    v.after(error);
+                    EO.preventDefault();
+                }
+
             }
+            
         }
         if(v.name == dates.name) {
             if(v.value){
