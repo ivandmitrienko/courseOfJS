@@ -103,66 +103,12 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
 fieldsOnblurForm(fields);
 
 
-// let arrMistakeField =[];
-
-// function blurInfo() {
-
-//     for (let k = 0; k < fields.length; k++) {
-//         fields[k].onblur = function(EO) {
-
-//             EO=EO||window.event;
-
-//             let errors = document.getElementsByTagName('span');
-//             for (let j = 0; j < errors.length; j++) {
-//                 errors[j].innerHTML = '';
-//             }
-
-//             let authorsValue = authors.value;
-//             if(authorsValue.length > 15) { 
-//              arrMistakeField.push(fields[k]);
-//              let error = document.createElement('span');
-//              error.innerHTML = 'Just 15 letters!';
-//              error.style.color = 'red';
-//              authors.after(error);
-//              EO.preventDefault();
-//             } 
-//             let titlesValue = titles.value;
-//             if(titlesValue.length > 10) {
-//              arrMistakeField.push(fields[k]);
-//              console.log(arrMistakeField);
-//              let error = document.createElement('span');
-//              error.innerHTML = 'Just 10 letters!';
-//              error.style.color = 'red';
-//              titles.after(error);
-//              EO.preventDefault();
-//             } 
-     
-//         }
-//     }
 
 
 
-// }
-
-// blurInfo(fields);
-
-// fields[0].onblur = function(EO) {
-//     EO=EO||window.event;
-//     let authorsValue = authors.value;
-//     if(authorsValue.length > 15) {
-//      let error = document.createElement('span');
-//      error.innerHTML = 'Just 10 letters!';
-//      error.style.color = 'red';
-//      authors.after(error);
-//     } 
-  
-// }
 
      
 
-// function blurInfoForm(EO) {
-//     EO=EO||window.event;
-    
 
 //     
 //     // let titlesValue = titles.value;
@@ -172,25 +118,4 @@ fieldsOnblurForm(fields);
 //     // let mailsValue =  mails.value;
 //     // let rubricsValue = rubrics.value;
 
-//     if(authorsValue.length > 2) {
-//         let error = document.createElement('span');
-//         error.innerHTML = 'fuck!';
-//         error.style.color = 'red';
-//         authors.after(error);
-//     }
-
-
-// }
-
-// fields[0].onblur = function(EO) {
-//     EO=EO||window.event;
-//     let error = document.createElement('span');
-//     let authorsValue = authors.value;
-//     if(authorsValue.length > 15) {
-//      error.innerHTML = 'Just 15 letters!';
-//      error.style.color = 'red';
-//      authors.after(error);
-//      arrMistakeField.push(fields[0]);
-//     } 
-  
-// }
+//    
