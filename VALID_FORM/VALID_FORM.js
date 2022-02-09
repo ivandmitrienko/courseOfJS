@@ -119,7 +119,8 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
         if(v.name == urls.name) {
             let urlsValue = urls.value;
             if(urlsValue){
-                if(urlsValue.indexof(".com") !== -4){
+                urlsValue = urlsValue.toLowerCase();
+                if(!(urlsValue.endsWith(".com"))){
                     let error = document.createElement('span');
                     error.innerHTML = 'Please, add ".com" at the end of url!';
                     error.style.color = 'red';
