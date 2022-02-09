@@ -31,7 +31,7 @@ function validateInfoForm(EO) {
     for (let j = 0; j < errors.length; j++) {
 
         if(errors[j].innerHTML === 'Just 30 letters!' || errors[j].innerHTML === 'Just 15 letters!'
-        || errors[j].innerHTML === 'Just 10 letters!' || errors[j].innerHTML === 'Just after "May"!'
+        || errors[j].innerHTML === 'Please, add ".com" at the end of url!' || errors[j].innerHTML === 'Just after "May"!'
         || errors[j].innerHTML === "More than 100 visitors !") {
             arrEmptyField.push(fields[j]);
             EO.preventDefault();
@@ -119,9 +119,9 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
         if(v.name == urls.name) {
             let urlsValue = urls.value;
             if(urlsValue){
-                if(urlsValue.length > 10){
+                if(urlsValue.indexof(".com") !== -4){
                     let error = document.createElement('span');
-                    error.innerHTML = 'Just 10 letters!';
+                    error.innerHTML = 'Please, add ".com" at the end of url!';
                     error.style.color = 'red';
                     v.after(error);
                     EO.preventDefault();
