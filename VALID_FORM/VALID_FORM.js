@@ -14,6 +14,7 @@ let mails = form.elements.mail;
 let rubrics = form.elements.rubric;
 let comment = form.elements.comments;
 let deployments = form.elements.deployment;
+let articles = form.elements.article;
 
 let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
 
@@ -34,7 +35,8 @@ function validateInfoForm(EO) {
         || errors[j].innerHTML === 'Please, add ".com" at the end of url!' || errors[j].innerHTML === 'Just after "May"!'
         || errors[j].innerHTML === "More than 100 visitors !"
         || errors[j].innerHTML === "We use just gmail.com! Please, add: @gmail.com at the end of email !"
-        ||errors[j].innerHTML === "Sorry) At the moment the section: бытовая техника is not available !") {
+        || errors[j].innerHTML === "Sorry) At the moment the section: бытовая техника is not available !"
+        || errors[j].innerHTML === "Please, enter a more complete description of the site!") {
             arrEmptyField.push(fields[j]);
             EO.preventDefault();
             continue;
@@ -185,7 +187,21 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
 
             }
             
-        }                 
+        }
+        if(v.name == articles.name) {
+            if(v.value){
+                let articlesValue = v.value;
+                if(articlesValue.length < 30){
+                    let error = document.createElement('span');
+                    error.innerHTML = "Please, enter a more complete description of the site!";
+                    error.style.color = 'red';
+                    v.after(error);
+                    EO.preventDefault();
+                }
+
+            }
+            
+        }                         
 
 
            
