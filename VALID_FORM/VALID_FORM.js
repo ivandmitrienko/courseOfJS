@@ -203,16 +203,36 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
             
         }                         
 
-
-           
-    
-
-
-        
-        
-        
-
     }})
+
+    comment.onchange = function () {
+        if (comment.checked) {
+            let agree = document.createElement('span');
+            agree.innerHTML = "We will always check reviews and sort :)";
+            agree.style.color = '#32CD32';
+            agree.id = "2sec";
+            agree.style.fontSize = "20px"
+            comment.after(agree);
+            setTimeout(function(){
+                document.getElementById('2sec').style.display = 'none';
+            }, 2500);
+        }    
+             
+    }
+
+    deployments.forEach(function (val, ind, arr) {
+        arr[ind].onchange = function () {
+            if (arr[ind].value === "11") {
+                let divSp = form.querySelector(".errorDiv");
+                let error = document.createElement('span');
+                error.innerHTML = 'Only for a fee or VIP!';
+                error.style.color = 'red';
+                divSp.appendChild(error)
+                EO.preventDefault(); 
+                
+            }
+        }
+    });
  
              
 }
