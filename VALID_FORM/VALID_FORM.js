@@ -160,9 +160,9 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
         if(v.name == mails.name) {
             if(v.value){
                 let mailsValue =  mails.value;
-                if(!(mailsValue.endsWith('@.com'))){
+                if(!(mailsValue.endsWith('@gmail.com'))){
                     let error = document.createElement('span');
-                    error.innerHTML = 'Please, add "@.com" !';
+                    error.innerHTML = 'We use just gmail.com! Please, add "@gmail.com" at the end of email !';
                     error.style.color = 'red';
                     v.after(error);
                     EO.preventDefault();
