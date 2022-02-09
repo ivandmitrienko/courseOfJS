@@ -32,7 +32,9 @@ function validateInfoForm(EO) {
 
         if(errors[j].innerHTML === 'Just 30 letters!' || errors[j].innerHTML === 'Just 15 letters!'
         || errors[j].innerHTML === 'Please, add ".com" at the end of url!' || errors[j].innerHTML === 'Just after "May"!'
-        || errors[j].innerHTML === "More than 100 visitors !") {
+        || errors[j].innerHTML === "More than 100 visitors !"
+        || errors[j].innerHTML === "We use just gmail.com! Please, add: @gmail.com at the end of email !"
+        ||errors[j].innerHTML === "Sorry) At the moment the section: бытовая техника is not available !") {
             arrEmptyField.push(fields[j]);
             EO.preventDefault();
             continue;
@@ -162,7 +164,7 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                 let mailsValue =  mails.value;
                 if(!(mailsValue.endsWith('@gmail.com'))){
                     let error = document.createElement('span');
-                    error.innerHTML = 'We use just gmail.com! Please, add "@gmail.com" at the end of email !';
+                    error.innerHTML = 'We use just gmail.com! Please, add: @gmail.com at the end of email !';
                     error.style.color = 'red';
                     v.after(error);
                     EO.preventDefault();
@@ -170,7 +172,20 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
 
             }
             
-        }          
+        }
+        if(v.name == rubrics.name) {
+            if(v.value){
+                if(v.value == 3){
+                    let error = document.createElement('span');
+                    error.innerHTML = "Sorry) At the moment the section: бытовая техника is not available !";
+                    error.style.color = 'red';
+                    v.after(error);
+                    EO.preventDefault();
+                }
+
+            }
+            
+        }                 
 
 
            
@@ -188,17 +203,3 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
 
 fieldsOnblurForm(fields);
 
-
-
-
-
-
-     
-
-
-
-//     
-//     // 
-//     // let rubricsValue = rubrics.value;
-
-//     
