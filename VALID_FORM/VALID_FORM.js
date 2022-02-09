@@ -15,9 +15,11 @@ let rubrics = form.elements.rubric;
 let comment = form.elements.comments;
 let deployments = form.elements.deployment;
 
+let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
+
 function validateInfoForm(EO) {
 
-    let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
+    arrEmptyField.splice(0, arrEmptyField.length);
 
     let commentValue = comment.checked;
     let deploymentsValue = deployments.value;
