@@ -221,7 +221,8 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
     }
 
     deployments.forEach(function (val, ind, arr) {
-        arr[ind].onchange = function () {
+        arr[ind].onchange = function (EO) {
+            EO=EO||window.event;
             if (arr[ind].value === "11") {
                 let divSp = form.querySelector(".errorDiv");
                 let error = document.createElement('span');
