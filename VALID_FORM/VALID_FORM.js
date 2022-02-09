@@ -156,7 +156,21 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
 
             }
             
-        }       
+        }
+        if(v.name == mails.name) {
+            if(v.value){
+                let mailsValue =  mails.value;
+                if(!(mailsValue.endsWith('@.com'))){
+                    let error = document.createElement('span');
+                    error.innerHTML = 'Please, add "@.com" !';
+                    error.style.color = 'red';
+                    v.after(error);
+                    EO.preventDefault();
+                }
+
+            }
+            
+        }          
 
 
            
@@ -183,9 +197,8 @@ fieldsOnblurForm(fields);
 
 
 
-//     // let datesValue = dates.value;
+//     
 //     // 
-//     // let mailsValue =  mails.value;
 //     // let rubricsValue = rubrics.value;
 
 //     
