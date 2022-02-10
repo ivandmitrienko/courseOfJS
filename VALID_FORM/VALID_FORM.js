@@ -206,6 +206,9 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
     }})
 
     comment.onchange = function () {
+        if(comment.nextSibling) {
+            comment.nextSibling.innerHTML = '';
+        }  
         if (comment.checked) {
             let agree = document.createElement('span');
             agree.innerHTML = "We will always check reviews and sort :)";
