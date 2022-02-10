@@ -226,13 +226,17 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
     deployments.forEach(function (val, ind, arr) {
         arr[ind].onchange = function (EO) {
             EO=EO||window.event;
+            let divSp = form.querySelector(".errorDiv");
+            if (document.getElementById("only")) {
+             document.getElementById("only").innerHTML = "";
+            }
             if (arr[ind].value === "11") {
-                let divSp = form.querySelector(".errorDiv");
-                let error = document.createElement('span');
-                error.innerHTML = 'Only for a fee or VIP!';
-                error.style.color = 'red';
-                divSp.appendChild(error)
-                EO.preventDefault(); 
+             let error = document.createElement('span');
+             error.innerHTML = 'Only for a fee or VIP!';
+             error.style.color = 'red';
+             error.id = "only";
+             divSp.appendChild(error)
+             EO.preventDefault(); 
                 
             }
         }
