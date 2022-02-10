@@ -206,6 +206,7 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
     }})
 
     comment.onchange = function () {
+        debugger
         if(comment.nextSibling) {
             comment.nextSibling.innerHTML = '';
         }  
@@ -227,14 +228,14 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
         arr[ind].onchange = function (EO) {
             EO=EO||window.event;
             let divSp = form.querySelector(".errorDiv");
+            if (document.getElementById("only")) {
+                let deploymentsSpan = document.getElementById('only');
+                deploymentsSpan.remove();
+            } 
             let error = document.createElement('span');
             error.style.color = 'red';
             error.id = "only";
             divSp.appendChild(error);
-            if (arr[ind].value != 11) {
-                let deploymentsSpan = document.getElementById('only');
-                deploymentsSpan.remove();
-            } 
             if (arr[ind].value == 11) {
              error.innerHTML = 'Only for a fee or VIP!';
              EO.preventDefault();
