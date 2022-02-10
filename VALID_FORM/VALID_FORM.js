@@ -227,18 +227,21 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
         arr[ind].onchange = function (EO) {
             EO=EO||window.event;
             let divSp = form.querySelector(".errorDiv");
-            if (document.getElementById("only")) {
-             document.getElementById("only").innerHTML = "";
-            }
-            if (arr[ind].value === "11") {
-             let error = document.createElement('span');
+            let error = document.createElement('span');
+            error.style.color = 'red';
+            error.id = "only";
+            divSp.appendChild(error);
+            if (arr[ind].value != 11) {
+                let deploymentsSpan = document.getElementById('only');
+                deploymentsSpan.remove();
+            } 
+            if (arr[ind].value == 11) {
              error.innerHTML = 'Only for a fee or VIP!';
-             error.style.color = 'red';
-             error.id = "only";
-             divSp.appendChild(error)
-             EO.preventDefault(); 
-                
+             EO.preventDefault();
             }
+            
+
+    
         }
     });
  
