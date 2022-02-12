@@ -2,6 +2,7 @@
 
 let form = document.querySelector('.form1');
 form.addEventListener('submit',validateInfoForm,false);
+let fields = form.querySelectorAll('.field');
 
 let authors = form.elements.author;
 
@@ -15,10 +16,9 @@ let comment = form.elements.comments;
 let deployments = form.elements.deployment;
 let articles = form.elements.article;
 
-l
-function validateInfoForm(EO) {
+let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
 
-    let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
+function validateInfoForm(EO) {
 
     arrEmptyField.splice(0, arrEmptyField.length);
     
@@ -28,6 +28,13 @@ function validateInfoForm(EO) {
     EO=EO||window.event;
 
     let errors = document.getElementsByTagName('span');
+
+    for (var k = 0; k < errors.length; k++) {
+       if(errors[k].innerHTML === 'empty field!') {
+         errors[k].remove();
+        }
+      }
+    
     console.log(errors);
     // debugger
 
@@ -45,8 +52,6 @@ function validateInfoForm(EO) {
     }
 
     // debugger
-
-    let fields = form.querySelectorAll('.field');
    
     for (let i = 0; i < fields.length; i++) {
         
