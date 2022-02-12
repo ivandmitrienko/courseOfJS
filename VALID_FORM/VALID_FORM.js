@@ -69,7 +69,7 @@ function validateInfoForm(EO) {
         // } 
     // }
 
-    debugger
+    // debugger
    
     for (let i = 0; i < fields.length; i++) {
         
@@ -107,7 +107,7 @@ function validateInfoForm(EO) {
     
 
 
-    console.log(arrEmptyField);
+    // console.log(arrEmptyField);
 
 
     
