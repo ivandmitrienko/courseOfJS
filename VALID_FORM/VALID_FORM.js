@@ -2,7 +2,6 @@
 
 let form = document.querySelector('.form1');
 form.addEventListener('submit',validateInfoForm,false);
-let fields = form.querySelectorAll('.field');
 
 let authors = form.elements.author;
 
@@ -16,12 +15,13 @@ let comment = form.elements.comments;
 let deployments = form.elements.deployment;
 let articles = form.elements.article;
 
-let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
-
+l
 function validateInfoForm(EO) {
 
-    arrEmptyField.splice(0, arrEmptyField.length);
+    let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
 
+    arrEmptyField.splice(0, arrEmptyField.length);
+    
     let commentValue = comment.checked;
     let deploymentsValue = deployments.value;
 
@@ -29,6 +29,7 @@ function validateInfoForm(EO) {
 
     let errors = document.getElementsByTagName('span');
     console.log(errors);
+    // debugger
 
     for (let j = 0; j < errors.length; j++) {
 
@@ -40,12 +41,12 @@ function validateInfoForm(EO) {
          || errors[j].innerHTML === "Please, enter a more complete description of the site!") {
             arrEmptyField.push(errors[j]);
             EO.preventDefault();
-        } else {
-        errors[j].innerHTML = '';
-        }
+        } 
     }
 
-    debugger
+    // debugger
+
+    let fields = form.querySelectorAll('.field');
    
     for (let i = 0; i < fields.length; i++) {
         
@@ -79,6 +80,9 @@ function validateInfoForm(EO) {
         EO.preventDefault();
            
     }
+
+    console.log(arrEmptyField);
+
 
     
     if (arrEmptyField.length !== 0) {
