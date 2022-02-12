@@ -39,9 +39,10 @@ function validateInfoForm(EO) {
 
     errors.forEach((v) => {if(v.innerHTML === 'empty field!'){
          v.remove(); 
-        } else {
-            arrEmptyField.push(v.previousSibling);
-        }
+        } 
+        // else {
+        //     arrEmptyField.push(v.previousSibling);
+        // }
     });
 
     // for(let k = 0; k < errors.length; k++) {
