@@ -37,27 +37,37 @@ function validateInfoForm(EO) {
 
     let errors = document.querySelectorAll('span');
 
-    for(let k = 0; k < errors.length; k++) {
-        if(errors[k].innerHTML === 'empty field!') {
-            errors[k].remove(); 
+    errors.forEach((v) => {if(v.innerHTML === 'empty field!'){
+         v.remove(); 
+        } else {
+            arrEmptyField.push(v.previousSibling);
         }
-    }
-    
-    debugger
+    });
 
-    for (let j = 0; j < fields.length; j++) {
-       
-        if(errors[j].innerHTML === 'Just 30 letters!' || errors[j].innerHTML === 'Just 15 letters!'
-         || errors[j].innerHTML === 'Please, add ".com" at the end of url!' || errors[j].innerHTML === 'Just after "May"!'
-         || errors[j].innerHTML === "More than 100 visitors !"
-         || errors[j].innerHTML === "We use just gmail.com! Please, add: @gmail.com at the end of email !"
-         || errors[j].innerHTML === "Sorry) At the moment the section: бытовая техника is not available !"
-         || errors[j].innerHTML === "Please, enter a more complete description of the site!") {
-            arrEmptyField.push(fields[j]);
-            console.log( arrEmptyField);
-            EO.preventDefault();
-        } 
-    }
+    // for(let k = 0; k < errors.length; k++) {
+    //     if(errors[k].innerHTML === 'empty field!') {
+    //         errors[k].remove(); 
+    //     }
+    // }
+    
+    // debugger
+
+    // for (let j = 0; j < errors.length; j++) {
+    //     if(errors[j].innerHTML === 'empty field!') {
+    //         errors[j].remove(); 
+    //     } 
+          
+        // else if(errors[j].innerHTML === 'Just 30 letters!' || errors[j].innerHTML === 'Just 15 letters!'
+        //  || errors[j].innerHTML === 'Please, add ".com" at the end of url!' || errors[j].innerHTML === 'Just after "May"!'
+        //  || errors[j].innerHTML === "More than 100 visitors !"
+        //  || errors[j].innerHTML === "We use just gmail.com! Please, add: @gmail.com at the end of email !"
+        //  || errors[j].innerHTML === "Sorry) At the moment the section: бытовая техника is not available !"
+        //  || errors[j].innerHTML === "Please, enter a more complete description of the site!") {
+        //     arrEmptyField.push(fields[j]);
+        //     console.log( arrEmptyField[0]);
+        //     EO.preventDefault();
+        // } 
+    // }
 
     debugger
    
