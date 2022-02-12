@@ -28,6 +28,7 @@ function validateInfoForm(EO) {
     EO=EO||window.event;
 
     let errors = document.getElementsByTagName('span');
+    console.log(errors);
 
     for (let j = 0; j < errors.length; j++) {
 
@@ -104,8 +105,6 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                     error.innerHTML = 'Just 30 letters!';
                     error.style.color = 'red';
                     v.after(error);
-                    // EO.preventDefault();
-    
                 }    
             }              
         }
@@ -117,7 +116,6 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                     error.innerHTML = 'Just 15 letters!';
                     error.style.color = 'red';
                     v.after(error);
-                    // EO.preventDefault();
                 }
             }   
         }
@@ -130,7 +128,6 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                     error.innerHTML = 'Please, add ".com" at the end of url!';
                     error.style.color = 'red';
                     v.after(error);
-                    // EO.preventDefault();
                 }
 
             }
@@ -144,7 +141,6 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                     error.innerHTML = 'Just after "May"!';
                     error.style.color = 'red';
                     v.after(error);
-                    // EO.preventDefault();
                 }
             }
             
@@ -156,7 +152,6 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                     error.innerHTML = 'More than 100 visitors !';
                     error.style.color = 'red';
                     v.after(error);
-                    // EO.preventDefault();
                 }
 
             }
@@ -170,7 +165,6 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                     error.innerHTML = 'We use just gmail.com! Please, add: @gmail.com at the end of email !';
                     error.style.color = 'red';
                     v.after(error);
-                    // EO.preventDefault();
                 }
 
             }
@@ -183,7 +177,6 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                     error.innerHTML = "Sorry) At the moment the section: бытовая техника is not available !";
                     error.style.color = 'red';
                     v.after(error);
-                    // EO.preventDefault();
                 }
 
             }
@@ -197,7 +190,6 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
                     error.innerHTML = "Please, enter a more complete description of the site!";
                     error.style.color = 'red';
                     v.after(error);
-                    // EO.preventDefault();
                 }
 
             }
@@ -207,10 +199,6 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
     }})
 
     comment.onchange = function () {
-        // debugger 
-        // if(comment.nextSibling) {
-        //     comment.nextSibling.innerHTML = '';
-        // }  
         if (comment.checked) {
             let agree = document.createElement('span');
             agree.innerHTML = "We will always check reviews and sort :)";
@@ -239,7 +227,6 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
             divSp.appendChild(error);
             if (arr[ind].value == 11) {
              error.innerHTML = 'Only for a fee or VIP!';
-            //  EO.preventDefault();
             }
             
 
