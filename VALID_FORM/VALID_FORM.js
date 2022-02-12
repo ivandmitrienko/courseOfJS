@@ -43,9 +43,9 @@ function validateInfoForm(EO) {
         }
     }
     
-    // debugger
+    debugger
 
-    for (let j = 0; j < errors.length; j++) {
+    for (let j = 0; j < fields.length; j++) {
        
         if(errors[j].innerHTML === 'Just 30 letters!' || errors[j].innerHTML === 'Just 15 letters!'
          || errors[j].innerHTML === 'Please, add ".com" at the end of url!' || errors[j].innerHTML === 'Just after "May"!'
@@ -53,12 +53,13 @@ function validateInfoForm(EO) {
          || errors[j].innerHTML === "We use just gmail.com! Please, add: @gmail.com at the end of email !"
          || errors[j].innerHTML === "Sorry) At the moment the section: бытовая техника is not available !"
          || errors[j].innerHTML === "Please, enter a more complete description of the site!") {
-            arrEmptyField.push(errors[j]);
+            arrEmptyField.push(fields[j]);
+            console.log( arrEmptyField);
             EO.preventDefault();
         } 
     }
 
-    // debugger
+    debugger
    
     for (let i = 0; i < fields.length; i++) {
         
@@ -66,7 +67,6 @@ function validateInfoForm(EO) {
             arrEmptyField.push(fields[i]);
             let error = document.createElement('span');
             error.innerHTML = 'empty field!';
-
             error.style.color = 'red';
             fields[i].after(error);
             EO.preventDefault();
@@ -97,7 +97,7 @@ function validateInfoForm(EO) {
     
 
 
-    // console.log(arrEmptyField);
+    console.log(arrEmptyField);
 
 
     
