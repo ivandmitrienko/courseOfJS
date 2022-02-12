@@ -32,14 +32,13 @@ function validateInfoForm(EO) {
     for (let j = 0; j < errors.length; j++) {
 
         if(errors[j].innerHTML === 'Just 30 letters!' || errors[j].innerHTML === 'Just 15 letters!'
-        || errors[j].innerHTML === 'Please, add ".com" at the end of url!' || errors[j].innerHTML === 'Just after "May"!'
-        || errors[j].innerHTML === "More than 100 visitors !"
-        || errors[j].innerHTML === "We use just gmail.com! Please, add: @gmail.com at the end of email !"
-        || errors[j].innerHTML === "Sorry) At the moment the section: бытовая техника is not available !"
-        || errors[j].innerHTML === "Please, enter a more complete description of the site!") {
-            arrEmptyField.push(fields[j]);
+         || errors[j].innerHTML === 'Please, add ".com" at the end of url!' || errors[j].innerHTML === 'Just after "May"!'
+         || errors[j].innerHTML === "More than 100 visitors !"
+         || errors[j].innerHTML === "We use just gmail.com! Please, add: @gmail.com at the end of email !"
+         || errors[j].innerHTML === "Sorry) At the moment the section: бытовая техника is not available !"
+         || errors[j].innerHTML === "Please, enter a more complete description of the site!") {
+            arrEmptyField.push(errors[j]);
             EO.preventDefault();
-            continue;
         } else {
         errors[j].innerHTML = '';
         }
@@ -206,10 +205,10 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
     }})
 
     comment.onchange = function () {
-        debugger
-        if(comment.nextSibling) {
-            comment.nextSibling.innerHTML = '';
-        }  
+        // debugger 
+        // if(comment.nextSibling) {
+        //     comment.nextSibling.innerHTML = '';
+        // }  
         if (comment.checked) {
             let agree = document.createElement('span');
             agree.innerHTML = "We will always check reviews and sort :)";
@@ -218,7 +217,7 @@ fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
             agree.style.fontSize = "20px"
             comment.after(agree);
             setTimeout(function(){
-                document.getElementById('2sec').style.display = 'none';
+                document.getElementById('2sec').remove(); //style.display = 'none'
             }, 2500);
         }    
              
