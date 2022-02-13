@@ -16,8 +16,6 @@ let comment = form.elements.comments;
 let deployments = form.elements.deployment;
 let articles = form.elements.article;
 
-// let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
-
 function validateInfoForm(EO) {
 
     let commentValue = comment.checked;
@@ -25,37 +23,11 @@ function validateInfoForm(EO) {
 
     EO=EO||window.event;
 
-    // debugger
+    let errors = form.querySelectorAll('.error');
 
-    let errors = document.querySelectorAll('span');
-
-    let firstFocusSpan = Array.from(errors);
-    
-    firstFocusSpan.forEach((v) => {if(v.innerHTML === 'empty field!'){
-         v.remove(); 
-        }    
-    });
-
-    
-    // debugger
-
-    // for (let j = 0; j < errors.length; j++) {
-    //     if(errors[j].innerHTML === 'empty field!') {
-    //         errors[j].remove(); 
-    //     } 
-          
-        // else if(errors[j].innerHTML === 'Just 30 letters!' || errors[j].innerHTML === 'Just 15 letters!'
-        //  || errors[j].innerHTML === 'Please, add ".com" at the end of url!' || errors[j].innerHTML === 'Just after "May"!'
-        //  || errors[j].innerHTML === "More than 100 visitors !"
-        //  || errors[j].innerHTML === "We use just gmail.com! Please, add: @gmail.com at the end of email !"
-        //  || errors[j].innerHTML === "Sorry) At the moment the section: бытовая техника is not available !"
-        //  || errors[j].innerHTML === "Please, enter a more complete description of the site!") {
-        //     arrEmptyField.push(fields[j]);
-        //     console.log( arrEmptyField[0]);
-        //     EO.preventDefault();
-        // } 
-    // }
-
+    for (let k = 0; k < errors.length; k++) {
+      errors[k].remove()
+    }
    
    
     for (let i = 0; i < fields.length; i++) {
@@ -64,8 +36,8 @@ function validateInfoForm(EO) {
             let error = document.createElement('span');
             error.innerHTML = 'empty field!';
             error.style.color = 'red';
+            error.className = 'error'
             fields[i].after(error);
-            // EO.preventDefault();
         }    
 
     }
@@ -75,28 +47,26 @@ function validateInfoForm(EO) {
         let error = document.createElement('span');
         error.innerHTML = 'empty field!';
         error.style.color = 'red';
-        divSp.appendChild(error)
-        // EO.preventDefault();       
+        error.className = 'error'
+        divSp.appendChild(error)     
     } 
 
     if(!(commentValue)) {
         let error = document.createElement('span');
         error.innerHTML = 'empty field!';
         error.style.color = 'red';
+        error.className = 'error'
         comment.after(error);
-        // EO.preventDefault();
            
     }
 
     // debugger
 
-    
-
     let errorsFocus = document.querySelectorAll('span');
 
-    let firstFocusInput = Array.from(errorsFocus); 
-
-
+    let firstFocusInput = Array.from(errorsFocus);
+    
+    console.log(firstFocusInput);
 
     for (let j = 0; j < firstFocusInput.length; j++) {
         
@@ -122,7 +92,9 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.style.color = 'red';
                     error.id = '30letters';
                     v.after(error);      
-                }         
+                } else {
+                    document.getElementById("30letters").remove();
+                }
             }              
         }
         if(v.name == titles.name) {
@@ -134,6 +106,8 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.style.color = 'red';
                     error.id = '15letters';
                     v.after(error);
+                } else {
+                    document.getElementById("15letters").remove();
                 }
             }   
         }
@@ -147,6 +121,8 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.style.color = 'red';
                     error.id = 'endOfUrl';
                     v.after(error);
+                } else {
+                    document.getElementById("endOfUrl").remove();
                 }
 
             }
@@ -161,6 +137,8 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.style.color = 'red';
                     error.id = 'May';
                     v.after(error);
+                } else {
+                    document.getElementById("May").remove();
                 }
             }
             
@@ -173,6 +151,8 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.style.color = 'red';
                     error.id = '100visitors';
                     v.after(error);
+                } else {
+                    document.getElementById("100visitors").remove();
                 }
 
             }
@@ -187,6 +167,8 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.style.color = 'red';
                     error.id = 'gmail';
                     v.after(error);
+                } else {
+                    document.getElementById("gmail").remove();
                 }
 
             }
@@ -200,6 +182,8 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.style.color = 'red';
                     error.id = 'available';
                     v.after(error);
+                } else {
+                    document.getElementById("available").remove();
                 }
 
             }
@@ -214,6 +198,8 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.style.color = 'red';
                     error.id = 'site';
                     v.after(error);
+                } else {
+                    document.getElementById("site").remove();
                 }
 
             }
