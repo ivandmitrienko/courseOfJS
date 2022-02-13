@@ -24,13 +24,13 @@ function validateInfoForm(EO) {
     EO=EO||window.event;
 
     let errors = form.querySelectorAll('.error');
-    debugger
+    // debugger
 
     for (let k = 0; k < errors.length; k++) {
       errors[k].remove()
     }
    
-    debugger
+    // debugger
     for (let i = 0; i < fields.length; i++) {
         
         if (!fields[i].value){
@@ -67,13 +67,18 @@ function validateInfoForm(EO) {
 
     let firstFocusInput = Array.from(errorsFocus);
     
-    console.log(firstFocusInput);
 
     if(firstFocusInput.length > 0) {
         for (let j = 0; j < firstFocusInput.length; j++) {
-        
-            firstFocusInput[0].previousSibling.focus();
-            EO.preventDefault();
+
+            if(firstFocusInput[j].innerHTML = '') {
+                firstFocusInput[j].remove();
+                console.log(firstFocusInput);
+            } else {
+                firstFocusInput[0].previousSibling.focus();
+                EO.preventDefault();
+            }
+            
             
      
         }
@@ -81,7 +86,7 @@ function validateInfoForm(EO) {
     }
     
     
-    
+   
        
 
    
