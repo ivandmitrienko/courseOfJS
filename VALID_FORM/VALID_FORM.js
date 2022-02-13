@@ -16,14 +16,15 @@ let comment = form.elements.comments;
 let deployments = form.elements.deployment;
 let articles = form.elements.article;
 
-let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
+// let arrEmptyField = []; // для поиска первого пустого поля или неправильно заполненного
 
 function validateInfoForm(EO) {
 
     
     
 
-    arrEmptyField.splice(0, arrEmptyField.length);
+    // arrEmptyField.splice(0, arrEmptyField.length);
+    
     // console.log(arrEmptyField.length);
     
     let commentValue = comment.checked;
@@ -36,6 +37,12 @@ function validateInfoForm(EO) {
     // let errors = document.getElementsByTagName('span');
 
     let errors = document.querySelectorAll('span');
+
+    console.log(errors);
+
+    // let firstFocusSpan = Array.from(errorsFocus);
+    
+    // debugger
 
     errors.forEach((v) => {if(v.innerHTML === 'empty field!'){
          v.remove(); 
@@ -70,40 +77,67 @@ function validateInfoForm(EO) {
         // } 
     // }
 
-    // debugger
+   
    
     for (let i = 0; i < fields.length; i++) {
         
         if (!fields[i].value){
-            arrEmptyField.push(fields[i]);
+            // debugger
+            // arrEmptyField.push(fields[i]);
             let error = document.createElement('span');
             error.innerHTML = 'empty field!';
             error.style.color = 'red';
             fields[i].after(error);
-            EO.preventDefault();
+            // EO.preventDefault();
         }    
 
     }
     
     if(deploymentsValue == '') {
-        arrEmptyField.splice(-1,0,deployments);
+        // arrEmptyField.splice(-1,0,deployments);
         let divSp = form.querySelector(".errorDiv");
         let error = document.createElement('span');
         error.innerHTML = 'empty field!';
         error.style.color = 'red';
         divSp.appendChild(error)
-        EO.preventDefault();       
+        // EO.preventDefault();       
     } 
 
     if(!(commentValue)) {
-        arrEmptyField.splice(-1,0,comment);
+        // arrEmptyField.splice(-1,0,comment);
         let error = document.createElement('span');
         error.innerHTML = 'empty field!';
         error.style.color = 'red';
         comment.after(error);
-        EO.preventDefault();
+        // EO.preventDefault();
            
     }
+
+    // debugger
+
+    
+
+    let errorsFocus = document.querySelectorAll('span');
+
+    let firstFocusInput = Array.from(errorsFocus); 
+
+    // console.log(firstFocusInput);
+
+    // EO.preventDefault();
+
+
+    for (let j = 0; j < firstFocusInput.length; j++) {
+        
+       firstFocusInput[0].previousSibling.focus();
+       EO.preventDefault();
+       
+
+    }
+   
+   
+    // for(let k of firstFocusInput) {
+    //     console.log(k.previousSibling);
+    // }
 
     
 
@@ -112,22 +146,24 @@ function validateInfoForm(EO) {
 
 
     
-    if (arrEmptyField.length !== 0) {
-        arrEmptyField[0].focus();
-    }    
+    // if (arrEmptyField.length !== 0) {
+    //     arrEmptyField[0].focus();
+    // }    
 
 }
 
 function fieldsOnblurForm(fieldsdBlur) {
 
-fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
+    fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
+
+        if(v.nextSibling.innerHTML) {
+           let erSp = v.nextSibling;
+           erSp.remove();
+        }  
+
 
         EO=EO||window.event;
 
-        if(v.nextSibling) {
-            v.nextSibling.innerHTML = '';
-        }  
-        
         if(v.name == authors.name) {   
             let authorsValue = authors.value;
             if(authorsValue) {
