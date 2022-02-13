@@ -120,9 +120,9 @@ function fieldsOnblurForm(fieldsdBlur) {
 
     fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
 
-        if(v.nextSibling.innerHTML) {
-            v.nextSibling.innerHTML;
-        }  
+        // if(c) {
+        //     v.nextSibling.innerHTML;
+        // }  
 
 
         EO=EO||window.event;
@@ -130,12 +130,12 @@ function fieldsOnblurForm(fieldsdBlur) {
         if(v.name == authors.name) {   
             let authorsValue = authors.value;
             if(authorsValue) {
-               if(authorsValue.length > 30){
-                    let error = document.createElement('span');
-                    error.innerHTML = 'Just 30 letters!';
-                    error.style.color = 'red';
-                    v.after(error);
-                }    
+                let error = document.createElement('span');
+                error.innerHTML = 'Just 30 letters!';
+                error.style.color = 'red';
+                if(authorsValue.length > 30){
+                    v.after(error);      
+                }         
             }              
         }
         if(v.name == titles.name) {
@@ -244,8 +244,7 @@ function fieldsOnblurForm(fieldsdBlur) {
     }
 
     deployments.forEach(function (val, ind, arr) {
-        arr[ind].onchange = function (EO) {
-            EO=EO||window.event;
+        arr[ind].onchange = function () {
             let divSp = form.querySelector(".errorDiv");
             if (document.getElementById("only")) {
                 let deploymentsSpan = document.getElementById('only');
