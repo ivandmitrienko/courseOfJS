@@ -86,144 +86,126 @@ function fieldsOnblurForm(fieldsdBlur) {
 
     fieldsdBlur.forEach((v) => {(v).onblur = function(){
 
-        // let empties = document.querySelectorAll('span');
+        let empties = document.querySelectorAll('span');
 
-        if(v.name == authors.name) {   
+        // for (let j = 0; j < empties.length; j++) {
+        //     if(empties[j].innerHTML) {
+        //         empties[j].remove()
+        //     }
+            
+        // }
+        if(v.name == authors.name) { 
             let authorsValue = authors.value;
             let error = document.createElement('span');
             error.style.color = 'red';
-            error.id = '30letters';
-            if(!(authorsValue) && document.getElementById("30letters")){
-                // document.getElementById("30letters").innerHTML = "";
+            error.id = '30letters';   
+            if(!(authorsValue) && !(document.getElementById("30letters"))){
+                error.innerHTML = 'empty field!';
+                v.after(error);  
+            } else if(authorsValue.length > 30){
+                document.getElementById("30letters").innerHTML = 'Just 30 letters!';  
+            } else {
+                document.getElementById("30letters").innerHTML = "";
+            }
+        }
+        
+
+        if(v.name == titles.name) {
+            let titlesValue = titles.value;
+            let error = document.createElement('span');
+            error.id = '15letters';
+            error.style.color = 'red';
+            if(!(titlesValue) && !(document.getElementById("15letters"))){
                 error.innerHTML = 'empty field!';
                 v.after(error);    
-            } else if(authorsValue) {
-                document.getElementById("30letters").innerHTML = "";;
-            }
-                
-            // if(authorsValue.length > 30 && !(document.getElementById("30letters"))){
-            //     v.after(error);      
-            // } else if (authorsValue.length < 30){
-            //     document.getElementById("30letters").innerHTML = "";
-            // }
+            } else if(titlesValue.length > 15){
+                document.getElementById("15letters").innerHTML = 'Just 15 letters!'; 
+            } else {
+                document.getElementById("15letters").innerHTML = "";
+            }  
             
-            // else if(authorsValue) {
-            //     // document.getElementById("30letters").innerHTML = "";
-            //     error.innerHTML = 'Just 30 letters!';
-            //     error.style.color = 'red';
-            //     error.id = '30letters';
-            //     if(authorsValue.length > 30 && !(document.getElementById("30letters"))){
-            //         v.after(error);      
-            //     } else if (authorsValue.length < 30){
-            //         document.getElementById("30letters").innerHTML = "";
-            //     }
-            // }              
-        }
-        if(v.name == titles.name) {
-        let titlesValue = titles.value;
-            if(titlesValue){
-                let error = document.createElement('span');
-                error.innerHTML = 'Just 15 letters!';
-                error.style.color = 'red';
-                error.id = '15letters';
-                if(titlesValue.length > 15 && !(document.getElementById("15letters"))){
-                    v.after(error);
-                } else if(titlesValue.length < 15) {
-                    document.getElementById("15letters").innerHTML = "";
-                }
-            }   
         }
         if(v.name == urls.name) {
             let urlsValue = urls.value;
-            if(urlsValue){
-                urlsValue = urlsValue.toLowerCase();
-                let error = document.createElement('span');
-                error.innerHTML = 'Please, add ".com" at the end of url!';
-                error.style.color = 'red';
-                error.id = 'endOfUrl';
-                if(!(urlsValue.endsWith(".com")) && !(document.getElementById("endOfUrl"))){
-                    v.after(error);
-                } else if(urlsValue.endsWith(".com")) {
-                    document.getElementById("endOfUrl").innerHTML = "";
-                }
-
-            }
-            
+            let error = document.createElement('span');
+            error.style.color = 'red';
+            error.id = 'endOfUrl';
+            if(!(urlsValue) && !(document.getElementById("endOfUrl"))) {
+                error.innerHTML = 'empty field!';
+                v.after(error);
+            } else if (urlsValue && !(urlsValue.endsWith(".com"))) {
+                document.getElementById("endOfUrl").innerHTML = 'Please, add: .com at the end of url!';
+            } else {
+                document.getElementById("endOfUrl").innerHTML = "";
+            }    
         }
         if(v.name == dates.name) {
-            if(v.value){
-                let arrDates =v.value.split('-');
-                let error = document.createElement('span');
-                error.innerHTML = 'Just after "May"!';
-                error.style.color = 'red';
-                error.id = 'May';
-                if(arrDates[1] < 5 && !(document.getElementById("May"))){
-                    v.after(error);
-                } else if (arrDates[1] > 5)  {
-                    document.getElementById("May").innerHTML = "";
-                }
-            }
-            
+            let error = document.createElement('span');
+            error.style.color = 'red';
+            error.id = 'May';
+            let arrDates =v.value.split('-');
+            if(!(v.value)){
+                error.innerHTML = 'empty field!';
+                v.after(error);
+            } else if(arrDates[1] < 5) {
+                document.getElementById("May").innerHTML = "Just after May";
+            } else {
+                document.getElementById("May").innerHTML = "";
+            }          
         }    
         if(v.name == numbers.name) {
-            if(v.value){
-                let error = document.createElement('span');
-                error.innerHTML = 'More than 100 visitors !';
-                error.style.color = 'red';
-                error.id = '100visitors';
-                if(v.value < 100 && !(document.getElementById("100visitors"))){
-                    v.after(error);
-                } else if(v.value > 100) {
-                    document.getElementById("100visitors").innerHTML = "";
-                }
-
+            let error = document.createElement('span');
+            error.style.color = 'red';
+            error.id = '100visitors';
+            if(!(v.value)){
+                error.innerHTML = 'empty field!';
+                v.after(error);
+            } else if(v.value < 100) {
+                document.getElementById("100visitors").innerHTML = "More than 100 visitors!";
+            } else {
+                document.getElementById("100visitors").innerHTML = "";
             }
-            
         }
         if(v.name == mails.name) {
-            if(v.value){
-                let mailsValue =  mails.value;
-                let error = document.createElement('span');
-                error.innerHTML = 'We use just gmail.com! Please, add: @gmail.com at the end of email !';
-                error.style.color = 'red';
-                error.id = 'gmail';
-                if(!(mailsValue.endsWith('@gmail.com')) && !(document.getElementById("gmail"))){  
-                    v.after(error);
-                } else if(mailsValue.endsWith('@gmail.com')){
-                    document.getElementById("gmail").innerHTML = "";
-                }
-
-            }
-            
+            let mailsValue =  mails.value;
+            let error = document.createElement('span');
+            error.style.color = 'red';
+            error.id = 'gmail';
+            if(!(v.value)){
+                error.innerHTML = 'empty field!';
+                v.after(error);
+            } else if(!(mailsValue.endsWith('@gmail.com'))) {
+                document.getElementById("gmail").innerHTML = "We use just gmail.com! Please, add: @gmail.com at the end of email!";
+            } else {
+                document.getElementById("gmail").innerHTML = "";
+            }     
         }
         if(v.name == rubrics.name) {
-            if(v.value){
-                let error = document.createElement('span');
-                error.innerHTML = "Sorry) At the moment the section: бытовая техника is not available !";
-                error.style.color = 'red';
-                error.id = 'available';
-                if(v.value == 3 && !(document.getElementById("available"))){
-                    v.after(error);
-                } else if(v.value != 3) {
-                    document.getElementById("available").innerHTML = "";
-                }
-
-            }
-            
+            let error = document.createElement('span');
+            error.style.color = 'red';
+            error.id = 'available';
+            if(!(v.value)) {
+                error.innerHTML = 'empty field!';
+                v.after(error);
+            } else if(v.value == 3) {
+                document.getElementById("available").innerHTML = "Sorry) At the moment the section: бытовая техника is not available !";
+            } else{
+                document.getElementById("available").innerHTML = ""; 
+            }      
         }
         if(v.name == articles.name) {
-            if(v.value){
-                let articlesValue = v.value;
-                let error = document.createElement('span');
-                error.innerHTML = "Please, enter a more complete description of the site!";
-                error.style.color = 'red';
-                error.id = 'site';
-                if(articlesValue.length < 30 && !(document.getElementById("site"))){
-                    v.after(error);
-                } else if(articlesValue.length > 30) {
-                    document.getElementById("site").innerHTML = "";
-                }
-
+            let articlesValue = v.value;
+            let error = document.createElement('span');
+            error.style.color = 'red';
+            error.id = 'site';
+            if(!(v.value)){
+                error.innerHTML = 'empty field!';
+                v.after(error);
+            } else if(articlesValue.length < 30) {
+                console.log(articlesValue.length)
+                document.getElementById("site").innerHTML = "Enter a more complete description";
+            } else {
+                document.getElementById("site").innerHTML = "";
             }
             
         }                         
