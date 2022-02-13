@@ -20,21 +20,12 @@ let articles = form.elements.article;
 
 function validateInfoForm(EO) {
 
-    
-    
-
-    // arrEmptyField.splice(0, arrEmptyField.length);
-    
-    // console.log(arrEmptyField.length);
-    
     let commentValue = comment.checked;
     let deploymentsValue = deployments.value;
 
     EO=EO||window.event;
 
     // debugger
-
-    // let errors = document.getElementsByTagName('span');
 
     let errors = document.querySelectorAll('span');
 
@@ -52,11 +43,6 @@ function validateInfoForm(EO) {
         // }
     });
 
-    // for(let k = 0; k < errors.length; k++) {
-    //     if(errors[k].innerHTML === 'empty field!') {
-    //         errors[k].remove(); 
-    //     }
-    // }
     
     // debugger
 
@@ -82,8 +68,6 @@ function validateInfoForm(EO) {
     for (let i = 0; i < fields.length; i++) {
         
         if (!fields[i].value){
-            // debugger
-            // arrEmptyField.push(fields[i]);
             let error = document.createElement('span');
             error.innerHTML = 'empty field!';
             error.style.color = 'red';
@@ -94,7 +78,6 @@ function validateInfoForm(EO) {
     }
     
     if(deploymentsValue == '') {
-        // arrEmptyField.splice(-1,0,deployments);
         let divSp = form.querySelector(".errorDiv");
         let error = document.createElement('span');
         error.innerHTML = 'empty field!';
@@ -104,7 +87,6 @@ function validateInfoForm(EO) {
     } 
 
     if(!(commentValue)) {
-        // arrEmptyField.splice(-1,0,comment);
         let error = document.createElement('span');
         error.innerHTML = 'empty field!';
         error.style.color = 'red';
@@ -121,9 +103,6 @@ function validateInfoForm(EO) {
 
     let firstFocusInput = Array.from(errorsFocus); 
 
-    // console.log(firstFocusInput);
-
-    // EO.preventDefault();
 
 
     for (let j = 0; j < firstFocusInput.length; j++) {
@@ -134,21 +113,6 @@ function validateInfoForm(EO) {
 
     }
    
-   
-    // for(let k of firstFocusInput) {
-    //     console.log(k.previousSibling);
-    // }
-
-    
-
-
-    // console.log(arrEmptyField);
-
-
-    
-    // if (arrEmptyField.length !== 0) {
-    //     arrEmptyField[0].focus();
-    // }    
 
 }
 
