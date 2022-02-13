@@ -37,10 +37,7 @@ function validateInfoForm(EO) {
 
     errors.forEach((v) => {if(v.innerHTML === 'empty field!'){
          v.remove(); 
-        } 
-        // else {
-        //     arrEmptyField.push(v.previousSibling);
-        // }
+        }    
     });
 
     
@@ -120,9 +117,9 @@ function fieldsOnblurForm(fieldsdBlur) {
 
     fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
 
-        // if(c) {
-        //     v.nextSibling.innerHTML;
-        // }  
+        if(v.nextSibling) {
+            v.nextSibling.innerHTML = '';
+        }   
 
 
         EO=EO||window.event;
@@ -133,6 +130,7 @@ function fieldsOnblurForm(fieldsdBlur) {
                 let error = document.createElement('span');
                 error.innerHTML = 'Just 30 letters!';
                 error.style.color = 'red';
+                error.id = "repeat";
                 if(authorsValue.length > 30){
                     v.after(error);      
                 }         
