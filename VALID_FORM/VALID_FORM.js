@@ -202,7 +202,6 @@ function fieldsOnblurForm(fieldsdBlur) {
                 error.innerHTML = 'empty field!';
                 v.after(error);
             } else if(articlesValue.length < 30) {
-                console.log(articlesValue.length)
                 document.getElementById("site").innerHTML = "Enter a more complete description";
             } else {
                 document.getElementById("site").innerHTML = "";
@@ -212,8 +211,19 @@ function fieldsOnblurForm(fieldsdBlur) {
 
     }})
 
+    comment.onblur = function () {
+        let agree = document.createElement('span');
+        agree.style.color = 'red';
+        agree.id = "agreee";
+        if (!(comment.checked)) {    
+            agree.innerHTML = 'empty field!';   
+            comment.after(agree);
+        } 
+
+    }
     comment.onchange = function () {
         if (comment.checked) {
+            document.getElementById('agreee').remove();
             let agree = document.createElement('span');
             agree.innerHTML = "We will always check reviews and sort :)";
             agree.style.color = '#32CD32';
