@@ -24,13 +24,13 @@ function validateInfoForm(EO) {
     EO=EO||window.event;
 
     let errors = form.querySelectorAll('.error');
-    debugger
+    // debugger
 
     for (let k = 0; k < errors.length; k++) {
       errors[k].remove()
     }
    
-    debugger
+    // debugger
     for (let i = 0; i < fields.length; i++) {
         
         if (!fields[i].value){
@@ -61,7 +61,7 @@ function validateInfoForm(EO) {
            
     }
 
-    debugger
+    // debugger
 
     let errorsFocus = document.querySelectorAll('span');
 
@@ -94,7 +94,7 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.id = '30letters';
                     v.after(error);      
                 } else if (authorsValue.length < 30){
-                    document.getElementById("30letters").remove();
+                    document.getElementById("30letters").innerHTML = "";
                 }
             }              
         }
@@ -108,7 +108,7 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.id = '15letters';
                     v.after(error);
                 } else if(titlesValue.length < 15) {
-                    document.getElementById("15letters").remove();
+                    document.getElementById("15letters").innerHTML = "";
                 }
             }   
         }
@@ -123,7 +123,7 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.id = 'endOfUrl';
                     v.after(error);
                 } else if(urlsValue.endsWith(".com")) {
-                    document.getElementById("endOfUrl").remove();
+                    document.getElementById("endOfUrl").innerHTML = "";
                 }
 
             }
@@ -139,7 +139,7 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.id = 'May';
                     v.after(error);
                 } else if (arrDates[1] > 5)  {
-                    document.getElementById("May").remove();
+                    document.getElementById("May").innerHTML = "";
                 }
             }
             
@@ -153,7 +153,7 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.id = '100visitors';
                     v.after(error);
                 } else if(v.value > 100) {
-                    document.getElementById("100visitors").remove();
+                    document.getElementById("100visitors").innerHTML = "";
                 }
 
             }
@@ -169,7 +169,7 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.id = 'gmail';
                     v.after(error);
                 } else if(mailsValue.endsWith('@gmail.com')){
-                    document.getElementById("gmail").remove();
+                    document.getElementById("gmail").innerHTML = "";
                 }
 
             }
@@ -184,7 +184,7 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.id = 'available';
                     v.after(error);
                 } else if(v.value != 3) {
-                    document.getElementById("available").remove();
+                    document.getElementById("available").innerHTML = "";
                 }
 
             }
@@ -200,7 +200,7 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.id = 'site';
                     v.after(error);
                 } else if(articlesValue.length > 30) {
-                    document.getElementById("site").remove();
+                    document.getElementById("site").innerHTML = "";
                 }
 
             }
