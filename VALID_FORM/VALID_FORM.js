@@ -148,8 +148,8 @@ function fieldsOnblurForm(fieldsdBlur) {
                 if(!(urlsValue.endsWith(".com")) && !(document.getElementById("endOfUrl"))){
                     let error = document.createElement('span');
                     error.innerHTML = 'Please, add ".com" at the end of url!';
-                    error.style.color = 'endOfUrl';
-                    error.id = '15letters';
+                    error.style.color = 'red';
+                    error.id = 'endOfUrl';
                     v.after(error);
                 }
 
