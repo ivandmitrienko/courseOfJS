@@ -90,17 +90,34 @@ function fieldsOnblurForm(fieldsdBlur) {
 
         if(v.name == authors.name) {   
             let authorsValue = authors.value;
-            if(authorsValue) {
-                let error = document.createElement('span');
-                error.innerHTML = 'Just 30 letters!';
-                error.style.color = 'red';
-                error.id = '30letters';
-                if(authorsValue.length > 30 && !(document.getElementById("30letters"))){
-                    v.after(error);      
-                } else if (authorsValue.length < 30){
-                    document.getElementById("30letters").innerHTML = "";
-                }
-            }              
+            let error = document.createElement('span');
+            error.style.color = 'red';
+            error.id = '30letters';
+            if(!(authorsValue) && document.getElementById("30letters")){
+                // document.getElementById("30letters").innerHTML = "";
+                error.innerHTML = 'empty field!';
+                v.after(error);    
+            } else if(authorsValue) {
+                document.getElementById("30letters").innerHTML = "";;
+            }
+                
+            // if(authorsValue.length > 30 && !(document.getElementById("30letters"))){
+            //     v.after(error);      
+            // } else if (authorsValue.length < 30){
+            //     document.getElementById("30letters").innerHTML = "";
+            // }
+            
+            // else if(authorsValue) {
+            //     // document.getElementById("30letters").innerHTML = "";
+            //     error.innerHTML = 'Just 30 letters!';
+            //     error.style.color = 'red';
+            //     error.id = '30letters';
+            //     if(authorsValue.length > 30 && !(document.getElementById("30letters"))){
+            //         v.after(error);      
+            //     } else if (authorsValue.length < 30){
+            //         document.getElementById("30letters").innerHTML = "";
+            //     }
+            // }              
         }
         if(v.name == titles.name) {
         let titlesValue = titles.value;
