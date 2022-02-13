@@ -121,8 +121,7 @@ function fieldsOnblurForm(fieldsdBlur) {
     fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
 
         if(v.nextSibling.innerHTML) {
-           let erSp = v.nextSibling;
-           erSp.remove();
+            v.nextSibling.innerHTML;
         }  
 
 
@@ -131,7 +130,7 @@ function fieldsOnblurForm(fieldsdBlur) {
         if(v.name == authors.name) {   
             let authorsValue = authors.value;
             if(authorsValue) {
-                if(authorsValue.length > 30){
+               if(authorsValue.length > 30){
                     let error = document.createElement('span');
                     error.innerHTML = 'Just 30 letters!';
                     error.style.color = 'red';
