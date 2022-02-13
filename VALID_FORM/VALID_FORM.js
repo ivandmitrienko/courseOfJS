@@ -238,6 +238,22 @@ function fieldsOnblurForm(fieldsdBlur) {
     }
 
     deployments.forEach(function (val, ind, arr) {
+        arr[ind].onblur = function () {
+            let divSp = form.querySelector(".errorDiv");
+            let error = document.createElement('span');
+            error.style.color = 'red';
+            error.id = "only";
+            if (!(arr[ind].value)) {
+             error.innerHTML = 'Only for a fee or VIP!';
+             divSp.appendChild(error);
+            }
+            
+
+    
+        }
+    });
+
+    deployments.forEach(function (val, ind, arr) {
         arr[ind].onchange = function () {
             let divSp = form.querySelector(".errorDiv");
             if (document.getElementById("only")) {
