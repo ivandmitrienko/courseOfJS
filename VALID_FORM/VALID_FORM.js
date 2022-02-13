@@ -86,7 +86,7 @@ function fieldsOnblurForm(fieldsdBlur) {
 
     fieldsdBlur.forEach((v) => {(v).onblur = function(){
 
-        let empties = document.querySelectorAll('span');
+        // let empties = document.querySelectorAll('span');
 
         // for (let j = 0; j < empties.length; j++) {
         //     if(empties[j].innerHTML) {
@@ -237,14 +237,16 @@ function fieldsOnblurForm(fieldsdBlur) {
              
     }
 
-    deployments.onblur = function () {
+    let deploy = document.getElementById('deployment11');
+
+    deploy.onblur = function () {
         let deploymentsValue = deployments.value;
         if(deploymentsValue == '') {
             let divSp = form.querySelector(".errorDiv");
             let error = document.createElement('span');
             error.innerHTML = 'empty field!';
             error.style.color = 'red';
-            error.className = 'error'
+            error.id = 'error';
             divSp.appendChild(error)     
         } 
     }     
@@ -254,6 +256,7 @@ function fieldsOnblurForm(fieldsdBlur) {
 
     deployments.forEach(function (val, ind, arr) {
         arr[ind].onchange = function () {
+            document.getElementById('error').remove();
             let divSp = form.querySelector(".errorDiv");
             if (document.getElementById("only")) {
                 let deploymentsSpan = document.getElementById('only');
