@@ -115,23 +115,16 @@ function validateInfoForm(EO) {
 
 function fieldsOnblurForm(fieldsdBlur) {
 
-    fieldsdBlur.forEach((v) => {(v).onblur = function(EO){
-
-        if(v.nextSibling) {
-            v.nextSibling.innerHTML = '';
-        }   
-
-
-        EO=EO||window.event;
+    fieldsdBlur.forEach((v) => {(v).onblur = function(){
 
         if(v.name == authors.name) {   
             let authorsValue = authors.value;
             if(authorsValue) {
-                let error = document.createElement('span');
-                error.innerHTML = 'Just 30 letters!';
-                error.style.color = 'red';
-                error.id = "repeat";
-                if(authorsValue.length > 30){
+                if(authorsValue.length > 30 && !(document.getElementById("30letters"))){
+                    let error = document.createElement('span');
+                    error.innerHTML = 'Just 30 letters!';
+                    error.style.color = 'red';
+                    error.id = '30letters';
                     v.after(error);      
                 }         
             }              
@@ -139,10 +132,11 @@ function fieldsOnblurForm(fieldsdBlur) {
         if(v.name == titles.name) {
         let titlesValue = titles.value;
             if(titlesValue){
-                if(titlesValue.length > 15){
+                if(titlesValue.length > 15 && !(document.getElementById("15letters"))){
                     let error = document.createElement('span');
                     error.innerHTML = 'Just 15 letters!';
                     error.style.color = 'red';
+                    error.id = '15letters';
                     v.after(error);
                 }
             }   
@@ -151,10 +145,11 @@ function fieldsOnblurForm(fieldsdBlur) {
             let urlsValue = urls.value;
             if(urlsValue){
                 urlsValue = urlsValue.toLowerCase();
-                if(!(urlsValue.endsWith(".com"))){
+                if(!(urlsValue.endsWith(".com")) && !(document.getElementById("endOfUrl"))){
                     let error = document.createElement('span');
                     error.innerHTML = 'Please, add ".com" at the end of url!';
-                    error.style.color = 'red';
+                    error.style.color = 'endOfUrl';
+                    error.id = '15letters';
                     v.after(error);
                 }
 
@@ -164,10 +159,11 @@ function fieldsOnblurForm(fieldsdBlur) {
         if(v.name == dates.name) {
             if(v.value){
                 let arrDates =v.value.split('-');
-                if(arrDates[1] < 5){
+                if(arrDates[1] < 5 && !(document.getElementById("May"))){
                     let error = document.createElement('span');
                     error.innerHTML = 'Just after "May"!';
                     error.style.color = 'red';
+                    error.id = 'May';
                     v.after(error);
                 }
             }
@@ -175,10 +171,11 @@ function fieldsOnblurForm(fieldsdBlur) {
         }    
         if(v.name == numbers.name) {
             if(v.value){
-                if(v.value < 100){
+                if(v.value < 100 && !(document.getElementById("100visitors"))){
                     let error = document.createElement('span');
                     error.innerHTML = 'More than 100 visitors !';
                     error.style.color = 'red';
+                    error.id = '100visitors';
                     v.after(error);
                 }
 
@@ -188,10 +185,11 @@ function fieldsOnblurForm(fieldsdBlur) {
         if(v.name == mails.name) {
             if(v.value){
                 let mailsValue =  mails.value;
-                if(!(mailsValue.endsWith('@gmail.com'))){
+                if(!(mailsValue.endsWith('@gmail.com')) && !(document.getElementById("gmail"))){
                     let error = document.createElement('span');
                     error.innerHTML = 'We use just gmail.com! Please, add: @gmail.com at the end of email !';
                     error.style.color = 'red';
+                    error.id = 'gmail';
                     v.after(error);
                 }
 
@@ -200,10 +198,11 @@ function fieldsOnblurForm(fieldsdBlur) {
         }
         if(v.name == rubrics.name) {
             if(v.value){
-                if(v.value == 3){
+                if(v.value == 3 && !(document.getElementById("available"))){
                     let error = document.createElement('span');
                     error.innerHTML = "Sorry) At the moment the section: бытовая техника is not available !";
                     error.style.color = 'red';
+                    error.id = 'available';
                     v.after(error);
                 }
 
@@ -213,10 +212,11 @@ function fieldsOnblurForm(fieldsdBlur) {
         if(v.name == articles.name) {
             if(v.value){
                 let articlesValue = v.value;
-                if(articlesValue.length < 30){
+                if(articlesValue.length < 30 && !(document.getElementById("site"))){
                     let error = document.createElement('span');
                     error.innerHTML = "Please, enter a more complete description of the site!";
                     error.style.color = 'red';
+                    error.id = 'site';
                     v.after(error);
                 }
 
