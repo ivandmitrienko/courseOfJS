@@ -237,21 +237,20 @@ function fieldsOnblurForm(fieldsdBlur) {
              
     }
 
-    deployments.forEach(function (val, ind, arr) {
-        arr[ind].onblur = function () {
+    deployments.onblur = function () {
+        let deploymentsValue = deployments.value;
+        if(deploymentsValue == '') {
             let divSp = form.querySelector(".errorDiv");
             let error = document.createElement('span');
+            error.innerHTML = 'empty field!';
             error.style.color = 'red';
-            error.id = "only";
-            if (!(arr[ind].value)) {
-             error.innerHTML = 'Only for a fee or VIP!';
-             divSp.appendChild(error);
-            }
-            
+            error.className = 'error'
+            divSp.appendChild(error)     
+        } 
+    }     
+
 
     
-        }
-    });
 
     deployments.forEach(function (val, ind, arr) {
         arr[ind].onchange = function () {
