@@ -86,6 +86,8 @@ function fieldsOnblurForm(fieldsdBlur) {
 
     fieldsdBlur.forEach((v) => {(v).onblur = function(){
 
+        // let empties = document.querySelectorAll('span');
+
         if(v.name == authors.name) {   
             let authorsValue = authors.value;
             if(authorsValue) {
@@ -94,6 +96,8 @@ function fieldsOnblurForm(fieldsdBlur) {
                 error.style.color = 'red';
                 error.id = '30letters';
                 if(authorsValue.length > 30 && !(document.getElementById("30letters"))){
+                    let empty = document.querySelector(".error");
+                    empty.remove();
                     v.after(error);      
                 } else if (authorsValue.length < 30){
                     document.getElementById("30letters").innerHTML = "";
@@ -108,6 +112,8 @@ function fieldsOnblurForm(fieldsdBlur) {
                 error.style.color = 'red';
                 error.id = '15letters';
                 if(titlesValue.length > 15 && !(document.getElementById("15letters"))){
+                    let empty = document.querySelector(".error");
+                    empty.remove();
                     v.after(error);
                 } else if(titlesValue.length < 15) {
                     document.getElementById("15letters").innerHTML = "";
@@ -123,6 +129,8 @@ function fieldsOnblurForm(fieldsdBlur) {
                 error.style.color = 'red';
                 error.id = 'endOfUrl';
                 if(!(urlsValue.endsWith(".com")) && !(document.getElementById("endOfUrl"))){
+                    let empty = document.querySelector(".error");
+                    empty.remove();
                     v.after(error);
                 } else if(urlsValue.endsWith(".com")) {
                     document.getElementById("endOfUrl").innerHTML = "";
@@ -139,6 +147,8 @@ function fieldsOnblurForm(fieldsdBlur) {
                 error.style.color = 'red';
                 error.id = 'May';
                 if(arrDates[1] < 5 && !(document.getElementById("May"))){
+                    let empty = document.querySelector(".error");
+                    empty.remove();
                     v.after(error);
                 } else if (arrDates[1] > 5)  {
                     document.getElementById("May").innerHTML = "";
@@ -153,6 +163,8 @@ function fieldsOnblurForm(fieldsdBlur) {
                 error.style.color = 'red';
                 error.id = '100visitors';
                 if(v.value < 100 && !(document.getElementById("100visitors"))){
+                    let empty = document.querySelector(".error");
+                    empty.remove();
                     v.after(error);
                 } else if(v.value > 100) {
                     document.getElementById("100visitors").innerHTML = "";
@@ -168,7 +180,9 @@ function fieldsOnblurForm(fieldsdBlur) {
                 error.innerHTML = 'We use just gmail.com! Please, add: @gmail.com at the end of email !';
                 error.style.color = 'red';
                 error.id = 'gmail';
-                if(!(mailsValue.endsWith('@gmail.com')) && !(document.getElementById("gmail"))){   
+                if(!(mailsValue.endsWith('@gmail.com')) && !(document.getElementById("gmail"))){ 
+                    let empty = document.querySelector(".error");
+                    empty.remove();  
                     v.after(error);
                 } else if(mailsValue.endsWith('@gmail.com')){
                     document.getElementById("gmail").innerHTML = "";
@@ -184,6 +198,8 @@ function fieldsOnblurForm(fieldsdBlur) {
                 error.style.color = 'red';
                 error.id = 'available';
                 if(v.value == 3 && !(document.getElementById("available"))){
+                    let empty = document.querySelector(".error");
+                    empty.remove();
                     v.after(error);
                 } else if(v.value != 3) {
                     document.getElementById("available").innerHTML = "";
@@ -200,6 +216,8 @@ function fieldsOnblurForm(fieldsdBlur) {
                 error.style.color = 'red';
                 error.id = 'site';
                 if(articlesValue.length < 30 && !(document.getElementById("site"))){
+                    let empty = document.querySelector(".error");
+                    empty.remove();
                     v.after(error);
                 } else if(articlesValue.length > 30) {
                     document.getElementById("site").innerHTML = "";
