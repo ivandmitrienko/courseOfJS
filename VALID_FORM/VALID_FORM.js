@@ -24,12 +24,13 @@ function validateInfoForm(EO) {
     EO=EO||window.event;
 
     let errors = form.querySelectorAll('.error');
+    debugger
 
     for (let k = 0; k < errors.length; k++) {
       errors[k].remove()
     }
    
-   
+    debugger
     for (let i = 0; i < fields.length; i++) {
         
         if (!fields[i].value){
@@ -60,7 +61,7 @@ function validateInfoForm(EO) {
            
     }
 
-    // debugger
+    debugger
 
     let errorsFocus = document.querySelectorAll('span');
 
@@ -92,7 +93,7 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.style.color = 'red';
                     error.id = '30letters';
                     v.after(error);      
-                } else {
+                } else if (authorsValue.length < 30){
                     document.getElementById("30letters").remove();
                 }
             }              
@@ -106,7 +107,7 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.style.color = 'red';
                     error.id = '15letters';
                     v.after(error);
-                } else {
+                } else if(titlesValue.length < 15) {
                     document.getElementById("15letters").remove();
                 }
             }   
@@ -121,7 +122,7 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.style.color = 'red';
                     error.id = 'endOfUrl';
                     v.after(error);
-                } else {
+                } else if(urlsValue.endsWith(".com")) {
                     document.getElementById("endOfUrl").remove();
                 }
 
@@ -137,7 +138,7 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.style.color = 'red';
                     error.id = 'May';
                     v.after(error);
-                } else {
+                } else if (arrDates[1] > 5)  {
                     document.getElementById("May").remove();
                 }
             }
@@ -151,7 +152,7 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.style.color = 'red';
                     error.id = '100visitors';
                     v.after(error);
-                } else {
+                } else if(v.value > 100) {
                     document.getElementById("100visitors").remove();
                 }
 
@@ -167,7 +168,7 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.style.color = 'red';
                     error.id = 'gmail';
                     v.after(error);
-                } else {
+                } else if(mailsValue.endsWith('@gmail.com')){
                     document.getElementById("gmail").remove();
                 }
 
@@ -182,7 +183,7 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.style.color = 'red';
                     error.id = 'available';
                     v.after(error);
-                } else {
+                } else if(v.value != 3) {
                     document.getElementById("available").remove();
                 }
 
@@ -198,7 +199,7 @@ function fieldsOnblurForm(fieldsdBlur) {
                     error.style.color = 'red';
                     error.id = 'site';
                     v.after(error);
-                } else {
+                } else if(articlesValue.length > 30) {
                     document.getElementById("site").remove();
                 }
 
