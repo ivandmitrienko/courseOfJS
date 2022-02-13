@@ -246,7 +246,7 @@ function fieldsOnblurForm(fieldsdBlur) {
             let error = document.createElement('span');
             error.innerHTML = 'empty field!';
             error.style.color = 'red';
-            error.id = 'error';
+            error.id = 'only';
             divSp.appendChild(error)     
         } 
     }     
@@ -256,19 +256,22 @@ function fieldsOnblurForm(fieldsdBlur) {
 
     deployments.forEach(function (val, ind, arr) {
         arr[ind].onchange = function () {
-            document.getElementById('error').remove();
+            document.getElementById('only').remove();
             let divSp = form.querySelector(".errorDiv");
-            if (document.getElementById("only")) {
-                let deploymentsSpan = document.getElementById('only');
-                deploymentsSpan.remove();
-            } 
             let error = document.createElement('span');
             error.style.color = 'red';
             error.id = "only";
             divSp.appendChild(error);
             if (arr[ind].value == 11) {
              error.innerHTML = 'Only for a fee or VIP!';
+            } else {
+                document.getElementById('only').innerHTML = '';
             }
+            // if (document.getElementById("only")) {
+            //     let deploymentsSpan = document.getElementById('only');
+            //     deploymentsSpan.remove();
+            // } 
+            
             
 
     
