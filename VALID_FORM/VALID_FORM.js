@@ -24,13 +24,11 @@ function validateInfoForm(EO) {
     EO=EO||window.event;
 
     let errors = form.querySelectorAll('.error');
-    // debugger
 
     for (let k = 0; k < errors.length; k++) {
       errors[k].remove()
     }
    
-    // debugger
     for (let i = 0; i < fields.length; i++) {
         
         if (!fields[i].value){
@@ -61,37 +59,27 @@ function validateInfoForm(EO) {
            
     }
 
-    debugger
+    // debugger
 
     let errorsFocus = document.querySelectorAll('span');
 
-    let firstFocusInput = Array.from(errorsFocus);
-    
+    let firstFocusInput = Array.from(errorsFocus); 
 
-    if(firstFocusInput.length > 0) {
-        for (let j = 0; j < firstFocusInput.length; j++) {
 
-            if(firstFocusInput[j].innerHTML = '') {
-                firstFocusInput[j].remove();
-                console.log(firstFocusInput);
-            } else {
-                firstFocusInput[0].previousSibling.focus();
-                EO.preventDefault();
-            }
-            
-            
-     
+
+    for (let j = 0; j < firstFocusInput.length; j++) {
+
+        if(firstFocusInput[j].innerHTML === '') {  
+            continue;       
         }
-
-    }
-    
-    
-   
+        
+        firstFocusInput[j].previousSibling.focus();
+        EO.preventDefault();
+        return;
        
 
+    }
    
-   
-
 }
 
 function fieldsOnblurForm(fieldsdBlur) {
