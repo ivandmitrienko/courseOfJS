@@ -29,13 +29,9 @@ function validateInfoForm(EO) {
 
     let errors = document.querySelectorAll('span');
 
-    console.log(errors);
-
-    // let firstFocusSpan = Array.from(errorsFocus);
+    let firstFocusSpan = Array.from(errors);
     
-    // debugger
-
-    errors.forEach((v) => {if(v.innerHTML === 'empty field!'){
+    firstFocusSpan.forEach((v) => {if(v.innerHTML === 'empty field!'){
          v.remove(); 
         }    
     });
