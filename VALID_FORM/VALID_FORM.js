@@ -24,13 +24,13 @@ function validateInfoForm(EO) {
     EO=EO||window.event;
 
     let errors = form.querySelectorAll('.error');
-    // debugger
+    debugger
 
     for (let k = 0; k < errors.length; k++) {
       errors[k].remove()
     }
    
-    // debugger
+    debugger
     for (let i = 0; i < fields.length; i++) {
         
         if (!fields[i].value){
@@ -61,7 +61,7 @@ function validateInfoForm(EO) {
            
     }
 
-    // debugger
+    debugger
 
     let errorsFocus = document.querySelectorAll('span');
 
@@ -69,13 +69,22 @@ function validateInfoForm(EO) {
     
     console.log(firstFocusInput);
 
-    for (let j = 0; j < firstFocusInput.length; j++) {
+    if(firstFocusInput.length > 0) {
+        for (let j = 0; j < firstFocusInput.length; j++) {
         
-       firstFocusInput[0].previousSibling.focus();
-       EO.preventDefault();
-       
+            firstFocusInput[0].previousSibling.focus();
+            EO.preventDefault();
+            
+     
+        }
 
     }
+    
+    
+    
+       
+
+   
    
 
 }
