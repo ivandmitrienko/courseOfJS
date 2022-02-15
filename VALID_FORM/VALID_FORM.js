@@ -188,16 +188,14 @@ function fieldsOnblurForm(fieldsdBlur) {
         }
         if(v.name == articles.name) {
             let articlesValue = v.value;
-            let error = document.createElement('span');
+            let error = document.getElementById('article');
             error.style.color = 'red';
-            error.id = 'site';
             if(!(v.value)){
                 error.innerHTML = 'empty field!';
-                v.after(error);
             } else if(articlesValue.length < 30) {
-                document.getElementById("site").innerHTML = "Enter a more complete description";
+                error.innerHTML = "Enter a more complete description";
             } else {
-                document.getElementById("site").innerHTML = "";
+                error.innerHTML = "";
             }
             
         }                         
@@ -205,26 +203,21 @@ function fieldsOnblurForm(fieldsdBlur) {
     }})
 
     comment.onblur = function () {
-        let agree = document.createElement('span');
-        agree.style.color = 'red';
-        agree.id = "agreee";
+        let error = document.getElementById('comments');
+        error.style.color = 'red';
         if (!(comment.checked)) {    
-            agree.innerHTML = 'empty field!';   
-            comment.after(agree);
+            error.innerHTML = 'empty field!';   
         } 
 
     }
     comment.onchange = function () {
         if (comment.checked) {
-            document.getElementById('agreee').remove();
-            let agree = document.createElement('span');
-            agree.innerHTML = "We will always check reviews and sort :)";
-            agree.style.color = '#32CD32';
-            agree.id = "2sec";
-            agree.style.fontSize = "20px"
-            comment.after(agree);
+            let error = document.getElementById('comments');
+            error.innerHTML = "We will always check reviews and sort :)";
+            error.style.color = '#32CD32';
+            error.style.fontSize = "20px"
             setTimeout(function(){
-                document.getElementById('2sec').remove(); //style.display = 'none'
+                error.innerHTML = ''; //style.display = 'none'
             }, 2500);
         }    
              
