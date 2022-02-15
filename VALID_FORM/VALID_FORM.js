@@ -1,7 +1,7 @@
 'use strict'
 
 let form = document.querySelector('.form1');
-form.addEventListener('submit',validateInfoForm,false);
+// form.addEventListener('submit',validateInfoForm,false);
 let fields = form.querySelectorAll('.field');
 
 let authors = form.elements.author;
@@ -16,71 +16,76 @@ let comment = form.elements.comments;
 let deployments = form.elements.deployment;
 let articles = form.elements.article;
 
-function validateInfoForm(EO) {
+// function validateInfoForm(EO) {
 
-    let commentValue = comment.checked;
-    let deploymentsValue = deployments.value;
+//     let commentValue = comment.checked;
+//     let deploymentsValue = deployments.value;
 
-    EO=EO||window.event;
+//     EO=EO||window.event;
 
-    let errors = form.querySelectorAll('.error');
+//     let errors = form.querySelectorAll('.error');
 
-    for (let k = 0; k < errors.length; k++) {
-      errors[k].remove()
-    }
-   
-    for (let i = 0; i < fields.length; i++) {
-        
-        if (!fields[i].value){
-            let error = document.createElement('span');
-            error.innerHTML = 'empty field!';
-            error.style.color = 'red';
-            error.className = 'error'
-            fields[i].after(error);
-        }    
-
-    }
     
-    if(deploymentsValue == '') {
-        let divSp = form.querySelector(".errorDiv");
-        let error = document.createElement('span');
-        error.innerHTML = 'empty field!';
-        error.style.color = 'red';
-        error.className = 'error'
-        divSp.appendChild(error)     
-    } 
+//     for (let k = 0; k < errors.length; k++) { 
+//       errors[k].remove();                      
+//     }
 
-    if(!(commentValue)) {
-        let error = document.createElement('span');
-        error.innerHTML = 'empty field!';
-        error.style.color = 'red';
-        error.className = 'error'
-        comment.after(error);
+    
+
+   
+   
+//     for (let i = 0; i < fields.length; i++) {
+        
+//         if (!fields[i].value){
+//             let error = document.createElement('span');
+//             error.innerHTML = 'empty field!';
+//             error.style.color = 'red';
+//             error.className = 'error'
+//             fields[i].after(error);
+//         }    
+
+//     }
+    
+//     if(deploymentsValue == '') {
+//         let divSp = form.querySelector(".errorDiv");
+//         let error = document.createElement('span');
+//         error.innerHTML = 'empty field!';
+//         error.style.color = 'red';
+//         error.className = 'error'
+//         divSp.appendChild(error)     
+//     } 
+
+//     if(!(commentValue)) {
+//         let error = document.createElement('span');
+//         error.innerHTML = 'empty field!';
+//         error.style.color = 'red';
+//         error.className = 'error'
+//         comment.after(error);
            
-    }
+//     }
 
     // debugger
 
-    let errorsFocus = document.querySelectorAll('span');
+//     let errorsFocus = document.querySelectorAll('span');
 
-    let firstFocusInput = Array.from(errorsFocus); 
+//     let firstFocusInput = Array.from(errorsFocus); 
 
 
 
-    for (let j = 0; j < firstFocusInput.length; j++) {
+//     for (let j = 0; j < firstFocusInput.length; j++) {
 
-        if(firstFocusInput[j].innerHTML === '') {  
-            continue;       
-        }
+//         if(firstFocusInput[j].innerHTML === '') {  
+//             continue;       
+//         }
         
-        firstFocusInput[j].previousSibling.focus();
-        EO.preventDefault();
-        return;
+//         firstFocusInput[j].previousSibling.focus();
+//         EO.preventDefault();
+//         return;
        
 
-    }
+//     }
    
-}
+// }
 
 function fieldsOnblurForm(fieldsdBlur) {
 
@@ -94,90 +99,80 @@ function fieldsOnblurForm(fieldsdBlur) {
         //     }
             
         // }
+
+        // debugger
         if(v.name == authors.name) { 
             let authorsValue = authors.value;
-            let error = document.createElement('span');
-            error.style.color = 'red';
-            error.id = '30letters';   
+            let error = document.getElementById('author');
+            error.style.color = 'red'; 
             if(!(authorsValue) && !(document.getElementById("30letters"))){
-                error.innerHTML = 'empty field!';
-                v.after(error);  
+                error.innerHTML = 'empty field!';  
             } else if(authorsValue.length > 30){
-                document.getElementById("30letters").innerHTML = 'Just 30 letters!';  
+                error.innerHTML  = 'Just 30 letters!'; 
             } else {
-                document.getElementById("30letters").innerHTML = "";
+                error.innerHTML = "";
             }
         }
         
 
         if(v.name == titles.name) {
             let titlesValue = titles.value;
-            let error = document.createElement('span');
-            error.id = '15letters';
+            let error = document.getElementById('title');
             error.style.color = 'red';
             if(!(titlesValue) && !(document.getElementById("15letters"))){
-                error.innerHTML = 'empty field!';
-                v.after(error);    
+                error.innerHTML = 'empty field!';   
             } else if(titlesValue.length > 15){
-                document.getElementById("15letters").innerHTML = 'Just 15 letters!'; 
+                error.innerHTML = 'Just 15 letters!'; 
             } else {
-                document.getElementById("15letters").innerHTML = "";
+                error.innerHTML = "";
             }  
             
         }
         if(v.name == urls.name) {
             let urlsValue = urls.value;
-            let error = document.createElement('span');
+            let error = document.getElementById('url');
             error.style.color = 'red';
-            error.id = 'endOfUrl';
             if(!(urlsValue) && !(document.getElementById("endOfUrl"))) {
                 error.innerHTML = 'empty field!';
-                v.after(error);
             } else if (urlsValue && !(urlsValue.endsWith(".com"))) {
-                document.getElementById("endOfUrl").innerHTML = 'Please, add: .com at the end of url!';
+                error.innerHTML = 'Please, add: .com at the end of url!';
             } else {
-                document.getElementById("endOfUrl").innerHTML = "";
+                error.innerHTML = "";
             }    
         }
         if(v.name == dates.name) {
-            let error = document.createElement('span');
+            let error = document.getElementById('startdate');
             error.style.color = 'red';
-            error.id = 'May';
             let arrDates =v.value.split('-');
             if(!(v.value)){
                 error.innerHTML = 'empty field!';
-                v.after(error);
             } else if(arrDates[1] < 5) {
-                document.getElementById("May").innerHTML = "Just after May";
+                error.innerHTML = "Just after May";
             } else {
-                document.getElementById("May").innerHTML = "";
+                error.innerHTML = "";
             }          
         }    
         if(v.name == numbers.name) {
-            let error = document.createElement('span');
+            let error = document.getElementById('persons');
             error.style.color = 'red';
-            error.id = '100visitors';
             if(!(v.value)){
                 error.innerHTML = 'empty field!';
-                v.after(error);
             } else if(v.value < 100) {
-                document.getElementById("100visitors").innerHTML = "More than 100 visitors!";
+                error.innerHTML = "More than 100 visitors!";
             } else {
-                document.getElementById("100visitors").innerHTML = "";
+                error.innerHTML = "";
             }
         }
         if(v.name == mails.name) {
             let mailsValue =  mails.value;
-            let error = document.createElement('span');
+            let error = document.getElementById('mail');
             error.style.color = 'red';
-            error.id = 'gmail';
             if(!(v.value)){
                 error.innerHTML = 'empty field!';
-                v.after(error);
             } else if(!(mailsValue.endsWith('@gmail.com'))) {
-                document.getElementById("gmail").innerHTML = "We use just gmail.com! Please, add: @gmail.com at the end of email!";
+                error.innerHTML = "We use just gmail.com! Please, add: @gmail.com at the end of email!";
             } else {
-                document.getElementById("gmail").innerHTML = "";
+                error.innerHTML = "";
             }     
         }
         if(v.name == rubrics.name) {
