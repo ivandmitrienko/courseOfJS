@@ -29,28 +29,44 @@ function validateInfoForm(EO) {
 
     EO=EO||window.event;
 
-    let firstSevenErrors = Array.from(allErrors);
+    let firstSevenErrors = Array.from(allErrors); // node to array
+
+    let firstSevenSpan = document.querySelectorAll('.seven');
+
+    let arrFirstSevenSpan = Array.from(firstSevenSpan); //first seven span with error
+
+// debugger
 
     for (let i = 0; i < firstSevenErrors.length; i++) {  
         if (!firstSevenErrors[i].value){
-            console.log(fields[i]);
             let errors = form.querySelectorAll('.error');
             errors[i].innerHTML = 'empty field!';
             errors[i].style.color = 'red';
-        }    
+            arrFocus.push(firstSevenErrors[i]);
+
+        } else if (arrFirstSevenSpan[i].innerHTML){
+            arrFocus.push(firstSevenErrors[i]);
+        }
 
     }
+
     
     if(deploymentsValue == '') {
         let error = document.getElementById('deployment');
         error.style.color = 'red';
-        error.innerHTML = 'empty field!';     
-    } 
+        error.innerHTML = 'empty field!';
+        let errorRadio = document.getElementById('deployment11');
+        arrFocus.push(errorRadio);   
+    } else if(error.innerHTML) {
+        arrFocus.push(errorRadio);
+    }
 
     if(!(commentValue)) {
         let error = document.getElementById('comments');
         error.style.color = 'red';
         error.innerHTML = 'empty field!';
+        let errorCheck = document.getElementById('check');
+        arrFocus.push(errorCheck);
            
     }
 
@@ -58,30 +74,20 @@ function validateInfoForm(EO) {
         let error = document.getElementById('article');
         error.style.color = 'red';
         error.innerHTML = 'empty field!';
+        let bigTextArea = document.getElementById('bigText');
+        arrFocus.push(bigTextArea);
+    } else if(error.innerHTML) {
+        arrFocus.push(bigTextArea);
     }
 
+    console.log(arrFocus);
 
+    // if(arrFocus.length){
+    //     arrFocus[0].focus();
+    //     EO.preventDefault();
+    // } 
 
-    // debugger
-
-    let errorsFocus = document.querySelectorAll('span');
-
-    let firstFocus = Array.from(errorsFocus);
-    
-
-
-
-
-    for (let j = 0; j < firstFocus.length; j++) {
-
-        if(firstFocus[j].innerHTML !== '') {
-
-            fields[j].focus();      
-            EO.preventDefault();
-            break
-        }
-
-    }
+    EO.preventDefault();
    
 }
 
@@ -253,3 +259,22 @@ fieldsOnblurForm(fields);
         //         error.innerHTML = ""; 
         //     }      
         // }
+
+         // debugger
+
+    
+    
+
+
+
+
+    // for (let j = 0; j < firstFocus.length; j++) {
+
+    //     if(firstFocus[j].innerHTML !== '') {
+
+    //         fields[j].focus();      
+    //         EO.preventDefault();
+    //         break
+    //     }
+
+    // }
