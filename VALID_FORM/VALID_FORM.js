@@ -57,24 +57,34 @@ function validateInfoForm(EO) {
 
     let errorsFocus = document.querySelectorAll('span');
 
-    let firstFocusInput = Array.from(errorsFocus); 
+    let firstFocus = Array.from(errorsFocus); 
 
 
 
-    for (let j = 0; j < firstFocusInput.length; j++) {
+    for (let j = 0; j < firstFocus.length; j++) {
 
-        if(firstFocusInput[j].innerHTML !== '') {
-            fields[j].focus();       
+        if(firstFocus[j].innerHTML !== '') {
+            firstFocus[j].focus();      
             EO.preventDefault();
             break
         }
+
     }
 
     
+
+
+    // if(firstFocusInput[8].innerHTML !== '') {
+    //     fields[8].focus();       
+    //     EO.preventDefault();
+    //     break
+    // }
+
    
 }
 
 function fieldsOnblurForm(fieldsdBlur) {
+
 
     fieldsdBlur.forEach((v) => {(v).onblur = function(){
 
