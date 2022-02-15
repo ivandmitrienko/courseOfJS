@@ -1,7 +1,7 @@
 'use strict'
 
 let form = document.querySelector('.form1');
-// form.addEventListener('submit',validateInfoForm,false);
+form.addEventListener('submit',validateInfoForm,false);
 let fields = form.querySelectorAll('.field');
 
 let authors = form.elements.author;
@@ -16,76 +16,71 @@ let comment = form.elements.comments;
 let deployments = form.elements.deployment;
 let articles = form.elements.article;
 
-// function validateInfoForm(EO) {
+function validateInfoForm(EO) {
 
-//     let commentValue = comment.checked;
-//     let deploymentsValue = deployments.value;
+    let commentValue = comment.checked;
+    let deploymentsValue = deployments.value;
 
-//     EO=EO||window.event;
+    EO=EO||window.event;
 
-//     let errors = form.querySelectorAll('.error');
+    // let errors = form.querySelectorAll('.error');
 
     
-//     for (let k = 0; k < errors.length; k++) { 
-//       errors[k].remove();                      
-//     }
+    // for (let k = 0; k < errors.length; k++) { 
+    //   errors[k].remove();                      //для удаления старых ошибок
+    // }
 
     
 
    
    
-//     for (let i = 0; i < fields.length; i++) {
+    for (let i = 0; i < fields.length; i++) {
         
-//         if (!fields[i].value){
-//             let error = document.createElement('span');
-//             error.innerHTML = 'empty field!';
-//             error.style.color = 'red';
-//             error.className = 'error'
-//             fields[i].after(error);
-//         }    
+        if (!fields[i].value){
+            let errors = form.querySelectorAll('.error');
+            errors[i].innerHTML = 'empty field!';
+            errors[i].style.color = 'red';
+        }    
 
-//     }
+    }
     
-//     if(deploymentsValue == '') {
-//         let divSp = form.querySelector(".errorDiv");
-//         let error = document.createElement('span');
-//         error.innerHTML = 'empty field!';
-//         error.style.color = 'red';
-//         error.className = 'error'
-//         divSp.appendChild(error)     
-//     } 
+    if(deploymentsValue == '') {
+        let error = document.getElementById('deployment');
+        error.style.color = 'red';
+        error.innerHTML = 'empty field!';     
+    } 
 
-//     if(!(commentValue)) {
-//         let error = document.createElement('span');
-//         error.innerHTML = 'empty field!';
-//         error.style.color = 'red';
-//         error.className = 'error'
-//         comment.after(error);
+    if(!(commentValue)) {
+        let error = document.getElementById('comments');
+        error.style.color = 'red';
+        error.innerHTML = 'empty field!';
            
-//     }
+    }
 
     // debugger
 
-//     let errorsFocus = document.querySelectorAll('span');
+    let errorsFocus = document.querySelectorAll('span');
 
-//     let firstFocusInput = Array.from(errorsFocus); 
+    let firstFocusInput = Array.from(errorsFocus); 
 
 
 
-//     for (let j = 0; j < firstFocusInput.length; j++) {
+    // for (let j = 0; j < firstFocusInput.length; j++) {
 
-//         if(firstFocusInput[j].innerHTML === '') {  
-//             continue;       
-//         }
+    //     if(firstFocusInput[j].innerHTML === '') {  
+    //         continue;       
+    //     }
         
-//         firstFocusInput[j].previousSibling.focus();
-//         EO.preventDefault();
-//         return;
+    //     firstFocusInput[j].previousSibling.focus();
+    //     EO.preventDefault();
+    //     return;
        
 
-//     }
+    // }
+
+    EO.preventDefault();
    
-// }
+}
 
 function fieldsOnblurForm(fieldsdBlur) {
 

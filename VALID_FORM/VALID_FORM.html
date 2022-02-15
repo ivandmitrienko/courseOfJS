@@ -6,17 +6,17 @@
   </head>
 <body>
     <form method="post" enctype="multipart/form-data" action="https://fe.it-academy.by/TestForm.php" class="form1">
-       Разработчики: <input type="text" name="author" style='width: 453px; margin-right: 10px' class="field"> <span id='author'></span>
+       Разработчики: <input type="text" name="author" style='width: 453px; margin-right: 10px' class="field"> <span id='author' class="error"></span>
       <br>
-      Название сайта: <input type="text" name="title" style='width: 453px; margin-right: 10px' class="field"> <span id='title'></span>
+      Название сайта: <input type="text" name="title" style='width: 453px; margin-right: 10px' class="field"> <span id='title' class="error"></span>
       <br>
-      URL сайта: <input type="text" name="url" style='width: 300px; margin-right: 10px' class="field"> <span id='url'></span>
+      URL сайта: <input type="text" name="url" style='width: 300px; margin-right: 10px' class="field"> <span id='url' class="error"></span>
       <br>
-      Дата запуска сайта: <input type="date" name="startdate"  style='width: 160px; margin-right: 10px' class="field"> <span id='startdate'></span>
+      Дата запуска сайта: <input type="date" name="startdate"  style='width: 160px; margin-right: 10px' class="field"> <span id='startdate' class="error"></span>
       <br>
-      Посетителей в сутки: <input type="number" name="persons" style='width: 80px; margin-right: 10px' class="field"> <span id='persons'></span>
+      Посетителей в сутки: <input type="number" name="persons" style='width: 80px; margin-right: 10px' class="field"> <span id='persons' class="error"></span>
       <br>
-      E-mail для связи: <input type="email" name="mail" style='width: 180px; margin-right: 10px' class="field"> <span id='mail'></span>
+      E-mail для связи: <input type="email" name="mail" style='width: 180px; margin-right: 10px' class="field"> <span id='mail' class="error"></span>
       <br>
       Рубрика каталога: 
       <select name="rubric"  class="field" style='margin-right: 10px'>
@@ -25,7 +25,7 @@
         <option value="2">домашний уют</option>
         <option value="3">бытовая техника</option>
       </select>
-      <span id='rubric'></span>
+      <span id='rubric' class="error"></span>
       <br>
         Размещение:
       <div class='errorDiv' style="display: inline-block">
@@ -37,7 +37,7 @@
       <br>
       Разрешить отзывы: <input type="checkbox"  name="comments" style='margin-right: 10px'> <span id='comments' ></span>
       <br>
-      Описание сайта: <br> <textarea name="article" style="width: 608px; height: 50px; margin-right: 10px"  class="field"></textarea> <span id = 'article'></span>
+      Описание сайта: <br> <textarea name="article" style="width: 608px; height: 50px; margin-right: 10px"  class="field"></textarea> <span id = 'article' class="error"></span>
       <br>
       <input type="submit" value="Опубликовать">
     </form>
