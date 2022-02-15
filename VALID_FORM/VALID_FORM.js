@@ -64,7 +64,7 @@ function validateInfoForm(EO) {
     for (let j = 0; j < firstFocus.length; j++) {
 
         if(firstFocus[j].innerHTML !== '') {
-            firstFocus[j].focus();      
+            fields[j].focus();      
             EO.preventDefault();
             break
         }
