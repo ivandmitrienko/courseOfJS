@@ -29,13 +29,9 @@ function validateInfoForm(EO) {
     // for (let k = 0; k < errors.length; k++) { 
     //   errors[k].remove();                      //для удаления старых ошибок
     // }
-
-    
-
+  
    
-   
-    for (let i = 0; i < fields.length; i++) {
-        
+    for (let i = 0; i < fields.length; i++) {  
         if (!fields[i].value){
             let errors = form.querySelectorAll('.error');
             errors[i].innerHTML = 'empty field!';
@@ -65,20 +61,14 @@ function validateInfoForm(EO) {
 
 
 
-    // for (let j = 0; j < firstFocusInput.length; j++) {
+    for (let j = 0; j < firstFocusInput.length; j++) {
 
-    //     if(firstFocusInput[j].innerHTML === '') {  
-    //         continue;       
-    //     }
-        
-    //     firstFocusInput[j].previousSibling.focus();
-    //     EO.preventDefault();
-    //     return;
-       
-
-    // }
-
-    EO.preventDefault();
+        if(firstFocusInput[j].innerHTML !== '') {
+            fields[j].focus();       
+            EO.preventDefault();
+            break
+        }
+    }
    
 }
 
