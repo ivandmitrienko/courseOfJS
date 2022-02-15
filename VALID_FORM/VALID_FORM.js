@@ -70,16 +70,6 @@ function validateInfoForm(EO) {
         }
 
     }
-
-    
-
-
-    // if(firstFocusInput[8].innerHTML !== '') {
-    //     fields[8].focus();       
-    //     EO.preventDefault();
-    //     break
-    // }
-
    
 }
 
