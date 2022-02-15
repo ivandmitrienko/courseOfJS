@@ -57,8 +57,8 @@ function validateInfoForm(EO) {
         error.innerHTML = 'empty field!';
         let errorRadio = document.getElementById('deployment11');
         arrFocus.push(errorRadio);   
-    } else if(error.innerHTML) {
-        arrFocus.push(errorRadio);
+    } else if(document.getElementById('deployment').innerHTML) {
+        arrFocus.push(document.getElementById('deployment11'));
     }
 
     if(!(commentValue)) {
@@ -76,8 +76,8 @@ function validateInfoForm(EO) {
         error.innerHTML = 'empty field!';
         let bigTextArea = document.getElementById('bigText');
         arrFocus.push(bigTextArea);
-    } else if(error.innerHTML) {
-        arrFocus.push(bigTextArea);
+    } else if(document.getElementById('article').innerHTML) {
+        arrFocus.push(document.getElementById('bigText'));
     }
 
     console.log(arrFocus);
