@@ -3,6 +3,7 @@
 let form = document.querySelector('.form1');
 form.addEventListener('submit',validateInfoForm,false);
 let fields = form.querySelectorAll('.field');
+let allErrors = form.querySelectorAll('.justFields')
 
 let authors = form.elements.author;
 
@@ -16,23 +17,23 @@ let comment = form.elements.comments;
 let deployments = form.elements.deployment;
 let articles = form.elements.article;
 
+let arrFocus = []; // for errors
+
+
 function validateInfoForm(EO) {
+
+    arrFocus.length = 0;
 
     let commentValue = comment.checked;
     let deploymentsValue = deployments.value;
 
     EO=EO||window.event;
 
-    // let errors = form.querySelectorAll('.error');
+    let firstSevenErrors = Array.from(allErrors);
 
-    
-    // for (let k = 0; k < errors.length; k++) { 
-    //   errors[k].remove();                      //для удаления старых ошибок
-    // }
-  
-   
-    for (let i = 0; i < fields.length; i++) {  
-        if (!fields[i].value){
+    for (let i = 0; i < firstSevenErrors.length; i++) {  
+        if (!firstSevenErrors[i].value){
+            console.log(fields[i]);
             let errors = form.querySelectorAll('.error');
             errors[i].innerHTML = 'empty field!';
             errors[i].style.color = 'red';
@@ -53,17 +54,28 @@ function validateInfoForm(EO) {
            
     }
 
+    if(!(articles.value)) {
+        let error = document.getElementById('article');
+        error.style.color = 'red';
+        error.innerHTML = 'empty field!';
+    }
+
+
+
     // debugger
 
     let errorsFocus = document.querySelectorAll('span');
 
-    let firstFocus = Array.from(errorsFocus); 
+    let firstFocus = Array.from(errorsFocus);
+    
+
 
 
 
     for (let j = 0; j < firstFocus.length; j++) {
 
         if(firstFocus[j].innerHTML !== '') {
+
             fields[j].focus();      
             EO.preventDefault();
             break
@@ -152,17 +164,7 @@ function fieldsOnblurForm(fieldsdBlur) {
                 error.innerHTML = "";
             }     
         }
-        if(v.name == rubrics.name) {
-            let error = document.getElementById('rubric');
-            error.style.color = 'red';
-            if(!(v.value)) {
-                error.innerHTML = 'empty field!';
-            } else if(v.value == 3) {
-                error.innerHTML = "Sorry) At the moment the section: бытовая техника is not available !";
-            } else{
-                error.innerHTML = ""; 
-            }      
-        }
+       
         if(v.name == articles.name) {
             let articlesValue = v.value;
             let error = document.getElementById('article');
@@ -179,14 +181,6 @@ function fieldsOnblurForm(fieldsdBlur) {
 
     }})
 
-    comment.onblur = function () {
-        let error = document.getElementById('comments');
-        error.style.color = 'red';
-        if (!(comment.checked)) {    
-            error.innerHTML = 'empty field!';   
-        } 
-
-    }
     comment.onchange = function () {
         if (comment.checked) {
             let error = document.getElementById('comments');
@@ -200,19 +194,16 @@ function fieldsOnblurForm(fieldsdBlur) {
              
     }
 
-    let deploy = document.getElementById('deployment11');
-
-    deploy.onblur = function () {
-        let deploymentsValue = deployments.value;
-        if(deploymentsValue == '') {
-            let error = document.getElementById('deployment');
-            error.innerHTML = 'empty field!';
-            error.style.color = 'red';    
-        } 
-    }     
-
-
-    
+    rubrics.onchange = function () {
+        let error = document.getElementById('rubric');
+        error.style.color = 'red';
+        if (rubrics.value == 3) {
+            error.innerHTML = "Sorry) At the moment the section: бытовая техника is not available !";
+        } else {
+            error.innerHTML = ""; 
+        }    
+             
+    }
 
     deployments.forEach(function (val, ind, arr) {
         arr[ind].onchange = function () {
@@ -231,3 +222,34 @@ function fieldsOnblurForm(fieldsdBlur) {
 
 fieldsOnblurForm(fields);
 
+ // let deploy = document.getElementById('deployment11');
+
+    // deploy.onblur = function () {
+    //     let deploymentsValue = deployments.value;
+    //     if(deploymentsValue == '') {
+    //         let error = document.getElementById('deployment');
+    //         error.innerHTML = 'empty field!';
+    //         error.style.color = 'red';    
+    //     } 
+    // }     
+
+     // comment.onblur = function () {
+    //     let error = document.getElementById('comments');
+    //     error.style.color = 'red';
+    //     if (!(comment.checked)) {    
+    //         error.innerHTML = 'empty field!';   
+    //     } 
+
+    // }
+
+     // if(v.name == rubrics.name) {
+        //     let error = document.getElementById('rubric');
+        //     error.style.color = 'red';
+        //     if(!(v.value)) {
+        //         error.innerHTML = 'empty field!';
+        //     } else if(v.value == 3) {
+        //         error.innerHTML = "Sorry) At the moment the section: бытовая техника is not available !";
+        //     } else{
+        //         error.innerHTML = ""; 
+        //     }      
+        // }
