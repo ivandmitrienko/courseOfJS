@@ -176,16 +176,14 @@ function fieldsOnblurForm(fieldsdBlur) {
             }     
         }
         if(v.name == rubrics.name) {
-            let error = document.createElement('span');
+            let error = document.getElementById('rubric');
             error.style.color = 'red';
-            error.id = 'available';
             if(!(v.value)) {
                 error.innerHTML = 'empty field!';
-                v.after(error);
             } else if(v.value == 3) {
-                document.getElementById("available").innerHTML = "Sorry) At the moment the section: бытовая техника is not available !";
+                error.innerHTML = "Sorry) At the moment the section: бытовая техника is not available !";
             } else{
-                document.getElementById("available").innerHTML = ""; 
+                error.innerHTML = ""; 
             }      
         }
         if(v.name == articles.name) {
@@ -237,12 +235,9 @@ function fieldsOnblurForm(fieldsdBlur) {
     deploy.onblur = function () {
         let deploymentsValue = deployments.value;
         if(deploymentsValue == '') {
-            let divSp = form.querySelector(".errorDiv");
-            let error = document.createElement('span');
+            let error = document.getElementById('deployment');
             error.innerHTML = 'empty field!';
-            error.style.color = 'red';
-            error.id = 'only';
-            divSp.appendChild(error)     
+            error.style.color = 'red';    
         } 
     }     
 
@@ -251,25 +246,13 @@ function fieldsOnblurForm(fieldsdBlur) {
 
     deployments.forEach(function (val, ind, arr) {
         arr[ind].onchange = function () {
-            document.getElementById('only').remove();
-            let divSp = form.querySelector(".errorDiv");
-            let error = document.createElement('span');
+            let error = document.getElementById('deployment');
             error.style.color = 'red';
-            error.id = "only";
-            divSp.appendChild(error);
             if (arr[ind].value == 11) {
              error.innerHTML = 'Only for a fee or VIP!';
             } else {
-                document.getElementById('only').innerHTML = '';
+                error.innerHTML  = '';
             }
-            // if (document.getElementById("only")) {
-            //     let deploymentsSpan = document.getElementById('only');
-            //     deploymentsSpan.remove();
-            // } 
-            
-            
-
-    
         }
     });
  
