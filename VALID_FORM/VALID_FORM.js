@@ -82,12 +82,10 @@ function validateInfoForm(EO) {
 
     console.log(arrFocus);
 
-    // if(arrFocus.length){
-    //     arrFocus[0].focus();
-    //     EO.preventDefault();
-    // } 
-
-    EO.preventDefault();
+    if(arrFocus.length){
+        arrFocus[0].focus();
+        EO.preventDefault();
+    } 
    
 }
 
