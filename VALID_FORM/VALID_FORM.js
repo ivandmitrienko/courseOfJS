@@ -192,7 +192,7 @@ function fieldsOnblurForm(fieldsdBlur) {
             error.style.color = 'red';
             if(!(v.value)){
                 error.innerHTML = 'empty field!';
-            } else if(articlesValue.length < 30) {
+            } else if(articlesValue.length < 80) {
                 error.innerHTML = "Enter a more complete description";
             } else {
                 error.innerHTML = "";
