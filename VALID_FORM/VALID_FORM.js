@@ -91,16 +91,6 @@ function fieldsOnblurForm(fieldsdBlur) {
 
     fieldsdBlur.forEach((v) => {(v).onblur = function(){
 
-        // let empties = document.querySelectorAll('span');
-
-        // for (let j = 0; j < empties.length; j++) {
-        //     if(empties[j].innerHTML) {
-        //         empties[j].remove()
-        //     }
-            
-        // }
-
-        // debugger
         if(v.name == authors.name) { 
             let authorsValue = authors.value;
             let error = document.getElementById('author');
