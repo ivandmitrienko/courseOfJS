@@ -80,8 +80,6 @@ function validateInfoForm(EO) {
         arrFocus.push(document.getElementById('bigText'));
     }
 
-    console.log(arrFocus);
-
     if(arrFocus.length){
         arrFocus[0].focus();
         EO.preventDefault();
