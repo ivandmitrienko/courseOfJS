@@ -38,8 +38,6 @@ function imgDown(EO){
 
     EO.preventDefault();
 
-    window.onmouseup = null;
-
     let currentImgDown = EO.target; 
 
     // запоминаем разницу между положением объекта и нажатием мыши
