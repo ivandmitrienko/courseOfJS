@@ -72,8 +72,6 @@ function imgUp(EO){
 
     EO.preventDefault();
 
-    onmousedown = null;
-
     window.onmousemove = null;
 
 }
