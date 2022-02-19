@@ -56,11 +56,11 @@ function imgDown(EO){
     
         EO.preventDefault();
     
-        let currentImgMove = EO.target;
+        // let currentImgMove = EO.target;
 
-        currentImgMove.style.left = (EO.pageX - currentImgDownX) + 'px';
+        currentImgDown.style.left = (EO.pageX - currentImgDownX) + 'px';
     
-        currentImgMove.style.top = (EO.pageY - currentImgDownY) + 'px';
+        currentImgDown.style.top = (EO.pageY - currentImgDownY) + 'px';
     
     
     }
