@@ -56,7 +56,7 @@ function imgDown(EO){
     
         EO.preventDefault();
     
-        // let currentImgMove = EO.target; // тогда будет распрастроннение на style всех элементов :)
+        // let currentImgMove = EO.target; // тогда будет распрастронение на style всех элементов :)
 
         currentImgDown.style.left = (EO.pageX - currentImgDownX) + 'px';
     
