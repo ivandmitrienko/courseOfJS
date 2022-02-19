@@ -62,8 +62,7 @@ function imgDown(EO){
     
         currentImgDown.style.top = (EO.pageY - currentImgDownY) + 'px';
     
-    
-    }
+    }  
 
 }
 
@@ -73,9 +72,8 @@ function imgUp(EO){
 
     EO.preventDefault();
 
-    window.onmousedown = null;
+    onmousedown = null;
 
     window.onmousemove = null;
-
 
 }
