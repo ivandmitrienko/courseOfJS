@@ -1,5 +1,7 @@
 'use strict'
 
+
+
 document.getElementById('start').onclick = function () {
    
 
@@ -22,29 +24,25 @@ document.getElementById('start').onclick = function () {
     clock.style.backgroundColor = 'yellow',
     clock.style.borderRadius = '100%';
     let clockX = clock.offsetLeft + clock.offsetWidth / 2, // узнаем центр по X
-	clockY = clock.offsetTop + clock.offsetHeight / 2, // узнаем центр по Y
+    clockY = clock.offsetTop + clock.offsetHeight / 2, // узнаем центр по Y
     radiusForDigitalWatch = diameter / 4, // растояние до электронных часов от центра основных часов 
     radius = diameter / 2.5;// расстояние от цетра часов до центра цифр
-   
+    
     let digitalWatch = document.createElement("div"); // создаем DIV (для электронных часов и далее стили)
-    digitalWatch.style.width = diameter / 2.5,
-    digitalWatch.style.height = diameter / 10,
-    digitalWatch.style.position = "absolute",
-    digitalWatch.style.textAlign = "center",
-    digitalWatch.style.lineHeight = diameter / 10,
-    digitalWatch.style.fontSize = diameter / 12,
-    digitalWatch.style.color = "black";
-
+    
     let angleValue = 0, // начальный угол стрелок часов
-	distanceOfDigits = 30, // расстояние(в градусах) между цифрами на часах
-	time = new Date(), //текущее время
-	elemForArrowHours = document.createElement("div"), // создаем DIV(для стрелки часов)
-	elemForArrowMinutes = document.createElement("div"), // создаем DIV(для стрелки минут)
-	elemForArrowSeconds = document.createElement("div"), // создаем DIV(для стрелки секунд)
-	hoursDeg = 30 * (time.getHours() + (1 / 60) * time.getMinutes()), //определяем по времени где должна быть стрелка часов
-	minutesDeg = 6 * (time.getMinutes() + (1 / 60) * time.getSeconds()), //определяем по времени где должна быть стрелка минут
-	secondsDeg = 6 * time.getSeconds() - 6, //определяем по времени где должна быть стрелка секунд
-	hourDigits = 12; //цифры часов (например 1,2,3,4,5,6,7,8,9,10,11,12)
+    distanceOfDigits = 30, // расстояние(в градусах) между цифрами на часах
+    time = new Date(), //текущее время
+    elemForArrowHours = document.createElement("div"), // создаем DIV(для стрелки часов)
+    elemForArrowMinutes = document.createElement("div"), // создаем DIV(для стрелки минут)
+    elemForArrowSeconds = document.createElement("div"), // создаем DIV(для стрелки секунд)
+    hoursDeg = 30 * (time.getHours() + (1 / 60) * time.getMinutes()), //определяем по времени где должна быть стрелка часов
+    minutesDeg = 6 * (time.getMinutes() + (1 / 60) * time.getSeconds()), //определяем по времени где должна быть стрелка минут
+    secondsDeg = 6 * time.getSeconds() - 6, //определяем по времени где должна быть стрелка секунд
+    hourDigits = 12; //цифры часов (например 1,2,3,4,5,6,7,8,9,10,11,12)
+
+
+    
 
     for (let i = 1; i <= hourDigits; i++) {
         let clockChildElem = document.createElement("div"),// создаем DIV(для номеров часов)
@@ -123,7 +121,7 @@ document.getElementById('start').onclick = function () {
     // определяем где будет стоять стрелка минут
     elemForArrowMinutes.style.top = clockY - elemForArrowMinutes.offsetHeight+10 + "px";
     elemForArrowMinutes.style.left = clockX - elemForArrowMinutes.offsetWidth/2 + "px";
-    // определяем где будет стоять стрелка секнд
+    // определяем где будет стоять стрелка секунд
     elemForArrowSeconds.style.top = clockY - elemForArrowSeconds.offsetHeight+10 + "px";
     elemForArrowSeconds.style.left = clockX - elemForArrowSeconds.offsetWidth/2 + "px";
     
@@ -132,7 +130,9 @@ document.getElementById('start').onclick = function () {
     elemForArrowMinutes.style.transformOrigin = "center 110px";
     elemForArrowSeconds.style.transformOrigin = "center 135px";
 
-    // функция для определения положение электронных часов и стрелок для часов, минут, секунд
+    digitalWatch.innerHTML = time.toLocaleTimeString();
+
+ //    функция для определения положение электронных часов и стрелок для часов, минут, секунд
     function arrows() {
         // электронные часы
         let time = new Date(); //текущее время
@@ -145,18 +145,21 @@ document.getElementById('start').onclick = function () {
         elemForArrowMinutes.style.transform = "rotate(" + minutesDeg + "deg)";
         // часовые стрелки
         hoursDeg += 6 * (1/360); //каждую секунду стрелка часа будет двигать на 6*(1/360) градусов
-        elemForArrowHours.style.transform = "rotate(" + hoursDeg + "deg)";
+        elemForArrowHours.style.transform = "rotate(" + hoursDeg + "deg)"; 
     }
     
     window.onload = arrows(); // вызываем функцию arrows на момент загрузки страницы
     window.setInterval (arrows, 1000); // устанавливаем setInterval на 1 секунду и выполняем код каждую секунду чтоб стрелки часов, минут и секунд обновляли положени каждую секунду
-      
     
 }    
 
 
+
     
 	
+
+
+
 
 
     
