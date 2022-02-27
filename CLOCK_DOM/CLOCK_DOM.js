@@ -116,13 +116,13 @@ document.getElementById('start').onclick = function () {
     digitalWatch.style.left = clockX - digitalWatch.offsetWidth/2 + "px";
     digitalWatch.style.top = clockY - radiusForDigitalWatch + "px";
     // определяем где будет стоять стрелка часа
-    elemForArrowHours.style.top = clockY - elemForArrowHours.offsetHeight+10 + "px";
+    elemForArrowHours.style.top = clockY - elemForArrowHours.offsetHeight + "px";
     elemForArrowHours.style.left = clockX - elemForArrowHours.offsetWidth/2 + "px";
     // определяем где будет стоять стрелка минут
-    elemForArrowMinutes.style.top = clockY - elemForArrowMinutes.offsetHeight+10 + "px";
+    elemForArrowMinutes.style.top = clockY - elemForArrowMinutes.offsetHeight + "px";
     elemForArrowMinutes.style.left = clockX - elemForArrowMinutes.offsetWidth/2 + "px";
     // определяем где будет стоять стрелка секунд
-    elemForArrowSeconds.style.top = clockY - elemForArrowSeconds.offsetHeight+10 + "px";
+    elemForArrowSeconds.style.top = clockY - elemForArrowSeconds.offsetHeight + "px";
     elemForArrowSeconds.style.left = clockX - elemForArrowSeconds.offsetWidth/2 + "px";
     
     // определяем точку трансформации стрелок часов, минут, секунд по оси X и Y
