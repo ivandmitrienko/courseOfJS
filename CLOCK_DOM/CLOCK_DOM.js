@@ -126,9 +126,9 @@ document.getElementById('start').onclick = function () {
     elemForArrowSeconds.style.left = clockX - elemForArrowSeconds.offsetWidth/2 + "px";
     
     // определяем точку трансформации стрелок часов, минут, секунд по оси X и Y
-    elemForArrowHours.style.transformOrigin = "100% 100%";
-    elemForArrowMinutes.style.transformOrigin = "70% 100%";
-    elemForArrowSeconds.style.transformOrigin = " 100% 100%";
+    elemForArrowHours.style.transformOrigin = "50% 100%";
+    elemForArrowMinutes.style.transformOrigin = "50% 100%";
+    elemForArrowSeconds.style.transformOrigin = "50% 100%";
 
     digitalWatch.innerHTML = time.toLocaleTimeString();
 
