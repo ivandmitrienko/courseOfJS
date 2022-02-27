@@ -146,10 +146,13 @@ document.getElementById('start').onclick = function () {
         // часовые стрелки
         hoursDeg += 6 * (1/360); //каждую секунду стрелка часа будет двигать на 6*(1/360) градусов
         elemForArrowHours.style.transform = "rotate(" + hoursDeg + "deg)"; 
+        setTimeout(arrows,1000-time.getMilliseconds());
     }
     
-    window.DOMContentLoaded = arrows(); // вызываем функцию arrows на момент загрузки страницы
-    window.setInterval (arrows, 1000); // устанавливаем setInterval на 1 секунду и выполняем код каждую секунду чтоб стрелки часов, минут и секунд обновляли положени каждую секунду
+   
+    arrows();
+    // window.onload = arrows; // вызываем функцию arrows на момент загрузки страницы
+    // window.setInterval (arrows, 1000); // устанавливаем setInterval на 1 секунду и выполняем код каждую секунду чтоб стрелки часов, минут и секунд обновляли положени каждую секунду
     
 }    
 
