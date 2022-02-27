@@ -148,7 +148,7 @@ document.getElementById('start').onclick = function () {
         elemForArrowHours.style.transform = "rotate(" + hoursDeg + "deg)"; 
     }
     
-    window.onload = arrows(); // вызываем функцию arrows на момент загрузки страницы
+    window.DOMContentLoaded = arrows(); // вызываем функцию arrows на момент загрузки страницы
     window.setInterval (arrows, 1000); // устанавливаем setInterval на 1 секунду и выполняем код каждую секунду чтоб стрелки часов, минут и секунд обновляли положени каждую секунду
     
 }    
