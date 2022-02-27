@@ -146,7 +146,7 @@ document.getElementById('start').onclick = function () {
         // часовые стрелки
         hoursDeg += 6 * (1/360); //каждую секунду стрелка часа будет двигать на 6*(1/360) градусов
         elemForArrowHours.style.transform = "rotate(" + hoursDeg + "deg)"; 
-        setTimeout(arrows,1000-time.getMilliseconds());
+        setTimeout(arrows,1020-time.getMilliseconds());
     }
     
    
