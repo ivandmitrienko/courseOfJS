@@ -17,12 +17,11 @@ document.getElementById('start').onclick = function () {
     }, 50);
 
     //строим часы
-    let svg = document.getElementById('wrapper');
-    svg.style.display = 'block',
-    svg.style.width = diameter,
-    svg.style.height = diameter,
-    svg.style.xmlns = 'http://www.w3.org/2000/svg'; //для объявления пространства имен
-    
+    let svgClock = document.getElementById('wrapper');
+    svgClock.style.display = 'block';
+    svgClock.style.width = diameter;
+    svgClock.style.height = diameter;
+   
 //     clock.style.backgroundColor = 'yellow',
 //     clock.style.borderRadius = '100%';
 //     let clockX = clock.offsetLeft + clock.offsetWidth / 2, // узнаем центр по X
@@ -157,8 +156,8 @@ document.getElementById('start').onclick = function () {
 //     // window.onload = arrows; // вызываем функцию arrows на момент загрузки страницы
 //     // window.setInterval (arrows, 1000); // устанавливаем setInterval на 1 секунду и выполняем код каждую секунду чтоб стрелки часов, минут и секунд обновляли положени каждую секунду
     
-}    
-
+   
+}  
 
 
     
