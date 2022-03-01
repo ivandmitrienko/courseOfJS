@@ -55,20 +55,18 @@ racquetH = {
 	racquet1Speed: 0,
 	// вторая(правая) ракетка
 	racquet2PosX: wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - racquet2.getBoundingClientRect().width,
-	racquet2PosY: wrap.getBoundingClientRect().top + wrap.getBoundingClientRect().height/2 - racquet1.getBoundingClientRect().height/2,
+	racquet2PosY: wrap.getBoundingClientRect().top + wrap.getBoundingClientRect().height/2 - racquet2.getBoundingClientRect().height/2,
 	racquet2Speed: 0,
 	width: 10,
 	height: 120,
 
 	update: function() {
-				var racquet1Obj = racquet1,
-					racquet2Obj = racquet2;
-
-					racquet1Obj.style.left = this.racquet1PosX + "px";
-					racquet1Obj.style.top = this.racquet1PosY + "px";
-
-					racquet2Obj.style.left = this.racquet2PosX + "px";
-					racquet2Obj.style.top = this.racquet2PosY + "px";					
+			   let racquet1Obj = racquet1,
+			   	racquet2Obj = racquet2;
+			   	racquet1Obj.style.left = this.racquet1PosX + "px";
+			   	racquet1Obj.style.top = this.racquet1PosY + "px";
+			   	racquet2Obj.style.left = this.racquet2PosX + "px";
+			   	racquet2Obj.style.top = this.racquet2PosY + "px";					
 			}
 };
 
@@ -105,7 +103,7 @@ areaH = {
 
 ballH.update();
 
-// 1. Надо в обработчике keydown/keyup вызывать preventDefault.
+// Надо в обработчике keydown/keyup вызывать preventDefault.
 window.addEventListener("keydown", function(EO) {
 	EO = EO || window.event;
     EO.preventDefault();
@@ -148,7 +146,7 @@ window.addEventListener("keyup", function(EO) {
    	}
 });
 
-//333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+
 //ф-ция для того чтоб на табло выводили очки(score1 и score2) игроков
 function scoreBoardInnerHTML() {
 	scoreBoard.innerHTML = score1 + ":" + score2;
@@ -160,7 +158,7 @@ function start() {
 	ballH.speedY = 3;//2
 }
 
-//ф-ция для того чтоб мяч двигался, не выходило из рамки и т.д.
+// ф-ция для того чтоб мяч двигался, не выходило из рамки и т.д.
 function tick() {
 	// работаем с ракетками-----------------------------------------------------------------------------------
 	racquetH.update();
