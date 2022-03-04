@@ -39,7 +39,6 @@ document.getElementById('start').onclick = function () {
     
     let angleValue = 0, // начальный угол стрелок часов
     distanceOfDigits = 30, // расстояние(в градусах) между цифрами на часах
-    time = new Date(), //текущее время
     elemForArrowHours, // стрелка часов
     elemForArrowHoursHeight = diameter/6,
 	elemForArrowHoursWidth = diameter/30,
@@ -49,10 +48,11 @@ document.getElementById('start').onclick = function () {
     elemForArrowSeconds , // стрелка секунд
     elemForArrowSecondsHeight = diameter/3,
 	elemForArrowSecondsWidth = diameter/60,
+    // time = new Date,
     // hoursDeg = 30 * (time.getHours() + (1 / 60) * time.getMinutes()), //определяем по времени где должна быть стрелка часов
-    hoursDeg = (time.getHours()%12)/12 * 360 + (360/12 * (time.getMinutes()/60)), //определяем по времени где должна быть стрелка часов
-    minutesDeg = 6 * (time.getMinutes() + (1 / 60) * time.getSeconds()), //определяем по времени где должна быть стрелка минут
-    secondsDeg = 6 * time.getSeconds() - 6, //определяем по времени где должна быть стрелка секунд
+    // hoursDeg = (time.getHours()%12)/12 * 360 + (360/12 * (time.getMinutes()/60)), //определяем по времени где должна быть стрелка часов
+    // minutesDeg = 6 * (time.getMinutes() + (1 / 60) * time.getSeconds()), //определяем по времени где должна быть стрелка минут
+    // secondsDeg = 6 * time.getSeconds() - 6, //определяем по времени где должна быть стрелка секунд
     hourDigits = 12; //цифры часов (например 1,2,3,4,5,6,7,8,9,10,11,12)
 
 
@@ -148,15 +148,13 @@ document.getElementById('start').onclick = function () {
         let time = new Date(); //текущее время
         DigitalWatchText.innerHTML = time.toLocaleTimeString();
         // секундные стрелки
-        secondsDeg += 6; //каждую секунду стрелка секунда будет двигать на 6 градусов
-        elemForArrowSeconds.style.transform = "rotate(" + secondsDeg + "deg)";
+        elemForArrowSeconds.style.transform = "rotate(" + 6 * time.getSeconds() + "deg)";
         // минутные стрелки
-        minutesDeg += 6 * (1/60); //каждую секунду стрелка минута будет двигать на 6*(1/60) градусов
-        elemForArrowMinutes.style.transform = "rotate(" + minutesDeg + "deg)";
+        elemForArrowMinutes.style.transform = "rotate(" + 6 * (time.getMinutes() + (1 / 60) * time.getSeconds()) + "deg)";
         // часовые стрелки
-        hoursDeg += 6 * (1/360); //каждую секунду стрелка часа будет двигать на 6*(1/360) градусов
-        elemForArrowHours.style.transform = "rotate(" + hoursDeg + "deg)"; 
+        elemForArrowHours.style.transform = "rotate(" + (time.getHours()%12)/12 * 360 + (360/12 * (time.getMinutes()/60)) + "deg)"; 
         setTimeout(arrows,1020-time.getMilliseconds());
+        console.log(DigitalWatchText.innerHTML);
     }
     
    
