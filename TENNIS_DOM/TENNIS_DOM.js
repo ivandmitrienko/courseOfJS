@@ -18,6 +18,7 @@ let wrap = document.getElementById('wrapper'),
 	areaH, //создаём переменную areaH для дальнейшей работы с мячиком
 	// работаем с таймером------------------------------------------------------------------------------------
 	// settimeout, //создаём переменную settimeout для дальнейшей работы с таймером
+	controlGame = 1, //для контроля состаяния игры
 
 	// работаем с сообщением----------------------------------------------------------------------------------
 	messageGoal = document.createElement("div"), //сoздаём div для текста которая будет отображаться когда будет гол
@@ -166,11 +167,16 @@ function scoreBoardInnerHTML() {
 
 //ф-ция для того чтоб запустить игру
 function start() {
-	messageGoal.innerHTML = "";
-	ballH.speedX = 8;//4
-	ballH.speedY = 3;//2
-	ballH.posX = wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width/2 - ball.getBoundingClientRect().width/2;
-	ballH.posY = wrap.getBoundingClientRect().top + wrap.getBoundingClientRect().height/2 - ball.getBoundingClientRect().height/2;
+	if(controlGame) {
+		messageGoal.innerHTML = "";
+	    ballH.speedX = 8;//4
+	    ballH.speedY = 3;//2
+	    ballH.posX = wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width/2 - ball.getBoundingClientRect().width/2;
+	    ballH.posY = wrap.getBoundingClientRect().top + wrap.getBoundingClientRect().height/2 - ball.getBoundingClientRect().height/2;
+		controlGame = 0;
+
+	}
+	
   
 }
  // работаем с таймером----------------------------------------------------------------------------------------
@@ -213,6 +219,8 @@ function tick() {
 		messageGoal.innerHTML = messageGoalText;
 
 		ballH.posX = wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1;
+
+		controlGame = 1;
 		
 		// settimeout = window.setTimeout(function () {
 		// 	messageGoal.innerHTML = "";
@@ -237,6 +245,8 @@ function tick() {
 		messageGoal.innerHTML = messageGoalText;
 
 		ballH.posX = wrap.getBoundingClientRect().left + 1;
+
+		controlGame = 1;
 
 		// settimeout = window.setTimeout(function () {
 		// 	messageGoal.innerHTML = "";
