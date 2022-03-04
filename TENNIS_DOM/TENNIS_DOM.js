@@ -104,27 +104,33 @@ window.addEventListener("keydown", function(EO) {
 	EO = EO || window.event;
     EO.preventDefault();
 
-	if(EO.keyCode === 17 || EO.keyCode === 16 && ballH.posX === wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1 || ballH.posX === wrap.getBoundingClientRect().left + 1) {
+	if(EO.keyCode === 17 || EO.keyCode === 16 && ballH.posX === wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1 
+	|| ballH.posX === wrap.getBoundingClientRect().left + 1) {
 		racquetH.racquet1Speed = 0;
 	}
 	
-	if(EO.keyCode === 40 || EO.keyCode === 38 && ballH.posX === wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1 || ballH.posX === wrap.getBoundingClientRect().left + 1) {
+	if(EO.keyCode === 40 || EO.keyCode === 38 && ballH.posX === wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1 
+	|| ballH.posX === wrap.getBoundingClientRect().left + 1) {
 		racquetH.racquet1Speed = 0;
 	}  
 
-    if (EO.keyCode === 17 && !(ballH.posX === wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1 || ballH.posX === wrap.getBoundingClientRect().left + 1)) {
+    if (EO.keyCode === 17 && !(ballH.posX === wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1 
+	|| ballH.posX === wrap.getBoundingClientRect().left + 1)) {
    		racquetH.racquet1Speed = 5;
    	}
 
-   	if (EO.keyCode === 16 && !(ballH.posX === wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1 || ballH.posX === wrap.getBoundingClientRect().left + 1)) {
+   	if (EO.keyCode === 16 && !(ballH.posX === wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1 
+	   || ballH.posX === wrap.getBoundingClientRect().left + 1)) {
    		racquetH.racquet1Speed = -5;
    	}
 
-   	if (EO.keyCode === 40 && !(ballH.posX === wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1 || ballH.posX === wrap.getBoundingClientRect().left + 1)) {
+   	if (EO.keyCode === 40 && !(ballH.posX === wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1 
+	   || ballH.posX === wrap.getBoundingClientRect().left + 1)) {
    		racquetH.racquet2Speed = 5;
    	}
 
-   	if (EO.keyCode === 38 && !(ballH.posX === wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1 || ballH.posX === wrap.getBoundingClientRect().left + 1)) {
+   	if (EO.keyCode === 38 && !(ballH.posX === wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1 
+	   || ballH.posX === wrap.getBoundingClientRect().left + 1)) {
    		racquetH.racquet2Speed = -5;
    	}
 	
