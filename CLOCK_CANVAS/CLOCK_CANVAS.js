@@ -20,9 +20,9 @@ document.getElementById('start').onclick = function () {
     canvas.setAttribute('height', diameter);
     let canvasX = canvas.offsetWidth/2,
     canvasY= canvas.offsetHeight/2,
-    radius = diameter/2.5, // радиус (растояние)
+    radius = diameter/2.5, // радиус (растояние до центра цифр)
 	angleValue = 0, // угол
-	distanceOfDigits = diameter/10, // расстояние(в градусах) между цифрами на часах
+	distanceOfDigits = 30, // расстояние(в градусах) между цифрами на часах
 	// для электронных часов
 	digitalWatch,
 	digitalWatchText,
@@ -48,7 +48,34 @@ document.getElementById('start').onclick = function () {
 
     let context = canvas.getContext('2d');
     context.fillStyle='#FCCA66';
-    context.fillRect(0,0,diameter,diameter);
+	context.beginPath();
+	context.arc(canvasX,canvasY, diameter/2, 0, Math.PI*2, false);
+	context.fill();
+
+	for (var i = 1; i <= hourDigits; i++) {
+		var smallCircleCX,
+			smallCircleCY,
+			smallCircleRadius = radius/6.5,
+			smallCircleColor = "#48B382",
+			angle;
+
+		angleValue += distanceOfDigits;
+		angle = angleValue / 180 * Math.PI;
+
+		smallCircleCX = Math.round(canvasX + radius * Math.sin(angle) );
+		smallCircleCY = Math.round(canvasY - radius * Math.cos(angle) );
+
+		context.beginPath();
+		context.fillStyle = smallCircleColor;
+		context.arc(smallCircleCX,smallCircleCY,smallCircleRadius,0,Math.PI*2, false);
+		context.fill();
+
+		context.fillStyle ='black';
+		context.font ="normal normal 20px 'Times New Roman'";
+		context.textAlign='center';
+		context.textBaseline='middle';
+		context.fillText(i,smallCircleCX, smallCircleCY);
+	}
 
 
 }
