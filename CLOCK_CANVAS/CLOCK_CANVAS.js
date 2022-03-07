@@ -42,41 +42,40 @@ document.getElementById('start').onclick = function () {
 	secondsDeg, //переменная для дальнейшего определение по времени где должна быть стрелка секунд
 	hourDigits = 12; //цифры часов (например 1,2,3,4,5,6,7,8,9,10,11,12)
 
-	// for big clock
-
-    let context = canvas.getContext('2d');
-    context.fillStyle='#FCCA66';
-	context.beginPath();
-	context.arc(canvasX,canvasY, diameter/2, 0, Math.PI*2, false);
-	context.fill();
-
-	for (var i = 1; i <= hourDigits; i++) {
-		var smallCircleCX,
-			smallCircleCY,
-			smallCircleRadius = radius/6.5,
-			smallCircleColor = "#48B382",
-			angle;
-
-		angleValue += distanceOfDigits;
-		angle = angleValue / 180 * Math.PI;
-
-		smallCircleCX = Math.round(canvasX + radius * Math.sin(angle) );
-		smallCircleCY = Math.round(canvasY - radius * Math.cos(angle) );
-
-		context.beginPath();
-		context.fillStyle = smallCircleColor;
-		context.arc(smallCircleCX,smallCircleCY,smallCircleRadius,0,Math.PI*2, false);
-		context.fill();
-
-		context.fillStyle ='black';
-		context.font ="normal bold 20px 'Times New Roman'";
-		context.textAlign='center';
-		context.textBaseline='middle';
-		context.fillText(i,smallCircleCX, smallCircleCY);
-	}
-
-	
 	function arrows() {
+
+		// for big clock
+
+		let context = canvas.getContext('2d');
+        context.fillStyle='#FCCA66';
+	    context.beginPath();
+	    context.arc(canvasX,canvasY, diameter/2, 0, Math.PI*2, false);
+	    context.fill();
+
+	    for (let i = 1; i <= hourDigits; i++) {
+	    	let smallCircleCX,
+	    		smallCircleCY,
+	    		smallCircleRadius = radius/6.5,
+	    		smallCircleColor = "#48B382",
+	    		angle;
+    
+	    	angleValue += distanceOfDigits;
+	    	angle = angleValue / 180 * Math.PI;
+    
+	    	smallCircleCX = Math.round(canvasX + radius * Math.sin(angle) );
+	    	smallCircleCY = Math.round(canvasY - radius * Math.cos(angle) );
+    
+	    	context.beginPath();
+	    	context.fillStyle = smallCircleColor;
+	    	context.arc(smallCircleCX,smallCircleCY,smallCircleRadius,0,Math.PI*2, false);
+	    	context.fill();
+    
+	    	context.fillStyle ='black';
+	    	context.font ="normal bold 20px 'Times New Roman'";
+	    	context.textAlign='center';
+	    	context.textBaseline='middle';
+	    	context.fillText(i,smallCircleCX, smallCircleCY);
+	    }
 
 		let time = new Date();
 		console.log(time.toLocaleTimeString());
