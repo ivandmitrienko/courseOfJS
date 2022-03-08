@@ -105,37 +105,34 @@ window.addEventListener("keydown", function(EO) {
 	EO = EO || window.event;
     EO.preventDefault();
 
-	if(EO.keyCode === 17 || EO.keyCode === 16 && ballH.posX === wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1 
-	|| ballH.posX === wrap.getBoundingClientRect().left + 1) {
+	if(controlGame>0){
+		return;
+	}  
+
+	if(EO.keyCode === 17) {
 		racquetH.racquet1Speed = 0;
 	}
 	
-	if(EO.keyCode === 40 || EO.keyCode === 38 && ballH.posX === wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1 
-	|| ballH.posX === wrap.getBoundingClientRect().left + 1) {
+	if(EO.keyCode === 40) {
 		racquetH.racquet1Speed = 0;
 	}  
 
-    if (EO.keyCode === 17 && !(ballH.posX === wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1 
-	|| ballH.posX === wrap.getBoundingClientRect().left + 1)) {
+    if (EO.keyCode === 17) {
    		racquetH.racquet1Speed = 5;
    	}
 
-   	if (EO.keyCode === 16 && !(ballH.posX === wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1 
-	   || ballH.posX === wrap.getBoundingClientRect().left + 1)) {
+   	if (EO.keyCode === 16) {
    		racquetH.racquet1Speed = -5;
    	}
 
-   	if (EO.keyCode === 40 && !(ballH.posX === wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1 
-	   || ballH.posX === wrap.getBoundingClientRect().left + 1)) {
+   	if (EO.keyCode === 40) {
    		racquetH.racquet2Speed = 5;
    	}
 
-   	if (EO.keyCode === 38 && !(ballH.posX === wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1 
-	   || ballH.posX === wrap.getBoundingClientRect().left + 1)) {
+   	if (EO.keyCode === 38 ) {
    		racquetH.racquet2Speed = -5;
    	}
-	
-	
+		
 });
 
 window.addEventListener("keyup", function(EO) {
@@ -168,13 +165,12 @@ function scoreBoardInnerHTML() {
 //ф-ция для того чтоб запустить игру
 function start() {
 	if(controlGame) {
+		controlGame = 0;
 		messageGoal.innerHTML = "";
 	    ballH.speedX = 8;//4
 	    ballH.speedY = 3;//2
 	    ballH.posX = wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width/2 - ball.getBoundingClientRect().width/2;
 	    ballH.posY = wrap.getBoundingClientRect().top + wrap.getBoundingClientRect().height/2 - ball.getBoundingClientRect().height/2;
-		controlGame = 0;
-
 	}
 	
   
