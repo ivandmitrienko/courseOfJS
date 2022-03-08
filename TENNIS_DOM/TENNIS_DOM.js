@@ -216,14 +216,7 @@ function tick() {
 
 		ballH.posX = wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1;
 
-		controlGame = 1;
-		
-		// settimeout = window.setTimeout(function () {
-		// 	messageGoal.innerHTML = "";
-		// 	ballH.posX = wrap.getBoundingClientRect().left + racquetH.width;
-		// 	ballH.posY = racquetH.racquet1PosY + racquetH.height/2;
-		// 	start();
-		// }, 2000);	
+		controlGame = 1;	
 
 	} else if (!(ballH.posY + ballH.height < racquetH.racquet2PosY || ballH.posY > (racquetH.racquet2PosY + racquetH.height)) && ballH.posX+ballH.width > (racquetH.racquet2PosX)) {
 		ballH.speedX =- ballH.speedX;
@@ -243,13 +236,6 @@ function tick() {
 		ballH.posX = wrap.getBoundingClientRect().left + 1;
 
 		controlGame = 1;
-
-		// settimeout = window.setTimeout(function () {
-		// 	messageGoal.innerHTML = "";
-		// 	ballH.posX = wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - racquetH.width;
-		// 	ballH.posY = racquetH.racquet2PosY + racquetH.height/2;
-		// 	start();
-		// }, 2000);
 	
 	} else if (!(ballH.posY + ballH.height < racquetH.racquet1PosY || ballH.posY > (racquetH.racquet1PosY + racquetH.height)) && ballH.posX < (racquetH.width + racquetH.racquet1PosX)) {
 		ballH.speedX =- ballH.speedX;
