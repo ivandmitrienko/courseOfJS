@@ -76,7 +76,7 @@
 
     let dishSGetInfo = document.getElementById("get-dish");
 
-    drinkGetInfo.onclick = function(){
+    dishSGetInfo.onclick = function() {
     	
         let dishNameGet = prompt("Напишите название блюда");
 
