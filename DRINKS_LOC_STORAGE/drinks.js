@@ -109,7 +109,7 @@
 
     let dishNamesCoctails = document.getElementById("names-dishes");
 
-    ddishNamesCoctails.onclick = function(){
+    dishNamesCoctails.onclick = function(){
         dishText.innerHTML = dishStorage.getKeys().join(", ");
     }
 

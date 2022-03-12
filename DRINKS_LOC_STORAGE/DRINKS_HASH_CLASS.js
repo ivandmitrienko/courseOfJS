@@ -2,7 +2,7 @@
 
     "use strict";
 
-    class HashStorageFunc {
+    class LocStorageClass {
          
      constructor() {
 
@@ -34,6 +34,8 @@
         }
     }
 
-let drinkStorage = new HashStorageFunc();
+let drinkStorage = new LocStorageClass();
+
+let dishStorage = new LocStorageClass();
 
 // })();
