@@ -26,8 +26,8 @@ let wrap = document.getElementById('wrapper'),
     messageGoalText = "Гол!";
 
 // работаем с сообщением----------------------------------------------------------------------------------
-messageGoal.classList.add("messageGoal");
-messageGoal = wrap.appendChild(messageGoal);
+// messageGoal.classList.add("messageGoal");
+// messageGoal = wrap.appendChild(messageGoal);
 
 // работаем с кнопкой старт-----------------------------------------------------------------------------------
 buttonStart.type = "button"; //задаём тип(кнопка)
@@ -41,32 +41,27 @@ scoreBoard.classList.add('scoreBoard');//устанавливаем готовы
 scoreBoardInnerHTML(); //вызываем функцию чтоб на табло вывести очки(score1 и score2) игроков
 scoreBoard = document.body.insertBefore(scoreBoard, document.body.children[1]); //созданный табло делаем дочерным элементом body
 // работаем с ракетками---------------------------------------------------------------------------------------
-racquet1.classList.add('racquet1');//устанавливаем готовый CSS класс
-racquet2.classList.add('racquet2');//устанавливаем готовый CSS класс
-racquet1 = wrap.appendChild(racquet1); //созданную первую(левую) ракетку делаем дочерным элементом wrap
-racquet2 = wrap.appendChild(racquet2); //созданную вторую(правую) ракетку делаем дочерным элементом wrap
-
 racquetH = {
 	// первая(левая) ракетка
-	racquet1PosX: wrap.getBoundingClientRect().left,
-	racquet1PosY: wrap.getBoundingClientRect().top + wrap.getBoundingClientRect().height/2 - racquet1.getBoundingClientRect().height/2,
+	racquet1PosX: 0.5,
+	racquet1PosY: canvaS.getBoundingClientRect().height/2 - 60,
 	racquet1Speed: 0,
 	// вторая(правая) ракетка
-	racquet2PosX: wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - racquet2.getBoundingClientRect().width,
-	racquet2PosY: wrap.getBoundingClientRect().top + wrap.getBoundingClientRect().height/2 - racquet2.getBoundingClientRect().height/2,
+	racquet2PosX: canvaS.getBoundingClientRect().width - 10,
+	racquet2PosY: canvaS.getBoundingClientRect().height/2 - 60,
 	racquet2Speed: 0,
 	width: 10,
 	height: 120,
 
 	update: function() {
-			   let racquet1Obj = racquet1,
-			   	racquet2Obj = racquet2;
-			   	racquet1Obj.style.left = this.racquet1PosX + "px";
-			   	racquet1Obj.style.top = this.racquet1PosY + "px";
-			   	racquet2Obj.style.left = this.racquet2PosX + "px";
-			   	racquet2Obj.style.top = this.racquet2PosY + "px";					
+					context.fillStyle = "#09AA57";
+					context.fillRect(this.racquet1PosX, this.racquet1PosY, this.width, this.height);
+					
+					context.fillStyle = "#191497";
+					context.fillRect(this.racquet2PosX , this.racquet2PosY, this.width, this.height);
 			}
 };
+
 
 racquetAreaH = {
 	width: 10,
@@ -76,21 +71,21 @@ racquetAreaH = {
 racquetH.update();
 
 // работаем с мячиком-----------------------------------------------------------------------------------------
-ball.classList.add('ball'); //устанавливаем готовый CSS класс
-ball = wrap.appendChild(ball); //созданный мячик делаем дочерным элементом wrap
 
 ballH = {
-	posX: wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width/2 - ball.getBoundingClientRect().width/2,
-	posY: wrap.getBoundingClientRect().top + wrap.getBoundingClientRect().height/2 - ball.getBoundingClientRect().height/2,
-	speedX: 0, //ballH.speedX = 4
-	speedY: 0, //ballH.speedY = 2
+	posX: canvaS.getBoundingClientRect().width/2,
+	posY: canvaS.getBoundingClientRect().height/2 - 15,
+	speedX: 0,
+	speedY: 0,
 	width: 30,
 	height: 30,
+	radius: 15,
 
 	update: function() {
-				var ballObj = ball;
-				ballObj.style.left = this.posX + "px";
-				ballObj.style.top = this.posY + "px";
+				context.beginPath();
+				context.fillStyle = "#F02137";
+				context.arc(this.posX, this.posY, this.radius, 0, Math.PI*2, false);
+				context.fill();
 			}
 };
 
