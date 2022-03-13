@@ -11,13 +11,8 @@
         this.object = lsKeyName;
 
         if (localStorage.getItem(this.object)) {
-            if (this.object == "drink") {
-                this.privateHash = JSON.parse(localStorage.drink);
-            }
-            if (this.object == "dish") {
-                this.privateHash = JSON.parse(localStorage.dish);
-            }
-        }  
+            this.privateHash = JSON.parse(localStorage.getItem(this.object));
+        }   
      } 
      
  
