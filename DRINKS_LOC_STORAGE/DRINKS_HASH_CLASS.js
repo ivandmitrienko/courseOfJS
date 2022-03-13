@@ -4,9 +4,23 @@
 
     class LocStorageClass {
          
-     constructor() {
+     constructor(lsKeyName) {
 
         this.privateHash = {};
+
+        localStorage.setItem(lsKeyName, JSON.stringify(this.privateHash));
+
+        if (localStorage.getItem(lsKeyName)) {
+            if (lsKeyName == "dish") {
+                let myObject = JSON.parse(localStorage.lsDish);
+                this.privateHash = myObject;
+            }
+            if (lsKeyName == "drink") {
+                myObject = JSON.parse(localStorage.lsDrink);
+                this.privateHash = myObject;
+            }
+        }    
+
      } 
      
  
@@ -34,8 +48,8 @@
         }
     }
 
-let drinkStorage = new LocStorageClass();
+let drinkStorage = new LocStorageClass("drink");
 
-let dishStorage = new LocStorageClass();
+let dishStorage = new LocStorageClass("dish");
 
 // })();
