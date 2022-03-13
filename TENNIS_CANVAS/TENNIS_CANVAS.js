@@ -144,7 +144,7 @@ function scoreBoardInnerHTML() {
 }
 
 function drawCanvas() {
-	var width = 700,
+	let width = 700,
 		height = 400,
 		canvasX = 0.5,
 		canvasY = 0.5;
@@ -162,6 +162,8 @@ function start() {
 		messageGoal.innerHTML = "";
 	    ballH.speedX = 8;//4
 	    ballH.speedY = 3;//2
+		ballH.posX = wrap.getBoundingClientRect().width/2;
+	    ballH.posY = wrap.getBoundingClientRect().height/2 - 15;
 	}
 	
   
@@ -213,7 +215,7 @@ function tick() {
 
 	} else if (!(ballH.posY + ballH.height < racquetH.racquet2PosY+16 || ballH.posY > (racquetH.racquet2PosY+16 + racquetH.height)) && ballH.posX+ballH.width > (racquetH.racquet2PosX+16)) {
 		ballH.speedX =- ballH.speedX;
-        ballH.posX = canvaS.getBoundingClientRect().left + wrap.getBoundingClientRect().width - racquetH.width - ballH.width + 7;
+        ballH.posX = wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - racquetH.width - ballH.width + 7;
 	}
 
     // вылетел ли мяч левее стены
@@ -230,14 +232,14 @@ function tick() {
 
 	} else if (!(ballH.posY + ballH.height < racquetH.racquet1PosY + 16 || ballH.posY > (racquetH.racquet1PosY + 16 + racquetH.height)) && ballH.posX < (racquetH.width + racquetH.racquet1PosX + 16)) {
 		ballH.speedX =- ballH.speedX;
-        ballH.posX = canvaS.getBoundingClientRect().left + racquetH.width + 7;
+        ballH.posX = wrap.getBoundingClientRect().left + racquetH.width + 7;
 	}
 	
     ballH.posY -= ballH.speedY;
     // вылетел ли мяч ниже пола?
-    if (ballH.posY + ballH.height > (canvaS.getBoundingClientRect().height + 16)) {
+    if (ballH.posY + ballH.height > (wrap.getBoundingClientRect().height + 16)) {
         ballH.speedY =- ballH.speedY;
-        ballH.posY = canvaS.getBoundingClientRect().height - ballH.height + 16;
+        ballH.posY = wrap.getBoundingClientRect().height - ballH.height + 16;
     }
 
     // вылетел ли мяч выше потолка?
