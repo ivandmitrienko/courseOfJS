@@ -14,7 +14,8 @@
 
 		drinkDescribe.recipe = prompt("Напишите рецепт напитка - " + drinkNameAdd);
 
-	    drinkStorage.addValue(drinkNameAdd, drinkDescribe);  
+	    drinkStorage.addValue(drinkNameAdd, drinkDescribe);
+        
     }
 
     let drinkGetInfo = document.getElementById("get-coctail");
@@ -71,7 +72,8 @@
 
 		dishDescribe.recipe = prompt("Напишите рецепт блюда - " + dishNameAdd);
 
-	    dishStorage.addValue(dishNameAdd, dishDescribe);  
+	    dishStorage.addValue(dishNameAdd, dishDescribe); 
+        
     }
 
     let dishSGetInfo = document.getElementById("get-dish");

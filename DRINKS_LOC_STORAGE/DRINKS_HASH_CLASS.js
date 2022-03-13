@@ -7,25 +7,23 @@
      constructor(lsKeyName) {
 
         this.privateHash = {};
+        
+        this.object = lsKeyName;
 
-        localStorage.setItem(lsKeyName, JSON.stringify(this.privateHash));
-
-        if (localStorage.getItem(lsKeyName)) {
-            if (lsKeyName == "dish") {
-                let myObject = JSON.parse(localStorage.lsDish);
-                this.privateHash = myObject;
+        if (localStorage.getItem(this.object)) {
+            if (this.object == "drink") {
+                this.privateHash = JSON.parse(localStorage.drink);
             }
-            if (lsKeyName == "drink") {
-                myObject = JSON.parse(localStorage.lsDrink);
-                this.privateHash = myObject;
+            if (this.object == "dish") {
+                this.privateHash = JSON.parse(localStorage.dish);
             }
-        }    
-
+        }  
      } 
      
  
      addValue(key, value) {
          this.privateHash[key] = value;
+          localStorage.setItem(this.object, JSON.stringify(this.privateHash))
         }
  
      getValue(key) {
@@ -37,6 +35,7 @@
  
      deleteValue(key) {
          if(key in this.privateHash) {delete this.privateHash[key];
+            localStorage.setItem(this.object, JSON.stringify(this.privateHash));
          return true;
          } else { 
          return false;
@@ -46,7 +45,9 @@
      getKeys() {
          return Object.keys(this.privateHash);
         }
+
     }
+   
 
 let drinkStorage = new LocStorageClass("drink");
 
