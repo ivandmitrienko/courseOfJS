@@ -44,11 +44,11 @@ scoreBoard = document.body.insertBefore(scoreBoard, document.body.children[1]); 
 racquetH = {
 	// первая(левая) ракетка
 	racquet1PosX: 0.5,
-	racquet1PosY: canvaS.getBoundingClientRect().height/2 - 60,
+	racquet1PosY: wrap.getBoundingClientRect().height/2 - 60,
 	racquet1Speed: 0,
 	// вторая(правая) ракетка
-	racquet2PosX: canvaS.getBoundingClientRect().width - 10,
-	racquet2PosY: canvaS.getBoundingClientRect().height/2 - 60,
+	racquet2PosX: wrap.getBoundingClientRect().width - 10,
+	racquet2PosY: wrap.getBoundingClientRect().height/2 - 60,
 	racquet2Speed: 0,
 	width: 10,
 	height: 120,
@@ -62,19 +62,11 @@ racquetH = {
 			}
 };
 
-
-racquetAreaH = {
-	width: 10,
-	height: wrap.getBoundingClientRect().height
-};
-
-racquetH.update();
-
 // работаем с мячиком-----------------------------------------------------------------------------------------
 
 ballH = {
-	posX: canvaS.getBoundingClientRect().width/2,
-	posY: canvaS.getBoundingClientRect().height/2 - 15,
+	posX: wrap.getBoundingClientRect().width/2,
+	posY: wrap.getBoundingClientRect().height/2 - 15,
 	speedX: 0,
 	speedY: 0,
 	width: 30,
@@ -88,13 +80,6 @@ ballH = {
 				context.fill();
 			}
 };
-
-areaH = {
-	width: wrap.getBoundingClientRect().width,
-	height: wrap.getBoundingClientRect().height
-};
-
-ballH.update();
 
 // Надо в обработчике keydown/keyup вызывать preventDefault.
 window.addEventListener("keydown", function(EO) {
@@ -158,6 +143,18 @@ function scoreBoardInnerHTML() {
 	scoreBoard.innerHTML = score1 + ":" + score2;
 }
 
+function drawCanvas() {
+	var width = 700,
+		height = 400,
+		canvasX = 0.5,
+		canvasY = 0.5;
+
+	context.strokeStyle = "black";
+	context.fillStyle = "#F0EE7E";
+	context.fillRect(canvasX, canvasY, width, height);
+	context.strokeRect(canvasX, canvasY, width-1, height-1);
+}
+
 //ф-ция для того чтоб запустить игру
 function start() {
 	if(controlGame) {
@@ -165,8 +162,6 @@ function start() {
 		messageGoal.innerHTML = "";
 	    ballH.speedX = 8;//4
 	    ballH.speedY = 3;//2
-	    ballH.posX = wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width/2 - ball.getBoundingClientRect().width/2;
-	    ballH.posY = wrap.getBoundingClientRect().top + wrap.getBoundingClientRect().height/2 - ball.getBoundingClientRect().height/2;
 	}
 	
   
@@ -176,83 +171,80 @@ function start() {
 // ф-ция для того чтоб мяч двигался, не выходило из рамки и т.д.
 function tick() {
 	// работаем с ракетками-----------------------------------------------------------------------------------
+	drawCanvas();
+	ballH.update();
+	
+	// работаем с ракетками-----------------------------------------------------------------------------------
 	racquetH.update();
 	racquetH.racquet1PosY += racquetH.racquet1Speed;
 	// вылетела ли ракетка ниже пола?
-	if (racquetH.racquet1PosY + racquetH.height > (wrap.getBoundingClientRect().top + racquetAreaH.height)) {
-		racquetH.racquet1PosY = wrap.getBoundingClientRect().top + racquetAreaH.height - racquetH.height;
+	if (racquetH.racquet1PosY + racquetH.height > (wrap.getBoundingClientRect().height)) {
+		racquetH.racquet1PosY = wrap.getBoundingClientRect().height - racquetH.height;
 	}
 
    	// вылетела ли ракетка выше потолка?
-	if (racquetH.racquet1PosY < wrap.getBoundingClientRect().top) {
-		racquetH.racquet1PosY = wrap.getBoundingClientRect().top;
+	if (racquetH.racquet1PosY < 0.5) {
+		racquetH.racquet1PosY = 0.5;
 	}
 
    	racquetH.racquet2PosY += racquetH.racquet2Speed;
    	// вылетела ли ракетка ниже пола?
-	if (racquetH.racquet2PosY + racquetH.height > (wrap.getBoundingClientRect().top + racquetAreaH.height)) {
-		racquetH.racquet2PosY = wrap.getBoundingClientRect().top + racquetAreaH.height - racquetH.height;
+	if (racquetH.racquet2PosY + racquetH.height > (wrap.getBoundingClientRect().height)) {
+		racquetH.racquet2PosY = wrap.getBoundingClientRect().height - racquetH.height;
 	}
 
    	// вылетела ли ракетка выше потолка?
-	if (racquetH.racquet2PosY < wrap.getBoundingClientRect().top) {
-		racquetH.racquet2PosY = wrap.getBoundingClientRect().top;
+	if (racquetH.racquet2PosY < 0.5) {
+		racquetH.racquet2PosY = 0.5;
 	}
 
 	// работаем с мячиком-------------------------------------------------------------------------------------
 	ballH.posX -= ballH.speedX;
 	// вылетел ли мяч правее стены?
-	if ((ballH.posY + ballH.height < racquetH.racquet2PosY || ballH.posY > (racquetH.racquet2PosY + racquetH.height)) && ballH.posX+ballH.width >= (wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width)) {
-		
+	if ((ballH.posY + ballH.height < racquetH.racquet2PosY || ballH.posY > (racquetH.racquet2PosY + racquetH.height)) && ballH.posX +ballH.width >= (wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width + 7)) {
 		score1 += 1;
 		scoreBoardInnerHTML();
 		ballH.speedX = 0;
 		ballH.speedY = 0;
-		messageGoal.innerHTML = messageGoalText;
 
-		ballH.posX = wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width - 1;
+		ballH.posX = wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width + 6;
 
-		controlGame = 1;	
-
-	} else if (!(ballH.posY + ballH.height < racquetH.racquet2PosY || ballH.posY > (racquetH.racquet2PosY + racquetH.height)) && ballH.posX+ballH.width > (racquetH.racquet2PosX)) {
+	} else if (!(ballH.posY + ballH.height < racquetH.racquet2PosY+16 || ballH.posY > (racquetH.racquet2PosY+16 + racquetH.height)) && ballH.posX+ballH.width > (racquetH.racquet2PosX+16)) {
 		ballH.speedX =- ballH.speedX;
-        ballH.posX = wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - racquetH.width - ballH.width;
+        ballH.posX = canvaS.getBoundingClientRect().left + wrap.getBoundingClientRect().width - racquetH.width - ballH.width + 7;
 	}
 
     // вылетел ли мяч левее стены
-	if ((ballH.posY + ballH.height < racquetH.racquet1PosY || ballH.posY > (racquetH.racquet1PosY + racquetH.height)) && ballH.posX <= (wrap.getBoundingClientRect().left)) {
+	if ((ballH.posY + ballH.height < racquetH.racquet1PosY || ballH.posY > (racquetH.racquet1PosY + racquetH.height)) && ballH.posX <= (wrap.getBoundingClientRect().left + 7)) {
 		
 		score2 += 1;
 		scoreBoardInnerHTML();
 		ballH.speedX = 0;
 		ballH.speedY = 0;
 
-		messageGoal.innerHTML = messageGoalText;
+		ballH.posX = wrap.getBoundingClientRect().left + 8;
 
-		ballH.posX = wrap.getBoundingClientRect().left + 1;
-
-		controlGame = 1;
-	
-	} else if (!(ballH.posY + ballH.height < racquetH.racquet1PosY || ballH.posY > (racquetH.racquet1PosY + racquetH.height)) && ballH.posX < (racquetH.width + racquetH.racquet1PosX)) {
+	} else if (!(ballH.posY + ballH.height < racquetH.racquet1PosY + 16 || ballH.posY > (racquetH.racquet1PosY + 16 + racquetH.height)) && ballH.posX < (racquetH.width + racquetH.racquet1PosX + 16)) {
 		ballH.speedX =- ballH.speedX;
-        ballH.posX = wrap.getBoundingClientRect().left + racquetH.width;
+        ballH.posX = canvaS.getBoundingClientRect().left + racquetH.width + 7;
 	}
 	
     ballH.posY -= ballH.speedY;
     // вылетел ли мяч ниже пола?
-    if (ballH.posY + ballH.height > (wrap.getBoundingClientRect().top + areaH.height)) {
+    if (ballH.posY + ballH.height > (canvaS.getBoundingClientRect().height + 16)) {
         ballH.speedY =- ballH.speedY;
-        ballH.posY = wrap.getBoundingClientRect().top + areaH.height - ballH.height;
+        ballH.posY = canvaS.getBoundingClientRect().height - ballH.height + 16;
     }
 
     // вылетел ли мяч выше потолка?
-    if (ballH.posY < wrap.getBoundingClientRect().top) {
+    if (ballH.posY < 0.5 + 16) {
         ballH.speedY =- ballH.speedY;
-        ballH.posY = wrap.getBoundingClientRect().top;
+        ballH.posY = 0.5 + 16;
     }
 
     ballH.update();
 
     requestAnimationFrame(tick);
+
 
 }    
