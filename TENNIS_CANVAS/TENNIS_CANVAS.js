@@ -209,6 +209,8 @@ function tick() {
 
 		ballH.posX = wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width - ballH.width + 6;
 
+		controlGame = 1;
+
 	} else if (!(ballH.posY + ballH.height < racquetH.racquet2PosY+16 || ballH.posY > (racquetH.racquet2PosY+16 + racquetH.height)) && ballH.posX+ballH.width > (racquetH.racquet2PosX+16)) {
 		ballH.speedX =- ballH.speedX;
         ballH.posX = canvaS.getBoundingClientRect().left + wrap.getBoundingClientRect().width - racquetH.width - ballH.width + 7;
@@ -223,6 +225,8 @@ function tick() {
 		ballH.speedY = 0;
 
 		ballH.posX = wrap.getBoundingClientRect().left + 8;
+
+		controlGame = 1;
 
 	} else if (!(ballH.posY + ballH.height < racquetH.racquet1PosY + 16 || ballH.posY > (racquetH.racquet1PosY + 16 + racquetH.height)) && ballH.posX < (racquetH.width + racquetH.racquet1PosX + 16)) {
 		ballH.speedX =- ballH.speedX;
