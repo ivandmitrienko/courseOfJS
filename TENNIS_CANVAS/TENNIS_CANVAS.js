@@ -19,15 +19,7 @@ let wrap = document.getElementById('wrapper'),
 	areaH, //создаём переменную areaH для дальнейшей работы с мячиком
 	// работаем с таймером------------------------------------------------------------------------------------
 	// settimeout, //создаём переменную settimeout для дальнейшей работы с таймером
-	controlGame = 1, //для контроля состаяния игры
-
-	// работаем с сообщением----------------------------------------------------------------------------------
-	messageGoal = document.createElement("div"), //сoздаём div для текста которая будет отображаться когда будет гол
-    messageGoalText = "Гол!";
-
-// работаем с сообщением----------------------------------------------------------------------------------
-// messageGoal.classList.add("messageGoal");
-// messageGoal = wrap.appendChild(messageGoal);
+	controlGame = 1; //для контроля состаяния игры
 
 // работаем с кнопкой старт-----------------------------------------------------------------------------------
 buttonStart.type = "button"; //задаём тип(кнопка)
@@ -159,7 +151,6 @@ function drawCanvas() {
 function start() {
 	if(controlGame) {
 		controlGame = 0;
-		messageGoal.innerHTML = "";
 	    ballH.speedX = 8;//4
 	    ballH.speedY = 3;//2
 		ballH.posX = wrap.getBoundingClientRect().width/2;
