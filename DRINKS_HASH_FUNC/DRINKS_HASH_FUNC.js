@@ -31,6 +31,6 @@
         }
     }
 
-let drinkStorage = new HashStorageFunc();
+let drinkStorage = new HashStorageFunc;
 
 // })();
