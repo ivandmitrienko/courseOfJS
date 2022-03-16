@@ -54,7 +54,7 @@ width: 100%;
 }
 
 nav ul li {
-    transform: rotateY(0deg), rotateZ(0);
+    transform: rotateY(0deg);
     opacity: 0;
     transition: transform 0.6s linear, opacity 0.6s linear;
 }
@@ -62,6 +62,13 @@ nav ul li {
 nav.active ul li {
     opacity: 1;
     transform: rotateY(360deg);
+}
+
+nav ul a { 
+    position: relative;
+    color: black;
+    text-decoration: none;
+    margin: 0 10px;
 }
 
 .icon {
@@ -78,7 +85,7 @@ width: 30px;
     outline: 0;
 }
 
-.icon line {
+.icon .line {
     background-color: blue;
     height: 2px;
     width: 20px;
@@ -94,9 +101,17 @@ width: 30px;
 
 }
 
-nav.active .icon .line {
+nav.active .icon .line1 {
+    transform: rotate(-765deg) translateY(5.5px);
+} 
+
+nav.active .icon .line2 {
     transform: rotate(765deg) translateY(-5.5px);
-}
+} 
+
+
+
+
 
 
 
