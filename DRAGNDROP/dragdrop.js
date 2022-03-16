@@ -75,3 +75,5 @@ function imgUp(EO){
     window.onmousemove = null;
 
 }
+
+//some
