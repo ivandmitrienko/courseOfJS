@@ -52,79 +52,66 @@ let game = {
         this.sprites.platform = new Image();
         this.sprites.platform.src ="./img/platform.png";
         this.sprites.ball = new Image();
-        this.sprites.ball.background ="./img/ball.png";
+        this.sprites.ball.src ="./img/ball.png";
         this.sprites.blocks = new Image();
         this.sprites.blocks.src ="./img/blocks.png";
     },
 
-    // //выводим блоки
-    // create: function() {
-    //   for (let row = 0; row < this.rows; row++) {
-    //     for (let col = 0; col < this.cols; col++) {
-    //       this.blocks.push({
-    //         x: 84 * col + 50,
-    //         y: 30 * row + 35,
-    //         width: 80,
-    //         height: 24,
-    //         isAlive: true
-    //       });
-    //     }
-    //   }
-    // },
-
     //выводим блоки
-  create: function() {
-    for (let row = 0; row < this.rows; row++) {
-      for (let col = 0; col < this.cols; col++) {
-        this.blocks.push({
-          x: 84 * col + 50,
-          y: 30 * row + 35,
-          width: 80,
-          height: 24,
-          isAlive: true
-        });
+    create: function() {
+      for (let row = 0; row < this.rows; row++) {
+        for (let col = 0; col < this.cols; col++) {
+          this.blocks.push({
+            x: 84 * col + 50,
+            y: 30 * row + 35,
+            width: 80,
+            height: 24,
+            isAlive: true
+          });
+        }
       }
-    }
-  },
-  //вызываем поочередно что нам нужно
-  start: function() {
-    this.init();
-    this.load();
-    this.create();
-    this.run();
-  },
-  //для отрисовки изображений
-  render: function() {
-    // очищает выбранную прямоугольную область
-    this.ctx.clearRect(0, 0, this.width, this.height);
-    // где отрисовываем изображение координаты х,y
-    this.ctx.drawImage(this.sprites.background, 0, 0);
-    // отрисовываем платформу
-    this.ctx.drawImage(this.sprites.platform, this.platform.x, this.platform.y);
-    // отрисовываем мяч
-    this.ctx.drawImage(
-      this.sprites.ball,
-      this.ball.width * this.ball.frame,
-      0,
-      this.ball.width,
-      this.ball.height,
-      this.ball.x,
-      this.ball.y,
-      this.ball.width,
-      this.ball.height
-    );
-    // отрисовываем блоки
-    this.blocks.forEach(function(element) {
-      if (element.isAlive) {
-        this.ctx.drawImage(this.sprites.blocks, element.x, element.y);
-      }
-    }, this);
+    },
 
-    let scores = document.getElementById("score");
+    //вызываем поочередно что нам нужно
+    start: function() {
+      this.init();
+      this.load();
+      this.create();
+      this.run();
+    },
+    //для отрисовки изображений
+    render: function() {
+      // очищает выбранную прямоугольную область
+      this.ctx.clearRect(0, 0, this.width, this.height);
+      // где отрисовываем изображение координаты х,y
+      this.ctx.drawImage(this.sprites.background, 0, 0);
+      // отрисовываем платформу
+      this.ctx.drawImage(this.sprites.platform, this.platform.x, this.platform.y);
+      // отрисовываем мяч
+      this.ctx.drawImage(
+        this.sprites.ball,
+        this.ball.width * this.ball.frame,
+        0,
+        this.ball.width,
+        this.ball.height,
+        this.ball.x,
+        this.ball.y,
+        this.ball.width,
+        this.ball.height
+      );
+      // отрисовываем блоки
+      this.blocks.forEach(function(element) {
+        if (element.isAlive) {
+          this.ctx.drawImage(this.sprites.blocks, element.x, element.y);
+        }
+      }, this);
+
+      let scores = document.getElementById("score");
     scores.innerHTML = "Ihre Punkte: " + this.score;
   },
+  
   // до отрисовки, вся игровая логика
-  update: function() {
+    update: function() {
     if (this.ball.collide(this.platform)) {
       this.ball.bumpPlatform(this.platform);
     }
