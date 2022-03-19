@@ -2,6 +2,8 @@
 
 * {
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 body {
@@ -109,6 +111,12 @@ nav.active .icon .line2 {
     transform: rotate(765deg) translateY(-5.5px);
 } 
 
+
+canvas { 
+    background: #eee; 
+    display: block; 
+    margin: 0 auto; 
+}
 
 
 
