@@ -3,7 +3,7 @@
 //создаем объект игры
 let game = {
     width: 509,
-    height: 400,
+    height: 340,
     ctx: "",
     platform: "",
     ball: "",
