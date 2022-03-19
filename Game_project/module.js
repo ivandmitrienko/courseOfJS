@@ -44,14 +44,15 @@ let game = {
         });
     },
 
+
     //загружаем картинки
     load: function() {
         this.sprites.background = new Image();
-        this.sprites.background.src ="/img/background.png";
+        this.sprites.background.src ="./img/background.png";
         this.sprites.platform = new Image();
         this.sprites.platform.src ="./img/platform.png";
         this.sprites.ball = new Image();
-        this.sprites.ball.src ="./img/ball.png";
+        this.sprites.ball.background ="./img/ball.png";
         this.sprites.blocks = new Image();
         this.sprites.blocks.src ="./img/blocks.png";
     },
