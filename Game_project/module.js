@@ -20,7 +20,7 @@ let game = {
       ball: "",
       blocks: ""
     },
-     // canvas
+    // canvas
     init: function() {
         let canvas = document.getElementById("mycanvas");
         //для отрисовки спрайтов, загружаем контекст
@@ -44,12 +44,27 @@ let game = {
         });
     },
 
-     //загружаем картинки
-      load: function() {
+    //загружаем картинки
+    load: function() {
         this.sprites.platform = new Image();
-        this.sprites.platform.src ="https://i.postimg.cc/6pMXbzCw/platform.png";
+        this.sprites.platform.src ="./img/platform.png";
         this.sprites.ball = new Image();
-        this.sprites.ball.src ="https://i.postimg.cc/3JC7m3Rk/ball.png";
+        this.sprites.ball.src ="./img/ball.png";
         this.sprites.blocks = new Image();
-        this.sprites.blocks.src ="https://i.postimg.cc/0ykvChMc/blocks.png";
+        this.sprites.blocks.src ="./img/blocks.png";
+    },
+
+    //выводим блоки
+    create: function() {
+      for (let row = 0; row < this.rows; row++) {
+        for (let col = 0; col < this.cols; col++) {
+          this.blocks.push({
+            x: 84 * col + 50,
+            y: 30 * row + 35,
+            width: 80,
+            height: 24,
+            isAlive: true
+          });
+        }
+      }
     },
