@@ -4,12 +4,12 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    text-align: center;
 }
 
 body {
     margin: 0;
-	background-color: #000;
-	background-image: radial-gradient(ellipse at top, #335476 0.0%, #31506e 11.1%, #304b67 22.2%, #2f4760 33.3%, #2d4359 44.4%, #2c3f51 55.6%, #2a3a4a 66.7%, #293643 77.8%, #28323d 88.9%, #262e36 100.0%);
+	background-color: rgba(165, 156, 24, 0.753);
 	height: 100vh;
 	overflow: hidden;
     font-family: 'Muli', sans-serif;
@@ -112,11 +112,16 @@ nav.active .icon .line2 {
 } 
 
 
-canvas { 
-    background: #eee; 
-    display: block; 
-    margin: 0 auto; 
-}
+canvas {
+    width: 50%;
+    background-image: radial-gradient(ellipse at top, #335476 0.0%, #31506e 11.1%, #304b67 22.2%, #2f4760 33.3%, #2d4359 44.4%, #2c3f51 55.6%, #2a3a4a 66.7%, #293643 77.8%, #28323d 88.9%, #262e36 100.0%);
+  }
+  .arkanoid {
+    font-size: 80px;
+    color: #004b7a;
+    font-family: "Bahianita", cursive;
+    font-weight: bold;
+  }
 
 
 
