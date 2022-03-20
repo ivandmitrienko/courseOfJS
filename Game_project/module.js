@@ -2,136 +2,133 @@
 
 //создаем объект игры
 let game = {
-    width: 509,
-    height: 340,
-    ctx: "",
+  width: 509,
+  height: 340,
+  ctx: "",
+  platform: "",
+  ball: "",
+  rows: 4,
+  cols: 5,
+  running: true,
+  blocks: [],
+  score: 0,
+  lives: 3,
+  //для передачи картинок по названию
+  sprites: {
+    background: "",
     platform: "",
     ball: "",
-    rows: 4,
-    cols: 5,
-    running: true,
-    blocks: [],
-    score: 0,
-    lives: 3,
-    //для передачи картинок по названию
-    sprites: {
-      background: "",
-      platform: "",
-      ball: "",
-      blocks: ""
-    },
-    // canvas
-    init: function() {
-        let canvas = document.getElementById("mycanvas");
-        //для отрисовки спрайтов, загружаем контекст
-        this.ctx = canvas.getContext("2d");
-        // движение платформы
-        window.addEventListener("keydown", function(EO) {
-            EO = EO || window.event;
-            EO.preventDefault();
-          if (EO.keyCode == 37) {
-            game.platform.dx = -game.platform.velocity;
-          } else if (EO.keyCode == 39) {
-            game.platform.dx = game.platform.velocity;
-          } else if (EO.keyCode == 32) {
-            game.platform.releaseBall();
-          }
-        });
-        window.addEventListener("keyup", function(EO) {
-            EO = EO || window.event;
-            EO.preventDefault();
-            game.platform.stop(); //когда отпускаем кнопку платформа должна остановиться
-        });
-    },
-
-
-    //загружаем картинки
-    load: function() {
-        this.sprites.background = new Image();
-        this.sprites.background.src ="./img/background.png";
-        this.sprites.platform = new Image();
-        this.sprites.platform.src ="./img/platform.png";
-        this.sprites.ball = new Image();
-        this.sprites.ball.src ="./img/ball.png";
-        this.sprites.blocks = new Image();
-        this.sprites.blocks.src ="./img/blocks.png";
-    },
+    blocks: ""
+  },
+  // canvas
+  init: function() {
+    let canvas = document.getElementById("mycanvas");
+    //для отрисовки спрайтов, загружаем контекст
+    this.ctx = canvas.getContext("2d");
+    // движение платформы
+    window.addEventListener("keydown", function(EO) {
+        EO = EO || window.event;
+        EO.preventDefault();
+      if (EO.keyCode == 37) {
+        game.platform.dx = -game.platform.velocity;
+      } else if (EO.keyCode == 39) {
+        game.platform.dx = game.platform.velocity;
+      } else if (EO.keyCode == 32) {
+        game.platform.releaseBall();
+      }
+    });
+    window.addEventListener("keyup", function(EO) {
+        EO = EO || window.event;
+        EO.preventDefault();
+        game.platform.stop(); //когда отпускаем кнопку платформа должна остановиться
+    });
+  },
+  //загружаем картинки
+  load: function() {
+    this.sprites.background = new Image();
+    this.sprites.background.src ="./img/background.png";
+    this.sprites.platform = new Image();
+    this.sprites.platform.src ="./img/platform.png";
+    this.sprites.ball = new Image();
+    this.sprites.ball.src ="./img/ball.png";
+    this.sprites.blocks = new Image();
+    this.sprites.blocks.src ="./img/blocks.png";
+  },
 
     //выводим блоки
-    create: function() {
-      for (let row = 0; row < this.rows; row++) {
-        for (let col = 0; col < this.cols; col++) {
-          this.blocks.push({
-            x: 84 * col + 50,
-            y: 30 * row + 35,
-            width: 80,
-            height: 24,
-            isAlive: true
-          });
-        }
+  create: function() {
+    for (let row = 0; row < this.rows; row++) {
+      for (let col = 0; col < this.cols; col++) {
+        this.blocks.push({
+          x: 84 * col + 50,
+          y: 30 * row + 35,
+          width: 80,
+          height: 24,
+          isAlive: true
+        });
       }
-    },
-
-    //вызываем поочередно что нам нужно
-    start: function() {
-      this.init();
-      this.load();
-      this.create();
-      this.run();
-    },
-    //для отрисовки изображений
-    render: function() {
-      // очищает выбранную прямоугольную область
-      this.ctx.clearRect(0, 0, this.width, this.height);
-      // где отрисовываем изображение координаты х,y
-      this.ctx.drawImage(this.sprites.background, 0, 0);
-      // отрисовываем платформу
-      this.ctx.drawImage(this.sprites.platform, this.platform.x, this.platform.y);
-      // отрисовываем мяч
-      this.ctx.drawImage(
-        this.sprites.ball,
-        this.ball.width * this.ball.frame,
-        0,
-        this.ball.width,
-        this.ball.height,
-        this.ball.x,
-        this.ball.y,
-        this.ball.width,
-        this.ball.height
-      );
-      // отрисовываем блоки
-      this.blocks.forEach(function(element) {
-        if (element.isAlive) {
-          this.ctx.drawImage(this.sprites.blocks, element.x, element.y);
-        }
-      }, this);
-
-      let scores = document.getElementById("score");
-    scores.innerHTML = "Ihre Punkte: " + this.score;
+    }
   },
+
+  //вызываем поочередно что нам нужно
+  start: function() {
+    this.init();
+    this.load();
+    this.create();
+    this.run();
+  },
+  //для отрисовки изображений
+  render: function() {
+    // очищает выбранную прямоугольную область
+    this.ctx.clearRect(0, 0, this.width, this.height);
+    // где отрисовываем изображение координаты х,y
+    this.ctx.drawImage(this.sprites.background, 0, 0);
+    // отрисовываем платформу
+    this.ctx.drawImage(this.sprites.platform, this.platform.x, this.platform.y);
+    // отрисовываем мяч
+    this.ctx.drawImage(
+      this.sprites.ball,
+      this.ball.width * this.ball.frame,
+      0,
+      this.ball.width,
+      this.ball.height,
+      this.ball.x,
+      this.ball.y,
+      this.ball.width,
+      this.ball.height
+    );
+  // отрисовываем блоки
+  this.blocks.forEach(function(element) {
+    if (element.isAlive) {
+      this.ctx.drawImage(this.sprites.blocks, element.x, element.y);
+    }
+  }, this);
+    // let scores = document.getElementById("score");
+    // scores.innerHTML = "Ihre Punkte: " + this.score;
+},
   
-  // до отрисовки, вся игровая логика
-    update: function() {
-    if (this.ball.collide(this.platform)) {
-      this.ball.bumpPlatform(this.platform);
-    }
-    //движение платформы
-    if (this.platform.dx) {
-      this.platform.move();
-    } //движение мяча
-    if (this.ball.dx || this.ball.dy) {
-      this.ball.move();
-    }
-    //для каждого блока проверяем, сталкивается ли мяч с блоком
-    this.blocks.forEach(function(element) {
-      if (element.isAlive) {
-        if (this.ball.collide(element)) {
-          this.ball.bumpBlock(element);
-        }
+// до отрисовки, вся игровая логика
+update: function() {
+  if (this.ball.collide(this.platform)) {
+    this.ball.bumpPlatform(this.platform);
+  }
+  //движение платформы
+  if (this.platform.dx) {
+    this.platform.move();
+  } //движение мяча
+  if (this.ball.dx || this.ball.dy) {
+    this.ball.move();
+  }
+  //для каждого блока проверяем, сталкивается ли мяч с блоком
+  this.blocks.forEach(function(element) {
+    if (element.isAlive) {
+      if (this.ball.collide(element)) {
+        this.ball.bumpBlock(element);
       }
-    }, this);
-    this.ball.checkBounds();
-  },
+    }
+  }, this);
+  this.ball.checkBounds();
+},
   //отвечается за перерисовку и каллбак функция
   run: function() {
     this.update();
