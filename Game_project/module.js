@@ -97,38 +97,38 @@ let game = {
       this.ball.width,
       this.ball.height
     );
-  // отрисовываем блоки
-  this.blocks.forEach(function(element) {
-    if (element.isAlive) {
-      this.ctx.drawImage(this.sprites.blocks, element.x, element.y);
-    }
-  }, this);
+    // отрисовываем блоки
+    this.blocks.forEach(function(element) {
+      if (element.isAlive) {
+        this.ctx.drawImage(this.sprites.blocks, element.x, element.y);
+      }
+    }, this);
     // let scores = document.getElementById("score");
     // scores.innerHTML = "Ihre Punkte: " + this.score;
-},
+  },
   
-// до отрисовки, вся игровая логика
-update: function() {
-  if (this.ball.collide(this.platform)) {
-    this.ball.bumpPlatform(this.platform);
-  }
-  //движение платформы
-  if (this.platform.dx) {
-    this.platform.move();
-  } //движение мяча
-  if (this.ball.dx || this.ball.dy) {
-    this.ball.move();
-  }
-  //для каждого блока проверяем, сталкивается ли мяч с блоком
-  this.blocks.forEach(function(element) {
-    if (element.isAlive) {
-      if (this.ball.collide(element)) {
-        this.ball.bumpBlock(element);
-      }
+  // до отрисовки, вся игровая логика
+  update: function() {
+    if (this.ball.collide(this.platform)) {
+      this.ball.bumpPlatform(this.platform);
     }
-  }, this);
-  this.ball.checkBounds();
-},
+    //движение платформы
+    if (this.platform.dx) {
+      this.platform.move();
+    } //движение мяча
+    if (this.ball.dx || this.ball.dy) {
+      this.ball.move();
+    }
+    //для каждого блока проверяем, сталкивается ли мяч с блоком
+    this.blocks.forEach(function(element) {
+      if (element.isAlive) {
+        if (this.ball.collide(element)) {
+          this.ball.bumpBlock(element);
+        }
+      }
+    }, this);
+    this.ball.checkBounds();
+  },
   //отвечается за перерисовку и каллбак функция
   run: function() {
     this.update();
