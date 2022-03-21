@@ -12,7 +12,6 @@ body {
 	background: url("./img/Sky.jpg") 50% 50%/cover no-repeat;;
 	height: 100vh;
 	overflow: hidden;
-    font-family: 'Muli', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -115,10 +114,6 @@ nav.active .icon .line2 {
     transform: rotate(765deg) translateY(-5.5px);
 } 
 
-
-/* canvas {
-    width: 50%;
-} */
 
 .arkanoid {
     font-size: 60px;
