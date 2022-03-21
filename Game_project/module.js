@@ -152,7 +152,7 @@ game.ball = {
   width: 24,
   height: 24,
   frame: 0,
-  x: 250,
+  x: 247,
   y: 276,
   dx: 0,
   dy: 0,
