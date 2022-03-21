@@ -21,6 +21,7 @@ const MAX_LEVEL = 3;
 let GAME_OVER = false;
 let leftArrow = false;
 let rightArrow = false;
+let controlGame = 0;
 
 // CREATE THE PADDLE
 const paddle = {
@@ -40,29 +41,38 @@ function drawPaddle(){
     ctx.strokeRect(paddle.x, paddle.y, paddle.width, paddle.height);
 }
 
-// CONTROL THE PADDLE
-document.addEventListener("keydown", function(event){
-   if(event.keyCode == 37){
+// CONTROL THE PADDLE AND PUSH BALL
+
+document.addEventListener("keydown", function(EO){
+   EO = EO || window.event;
+   EO.preventDefault();
+   if(EO.keyCode == 37){
        leftArrow = true;
-   }else if(event.keyCode == 39){
+   }else if(EO.keyCode == 39){
        rightArrow = true;
    }
 });
-document.addEventListener("keyup", function(event){
-   if(event.keyCode == 37){
+document.addEventListener("keyup", function(EO){
+   EO = EO || window.event;
+   EO.preventDefault();
+   if(EO.keyCode == 37){
        leftArrow = false;
-   }else if(event.keyCode == 39){
+   }else if(EO.keyCode == 39){
        rightArrow = false;
-   }
+   }else if(EO.keyCode == 32){
+    controlGame = 1;
+}
 });
 
 // MOVE PADDLE
 function movePaddle(){
-    if(rightArrow && paddle.x + paddle.width < cvs.width){
-        paddle.x += paddle.dx;
-    }else if(leftArrow && paddle.x > 0){
-        paddle.x -= paddle.dx;
-    }
+    if(controlGame) {
+        if(rightArrow && paddle.x + paddle.width < cvs.width){
+            paddle.x += paddle.dx;
+        }else if(leftArrow && paddle.x > 0){
+            paddle.x -= paddle.dx;
+        }
+    }   
 }
 
 // CREATE THE BALL
@@ -91,8 +101,10 @@ function drawBall(){
 
 // MOVE THE BALL
 function moveBall(){
-    ball.x += ball.dx;
-    ball.y += ball.dy;
+    if(controlGame) {
+        ball.x += ball.dx;
+        ball.y += ball.dy;
+    }    
 }
 
 // BALL AND WALL COLLISION DETECTION
