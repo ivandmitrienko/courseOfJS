@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Bahianita&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Germania+One">
     <link rel="stylesheet" href="./style.css"> 
     <title>ARKANOID</title> 
 </head>
 <body>
-  <div class="arkanoid">Arkanoid</div>
     <!-- menu -->
      <!-- <h1>Click on the hamburger icon</h1> -->
      <!-- <div class="gameMenu">
@@ -27,17 +26,19 @@
         </nav>
     </div> 
     <script src="./menu.js"></script>  -->
-    <div class="sound">
-        <img src="img/SOUND_ON.png" alt="" id="sound">
+    <div class="arkanoid">Arkanoid</div>
+    <div class="game">
+        <div class="sound">
+            <img src="img/SOUND_ON.png" alt="" id="sound">
+        </div>
+        
+        <div id="gameover">
+            <img src="img/youwon.png" alt="" id="youwon">
+            <img src="img/gameover.png" alt="" id="youlose">
+            <div id="restart">Play Again!</div>
+        </div>
+        <canvas id="breakout" width="500" height="600"></canvas>
     </div>
-    
-    <div id="gameover">
-        <img src="img/youwon.png" alt="" id="youwon">
-        <img src="img/gameover.png" alt="" id="youlose">
-        <div id="restart">Play Again!</div>
-    </div>
-   
-    <canvas id="breakout" width="500" height="600"></canvas>
     
     <script src="components.js"></script>
     <script src="game.js"></script>

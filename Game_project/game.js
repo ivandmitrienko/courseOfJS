@@ -241,11 +241,11 @@ function draw(){
     drawBricks();
     
     // SHOW SCORE
-    showGameStats(SCORE, 35, 25, SCORE_IMG, 5, 5);
+    showGameStats(SCORE, 35, 30, SCORE_IMG, 5, 10);
     // SHOW LIVES
-    showGameStats(LIFE, cvs.width - 25, 25, LIFE_IMG, cvs.width-55, 5); 
+    showGameStats(LIFE, cvs.width - 25, 30, LIFE_IMG, cvs.width-55, 10); 
     // SHOW LEVEL
-    showGameStats(LEVEL, cvs.width/2, 25, LEVEL_IMG, cvs.width/2 - 30, 5);
+    showGameStats(LEVEL, cvs.width/2, 30, LEVEL_IMG, cvs.width/2 - 30, 5);
 }
 
 // game over
@@ -339,7 +339,7 @@ function audioManager(){
 // SHOW GAME OVER MESSAGE
 /* SELECT ELEMENTS */
 const gameover = document.getElementById("gameover");
-const youwin = document.getElementById("youwin");
+const youwin = document.getElementById("youwon");
 const youlose = document.getElementById("youlose");
 const restart = document.getElementById("restart");
 
@@ -351,7 +351,7 @@ restart.addEventListener("click", function(){
 // SHOW YOU WIN
 function showYouWin(){
     gameover.style.display = "block";
-    youwon.style.display = "block";
+    youwin.style.display = "block";
 }
 
 // SHOW YOU LOSE

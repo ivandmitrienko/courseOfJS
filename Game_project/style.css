@@ -13,6 +13,10 @@ body {
 	height: 100vh;
 	overflow: hidden;
     font-family: 'Muli', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .gameMenu{
@@ -116,22 +120,26 @@ nav.active .icon .line2 {
     width: 50%;
 } */
 
-/* .arkanoid {
-    font-size: 80px;
+.arkanoid {
+    font-size: 60px;
     color: #004b7a;
     font-family: "Germania One";
     font-weight: bold;
-} */
+}
 
 *{
-    font-family: "Bahianita", sans-serif;
+    font-family: "Germania One";
+}
+
+.game {
+    position: relative;
 }
 #sound{
     width: 30px;
     height : 30px;
     cursor: pointer;
     position: absolute;
-    top : 585px;
+    top : 565px;
     left : 5px;
 }
 #gameover{
