@@ -2,7 +2,7 @@
 
 // LOAD BG IMAGE
 const BG_IMG = new Image();
-BG_IMG.src = "img/bg.jpg";
+BG_IMG.src = "img/fon.jpg";
 
 const LEVEL_IMG = new Image();
 LEVEL_IMG.src = "img/level.png";
