@@ -14,10 +14,11 @@ const PADDLE_MARGIN_BOTTOM = 50;
 const PADDLE_HEIGHT = 20;
 const BALL_RADIUS = 8;
 let LIFE = 3; // PLAYER HAS 3 LIVES
+const SCORE_LIFE = 1;
 let SCORE = 0;
 const SCORE_UNIT = 10;
 let LEVEL = 1;
-const MAX_LEVEL = 3;
+const MAX_LEVEL = 1;
 let GAME_OVER = false;
 let leftArrow = false;
 let rightArrow = false;
@@ -76,7 +77,7 @@ function movePaddle(){
 }
 
 // CREATE THE BALL
-const ball = {
+let ball = {
     x : cvs.width/2,
     y : paddle.y - BALL_RADIUS,
     radius : BALL_RADIUS,
@@ -122,7 +123,7 @@ function ballWallCollision(){
     if(ball.y + ball.radius > cvs.height){
         LIFE--; // LOSE LIFE
         LIFE_LOST.play();
-        controlGame=0;
+        controlGame = 0;
         resetBall();
     }
 }
@@ -174,6 +175,7 @@ const brick = {
 
 let bricks = [];
 
+
 function createBricks(){
     for(let r = 0; r < brick.row; r++){
         bricks[r] = [];
@@ -215,6 +217,7 @@ function ballBrickCollision(){
             if(b.status){
                 if(ball.x + ball.radius > b.x && ball.x - ball.radius < b.x + brick.width && ball.y + ball.radius > b.y && ball.y - ball.radius < b.y + brick.height){
                     BRICK_HIT.play();
+                    ball.speed += 0.5; //move ball faster
                     ball.dy = - ball.dy;
                     b.status = false; // the brick is broken
                     SCORE += SCORE_UNIT;
@@ -283,6 +286,7 @@ function levelUp(){
         ball.speed += 0.5;
         resetBall();
         LEVEL++;
+        ball.speed = 4;
     }
 }
 
@@ -307,7 +311,7 @@ function update(){
 function loop(){
     // CLEAR THE CANVAS
     ctx.drawImage(BG_IMG, 0, 0);
-    
+
     draw();
     
     update();
