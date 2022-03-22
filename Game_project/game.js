@@ -1,11 +1,7 @@
-// SELECT CANVAS ELEMENT
+// CANVAS
 const cvs = document.getElementById("breakout");
 const ctx = cvs.getContext("2d");
-
-// ADD BORDER TO CANVAS
 cvs.style.border = "1px solid #0ff";
-
-// MAKE LINE THIK WHEN DRAWING TO CANVAS
 ctx.lineWidth = 3;
 
 // GAME VARIABLES AND CONSTANTS
