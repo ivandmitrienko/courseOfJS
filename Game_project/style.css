@@ -129,6 +129,14 @@ nav.active .icon .line2 {
 .game {
     position: relative;
 }
+#pause{
+    width: 30px;
+    height : 30px;
+    cursor: pointer;
+    position: absolute;
+    top : 565px;
+    left : 465px;
+}
 #sound{
     width: 30px;
     height : 30px;

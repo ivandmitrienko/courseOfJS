@@ -339,6 +339,21 @@ function audioManager(){
     LIFE_LOST.muted = LIFE_LOST.muted ? false : true;
 }
 
+// SELECT PAUSE ELEMENT
+
+let pauseElement = document.getElementById('pause');
+
+pauseElement.addEventListener("click", function(){
+    let pauseSrc = pauseElement.getAttribute('src');
+    if(pauseSrc == './img/pause.png') {
+        pauseElement.setAttribute("src", "./img/play.png");
+    } else {
+        pauseElement.setAttribute("src", "./img/pause.png");
+    }
+});
+
+
+
 // SHOW GAME OVER MESSAGE
 /* SELECT ELEMENTS */
 const gameover = document.getElementById("gameover");
