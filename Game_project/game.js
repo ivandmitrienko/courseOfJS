@@ -347,8 +347,10 @@ pauseElement.addEventListener("click", function(){
     let pauseSrc = pauseElement.getAttribute('src');
     if(pauseSrc == './img/pause.png') {
         pauseElement.setAttribute("src", "./img/play.png");
+        controlGame = 0;
     } else {
         pauseElement.setAttribute("src", "./img/pause.png");
+        controlGame = 1;
     }
 });
 
