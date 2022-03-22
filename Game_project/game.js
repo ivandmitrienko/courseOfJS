@@ -122,14 +122,17 @@ function ballWallCollision(){
     if(ball.y + ball.radius > cvs.height){
         LIFE--; // LOSE LIFE
         LIFE_LOST.play();
+        controlGame=0;
         resetBall();
     }
 }
 
-// RESET THE BALL
+// RESET THE BALL AND PADDLE
 function resetBall(){
     ball.x = cvs.width/2;
     ball.y = paddle.y - BALL_RADIUS;
+    paddle.x = cvs.width/2 - PADDLE_WIDTH/2;
+    paddle.y = cvs.height - PADDLE_MARGIN_BOTTOM - PADDLE_HEIGHT;
     ball.dx = 3 * (Math.random() * 2 - 1);
     ball.dy = -3;
 }
