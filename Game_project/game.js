@@ -14,14 +14,15 @@ const SCORE_LIFE = 1;
 let SCORE = 0;
 const SCORE_UNIT = 10;
 let LEVEL = 1;
-const MAX_LEVEL = 1;
+const MAX_LEVEL = 3;
 let GAME_OVER = false;
 let leftArrow = false;
 let rightArrow = false;
 let controlGame = 0;
+let request = "Click the play button in the lower right corner";
 
 // CREATE THE PADDLE
-const paddle = {
+let paddle = {
     x : cvs.width/2 - PADDLE_WIDTH/2,
     y : cvs.height - PADDLE_MARGIN_BOTTOM - PADDLE_HEIGHT,
     width : PADDLE_WIDTH,
@@ -56,10 +57,23 @@ document.addEventListener("keyup", function(EO){
        leftArrow = false;
    }else if(EO.keyCode == 39){
        rightArrow = false;
-   }else if(EO.keyCode == 32){
-    controlGame = 1;
-}
+    }
+
 });
+
+cvs.addEventListener("mousemove", function(EO){
+    EO = EO || window.event;
+    EO.preventDefault();
+    if(controlGame) {
+        let relativeX = EO.clientX - cvs.getBoundingClientRect().left;
+        if(relativeX > paddle.width/2 && relativeX < cvs.width - paddle.width/2) {
+            paddle.x = relativeX - paddle.width/2;
+        }
+
+    }
+    
+});
+
 
 // MOVE PADDLE
 function movePaddle(){
@@ -236,6 +250,7 @@ function showGameStats(text, textX, textY, img, imgX, imgY){
 
 // DRAW FUNCTION
 function draw(){
+
     drawPaddle();
     
     drawBall();
@@ -248,7 +263,23 @@ function draw(){
     showGameStats(LIFE, cvs.width - 25, 30, LIFE_IMG, cvs.width-55, 10); 
     // SHOW LEVEL
     showGameStats(LEVEL, cvs.width/2, 30, LEVEL_IMG, cvs.width/2 - 30, 5);
+
+
+    if(!controlGame){
+        showRequestStats();
+    } 
+    
+        
 }
+
+//  SHOW REQUEST
+ function showRequestStats(){ 
+        ctx.fillStyle = "#FFF";
+        ctx.font = "20px Germania One";
+        ctx.fillText(request, 70, cvs.height/2);
+    }
+    
+
 
 // game over
 function gameOver(){
@@ -345,12 +376,12 @@ let pauseElement = document.getElementById('pause');
 
 pauseElement.addEventListener("click", function(){
     let pauseSrc = pauseElement.getAttribute('src');
-    if(pauseSrc == './img/pause.png') {
-        pauseElement.setAttribute("src", "./img/play.png");
-        controlGame = 0;
-    } else {
+    if(pauseSrc == './img/play.png') {
         pauseElement.setAttribute("src", "./img/pause.png");
         controlGame = 1;
+    } else {
+        pauseElement.setAttribute("src", "./img/play.png");
+        controlGame = 0;
     }
 });
 
