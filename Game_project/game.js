@@ -8,6 +8,7 @@ ctx.lineWidth = 3;
 const PADDLE_WIDTH = 100;
 const PADDLE_MARGIN_BOTTOM = 50;
 const PADDLE_HEIGHT = 20;
+let score_paddle = 20; // how many points you need to score for the next increase in the width of the platform
 const BALL_RADIUS = 8;
 let LIFE = 3; // PLAYER HAS 3 LIVES
 const SCORE_LIFE = 1;
@@ -133,7 +134,6 @@ function ballWallCollision(){
     if(ball.y + ball.radius > cvs.height){
         LIFE--; // LOSE LIFE
         LIFE_LOST.play();
-        controlGame = 0;
         resetBall();
     }
 }
@@ -231,6 +231,10 @@ function ballBrickCollision(){
                     ball.dy = - ball.dy;
                     b.status = false; // the brick is broken
                     SCORE += SCORE_UNIT;
+                    if (SCORE > score_paddle) {
+                        paddle.width += 10;
+                        score_paddle += 30; // the next increase is after 30 points
+                      }
                 }
             }
         }
@@ -314,6 +318,7 @@ function levelUp(){
         resetBall();
         LEVEL++;
         ball.speed = 4;
+        paddle.width = 100;
     }
 }
 
