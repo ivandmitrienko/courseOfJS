@@ -7,10 +7,11 @@
     text-align: center;
 } */
 
-body {
+html, body {
+    width: 100%;
+    height: 100%;
     margin: 0;
 	background: url("./img/Sky.jpg") 50% 50%/cover no-repeat;;
-	height: 100vh;
 	overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -131,46 +132,46 @@ nav.active .icon .line2 {
 }
 #pause{
     width: 30px;
-    height : 30px;
+    height: 30px;
     cursor: pointer;
     position: absolute;
-    top : 565px;
-    left : 465px;
+    top: 93%;
+    left: 93%;
 }
 #sound{
     width: 30px;
     height : 30px;
     cursor: pointer;
     position: absolute;
-    top : 565px;
-    left : 5px;
+    top : 93%;
+    left : 1%;
 }
 #gameover{
     position: absolute;
-    width : 500px;
-    height: 600px;
+    width: 100%;
+    height: 100%;
     background: rgba(0,0,0,0.5);
     display: none;
 }
 #youwon{
     width: 100px;
     position: absolute;
-    top : 200px;
-    left : 210px;
+    top : 35%;
+    left : 43%;
     display: none;
 }
 #youlose{
-    width:500px;
+    width:100%;
     position: absolute;
-    top: 100px;
-    left : 0px;
+    top: 20%;
+    left : 0%;
     display: none;
 }
 #restart{
     position: absolute;
-    top: 310px;
-    left : 215px;
+    top: 56%;
+    left : 43%;
     cursor: pointer;
-    font-size: 1.25em;
+    font-size: 1.24em;
     color : #FFF;
 }
