@@ -130,20 +130,35 @@ nav.active .icon .line2 {
 .game {
     position: relative;
 }
-#pause{
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    position: absolute;
-    top: 93%;
-    left: 93%;
+
+@media screen and (max-width: 3200px) {
+    #pause {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        position: absolute;
+        top: 92%;
+        left: 93%;
+    }
 }
+
+@media screen and (max-width: 768px) {
+    #pause {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        position: absolute;
+        top: 92%;
+        left: 90%;
+    }
+}
+
 #sound{
     width: 30px;
     height : 30px;
     cursor: pointer;
     position: absolute;
-    top : 93%;
+    top : 92%;
     left : 1%;
 }
 #gameover{

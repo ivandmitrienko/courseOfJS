@@ -2,6 +2,7 @@
 const cvs = document.getElementById("breakout");
 const ctx = cvs.getContext("2d");
 cvs.style.border = "1px solid #0ff";
+cvs.style.marginBottom = '10px'
 ctx.lineWidth = 3;
 
 window.addEventListener("resize", InitApp); //При растягивании окна приложение будет инициализироваться заново
@@ -11,6 +12,9 @@ function InitApp() { //RESIZE CANVAS
 
         cvs.width = window.innerWidth*0.27;
         cvs.height = window.innerHeight*0.61;
+    } else if (window.innerWidth < 768) {
+        cvs.width = window.innerWidth * 0.95;
+        cvs.height = window.innerHeight * 0.8;
 
     }
     
@@ -299,17 +303,21 @@ function InitApp() { //RESIZE CANVAS
     
     //  SHOW REQUEST
      function showRequestStats(){ 
-            ctx.fillStyle = "#FFF";
+            
+        if(window.innerWidth >= 480) {
             ctx.font = "20px Germania One";
-            if(window.innerWidth > 3000) {
-                ctx.fillText(request, cvs.width*0.3, cvs.height/2);
-            } else if (window.innerWidth > 1920) {
-                ctx.fillText(request, cvs.width * 0.22, cvs.height/2);
-            } else  {
-                ctx.fillText(request, cvs.width/7, cvs.height/2);
-
-            }   
         }
+        else if(window.innerWidth < 480){
+            ctx.font = "10px Germania One";
+        }
+        ctx.fillStyle = "#FFF";
+        if(window.innerWidth < 768) {
+            ctx.fillText(request, cvs.width/4, cvs.height/2);
+        } else {
+            ctx.fillText(request, cvs.width/7, cvs.height/2);
+        }
+           
+    }
     
     
     
