@@ -24,17 +24,19 @@ function InitApp() { //RESIZE CANVAS
     const PADDLE_HEIGHT = cvs.width/25;
     let score_paddle = 20; // how many points you need to score for the next increase in the width of the platform
     const BALL_RADIUS = cvs.width/62.5;
-    let LIFE = 1; // PLAYER HAS 3 LIVES
-    const SCORE_LIFE = 1; //3
+    let LIFE = 3; // PLAYER HAS 3 LIVES
+    const SCORE_LIFE = 3; //3
     let SCORE = 0;
     const SCORE_UNIT = 10;
     let LEVEL = 1;
-    const MAX_LEVEL = 1; //3
+    const MAX_LEVEL = 3; //3
     let GAME_OVER = false;
     let leftArrow = false;
     let rightArrow = false;
     let controlGame = 0;
-    let request = "Click the play button in the lower right corner"; 
+    let request = "Click the play button in the lower right corner";
+    let touchStart = null; //first touch
+    let touchPosition = null; //curent touch position 
     
     // CREATE THE PADDLE
     let paddle = {
@@ -88,6 +90,38 @@ function InitApp() { //RESIZE CANVAS
         }
         
     });
+
+    cvs.addEventListener("touchstart", function(EO){
+        EO = EO || window.event;
+        EO.preventDefault();
+
+        touchStart = EO.changedTouches[0].clientX - cvs.getBoundingClientRect().left;
+
+        if( touchStart > paddle.width/2 &&  touchStart < cvs.width - paddle.width/2) {
+            touchPosition = touchStart - paddle.width/2;
+            paddle.x =  touchPosition;
+        }
+       
+    }) 
+
+    cvs.addEventListener("touchmove",function(EO) {
+        EO = EO || window.event;
+        EO.preventDefault();
+
+        touchPosition = EO.changedTouches[0].clientX - cvs.getBoundingClientRect().left;
+        
+        if(touchPosition > paddle.width/2 &&   touchPosition < cvs.width - paddle.width/2) {
+            paddle.x = touchPosition - paddle.width/2;
+        }
+    })
+
+    window.addEventListener("touchend",function(EO) {
+        EO = EO || window.event;
+        EO.preventDefault();
+
+        touchStart = null;
+        touchPosition = null;
+    })
     
     
     // MOVE PADDLE
