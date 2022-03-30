@@ -59,9 +59,9 @@ function InitApp() { //RESIZE CANVAS
     // SELECT PAUSE ELEMENT
     
     let pauseElement = document.getElementById('pause');
-    
-    pauseElement.addEventListener("click", function(){
-        
+
+    function switchImgPause(){
+
         let pauseSrc = pauseElement.getAttribute('src');
         if(pauseSrc == './img/play.png') {
             pauseElement.setAttribute("src", "./img/pause.png");
@@ -70,19 +70,12 @@ function InitApp() { //RESIZE CANVAS
             pauseElement.setAttribute("src", "./img/play.png");
             controlGame = 0;
         }
-    });
 
-    // pauseElement.addEventListener("touchstart", function(){
-    //     let pauseSrc = pauseElement.getAttribute('src');
-    //     if(pauseSrc == './img/play.png') {
-    //         pauseElement.setAttribute("src", "./img/pause.png");
-    //         controlGame = 1;
-    //     } else {
-    //         pauseElement.setAttribute("src", "./img/play.png");
-    //         controlGame = 0;
-    //     }
-    // });
+    }
     
+    pauseElement.addEventListener("click", switchImgPause);
+
+    pauseElement.addEventListener("touchstart", switchImgPause);
     
     // CONTROL THE PADDLE AND PUSH BALL
     
