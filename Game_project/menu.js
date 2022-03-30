@@ -18,7 +18,6 @@ start.addEventListener('click', startGame);
 
 function startGame(){
     menu.style.display = "none";
-    myGame.style.display = "block";
-
+    myGame.style.display = 'block';
 }
 

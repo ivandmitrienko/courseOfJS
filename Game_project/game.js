@@ -505,7 +505,7 @@ function InitApp() { //RESIZE CANVAS
     const restart = document.getElementById("restart");
     
     // CLICK ON PLAY AGAIN BUTTON
-    
+
     restart.addEventListener("click", reloadGame);
 
     restart.addEventListener("touchstart", reloadGame);
