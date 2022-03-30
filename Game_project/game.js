@@ -115,24 +115,28 @@ function InitApp() { //RESIZE CANVAS
     cvs.addEventListener("touchstart", function(EO){
         EO = EO || window.event;
         EO.preventDefault();
-           
-        touchStart = EO.changedTouches[0].clientX - cvs.getBoundingClientRect().left;
+        if(controlGame)  {
 
-        if( touchStart > paddle.width/2 &&  touchStart < cvs.width - paddle.width/2) {
-            touchPosition = touchStart - paddle.width/2;
-            paddle.x =  touchPosition;
-        }
+            touchStart = EO.changedTouches[0].clientX - cvs.getBoundingClientRect().left;
+
+            if( touchStart > paddle.width/2 &&  touchStart < cvs.width - paddle.width/2) {
+                touchPosition = touchStart - paddle.width/2;
+                paddle.x =  touchPosition;
+            }
+        }      
     }) 
 
     cvs.addEventListener("touchmove",function(EO) {
         EO = EO || window.event;
         EO.preventDefault();
+        if(controlGame){
 
-        touchPosition = EO.changedTouches[0].clientX - cvs.getBoundingClientRect().left;
+            touchPosition = EO.changedTouches[0].clientX - cvs.getBoundingClientRect().left;
     
-        if(touchPosition > paddle.width/2 &&   touchPosition < cvs.width - paddle.width/2) {
-            paddle.x = touchPosition - paddle.width/2;
-        }    
+            if(touchPosition > paddle.width/2 &&   touchPosition < cvs.width - paddle.width/2) {
+                paddle.x = touchPosition - paddle.width/2;
+            }    
+        }   
     })
 
     window.addEventListener("touchend",function(EO) {
