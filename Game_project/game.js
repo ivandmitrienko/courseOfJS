@@ -37,7 +37,11 @@ function InitApp() { //RESIZE CANVAS
     let request = "Click the play button in the lower right corner";
     let touchStart = null; //first touch
     let touchPosition = null; //curent touch position 
-    
+    let sensitivity = 70; // Sensitivity - the number of manifestations after which the gesture will be considered a swipe
+    // swipe variables
+    let y1 = null; 
+    let y2 = null;
+
     // CREATE THE PADDLE
     let paddle = {
         x : cvs.width/2 - PADDLE_WIDTH/2,
@@ -119,6 +123,8 @@ function InitApp() { //RESIZE CANVAS
 
             touchStart = EO.changedTouches[0].clientX - cvs.getBoundingClientRect().left;
 
+            y1 = EO.changedTouches[0].clientY - cvs.getBoundingClientRect().top;
+
             if( touchStart > paddle.width/2 &&  touchStart < cvs.width - paddle.width/2) {
                 touchPosition = touchStart - paddle.width/2;
                 paddle.x =  touchPosition;
@@ -132,6 +138,8 @@ function InitApp() { //RESIZE CANVAS
         if(controlGame){
 
             touchPosition = EO.changedTouches[0].clientX - cvs.getBoundingClientRect().left;
+
+            y2 = EO.changedTouches[0].clientY - cvs.getBoundingClientRect().top;
     
             if(touchPosition > paddle.width/2 &&   touchPosition < cvs.width - paddle.width/2) {
                 paddle.x = touchPosition - paddle.width/2;
@@ -143,12 +151,24 @@ function InitApp() { //RESIZE CANVAS
         EO = EO || window.event;
         EO.preventDefault();
 
+        checkAction(); //Determine which gesture the user made
+
         touchStart = null;
         touchPosition = null;
     })
 
 
-    
+    function checkAction() {
+
+        let checkSwipe = y1 - y2;
+
+        if(Math.abs(checkSwipe) > sensitivity) {
+            if(checkSwipe > 0) {
+                console.log('top')
+            } 
+        }
+
+    }
     
     
     // MOVE PADDLE
@@ -460,6 +480,7 @@ function InitApp() { //RESIZE CANVAS
     const soundElement  = document.getElementById("sound");
     
     soundElement.addEventListener("click", audioManager);
+    soundElement.addEventListener("touchstart", audioManager);
     
     function audioManager(){
         // CHANGE IMAGE SOUND_ON/OFF
@@ -484,9 +505,14 @@ function InitApp() { //RESIZE CANVAS
     const restart = document.getElementById("restart");
     
     // CLICK ON PLAY AGAIN BUTTON
-    restart.addEventListener("click", function(){
-        location.reload(); // reload the page
-    })
+    
+    restart.addEventListener("click", reloadGame);
+
+    restart.addEventListener("touchstart", reloadGame);
+
+    function reloadGame () {
+        location.reload(); // reload game
+    }
     
     // SHOW YOU WIN
     function showYouWin(){
