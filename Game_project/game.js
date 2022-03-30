@@ -55,6 +55,34 @@ function InitApp() { //RESIZE CANVAS
         ctx.strokeStyle = "#ffcd05";
         ctx.strokeRect(paddle.x, paddle.y, paddle.width, paddle.height);
     }
+
+    // SELECT PAUSE ELEMENT
+    
+    let pauseElement = document.getElementById('pause');
+    
+    pauseElement.addEventListener("click", function(){
+        
+        let pauseSrc = pauseElement.getAttribute('src');
+        if(pauseSrc == './img/play.png') {
+            pauseElement.setAttribute("src", "./img/pause.png");
+            controlGame = 1;
+        } else {
+            pauseElement.setAttribute("src", "./img/play.png");
+            controlGame = 0;
+        }
+    });
+
+    // pauseElement.addEventListener("touchstart", function(){
+    //     let pauseSrc = pauseElement.getAttribute('src');
+    //     if(pauseSrc == './img/play.png') {
+    //         pauseElement.setAttribute("src", "./img/pause.png");
+    //         controlGame = 1;
+    //     } else {
+    //         pauseElement.setAttribute("src", "./img/play.png");
+    //         controlGame = 0;
+    //     }
+    // });
+    
     
     // CONTROL THE PADDLE AND PUSH BALL
     
@@ -94,28 +122,23 @@ function InitApp() { //RESIZE CANVAS
     cvs.addEventListener("touchstart", function(EO){
         EO = EO || window.event;
         EO.preventDefault();
+           
+        touchStart = EO.changedTouches[0].clientX - cvs.getBoundingClientRect().left;
 
-        if(controlGame) {
-            
-            touchStart = EO.changedTouches[0].clientX - cvs.getBoundingClientRect().left;
-
-            if( touchStart > paddle.width/2 &&  touchStart < cvs.width - paddle.width/2) {
-                touchPosition = touchStart - paddle.width/2;
-                paddle.x =  touchPosition;
-            }
-        } 
+        if( touchStart > paddle.width/2 &&  touchStart < cvs.width - paddle.width/2) {
+            touchPosition = touchStart - paddle.width/2;
+            paddle.x =  touchPosition;
+        }
     }) 
 
     cvs.addEventListener("touchmove",function(EO) {
         EO = EO || window.event;
         EO.preventDefault();
 
-        if(controlGame) {
-            touchPosition = EO.changedTouches[0].clientX - cvs.getBoundingClientRect().left;
-        
-            if(touchPosition > paddle.width/2 &&   touchPosition < cvs.width - paddle.width/2) {
-                paddle.x = touchPosition - paddle.width/2;
-            }
+        touchPosition = EO.changedTouches[0].clientX - cvs.getBoundingClientRect().left;
+    
+        if(touchPosition > paddle.width/2 &&   touchPosition < cvs.width - paddle.width/2) {
+            paddle.x = touchPosition - paddle.width/2;
         }    
     })
 
@@ -126,6 +149,9 @@ function InitApp() { //RESIZE CANVAS
         touchStart = null;
         touchPosition = null;
     })
+
+
+    
     
     
     // MOVE PADDLE
@@ -452,23 +478,6 @@ function InitApp() { //RESIZE CANVAS
         WIN.muted = WIN.muted ? false : true;
         LIFE_LOST.muted = LIFE_LOST.muted ? false : true;
     }
-    
-    // SELECT PAUSE ELEMENT
-    
-    let pauseElement = document.getElementById('pause');
-    
-    pauseElement.addEventListener("click", function(){
-        let pauseSrc = pauseElement.getAttribute('src');
-        if(pauseSrc == './img/play.png') {
-            pauseElement.setAttribute("src", "./img/pause.png");
-            controlGame = 1;
-        } else {
-            pauseElement.setAttribute("src", "./img/play.png");
-            controlGame = 0;
-        }
-    });
-    
-    
     
     // SHOW GAME OVER MESSAGE
     /* SELECT ELEMENTS */
