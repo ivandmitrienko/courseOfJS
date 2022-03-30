@@ -10,38 +10,45 @@
 </head>
 <body>
     <!-- menu -->
-     <!-- <h1>Click on the hamburger icon</h1> -->
-     <!-- <div class="gameMenu">
-        <nav id="nav">
-            <ul>
-                <li><a href="">Start</a></li>
-                <li><a href="">Continue</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Records</a></li>
-            </ul>
-            <button class="icon" id="toggle">
-                <div class="line line1"></div>
-                <div class="line line2"></div>
-            </button>
-        </nav>
-    </div> 
-    <script src="./menu.js"></script>  -->
-    <div class="arkanoid">Arkanoid</div>
-    <div class="game">
-        <div class="sound">
-            <img src="img/SOUND_ON.png" alt="" id="sound">
+
+    <div id="menu">
+        <h1 id="help">Click on the hamburger icon</h1>
+        <div class="gameMenu">
+            <nav id="nav">
+                <ul>
+                    <li><a href="" id="start">Start</a></li>
+                    <li><a href="">Continue</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Records</a></li>
+                </ul>
+                <button class="icon" id="toggle">
+                    <div class="line line1"></div>
+                    <div class="line line2"></div>
+                </button>
+            </nav>
         </div>
-        <div class="pause">
-            <img src="./img/play.png"  id="pause">
-        </div>
-        <div id="gameover">
-            <img src="img/youwon.png" alt="" id="youwon">
-            <img src="img/gameover.png" alt="" id="youlose">
-            <div id="restart">Play Again!</div>
-        </div>
-        <canvas id="breakout" width="500" height="600"></canvas>
     </div>
+   
     
+    <!--game-->
+    <div id="myGame">
+        <div class="arkanoid">Arkanoid</div> -->
+        <div class="game">
+            <div class="sound">
+                <img src="img/SOUND_ON.png" alt="" id="sound">
+            </div>
+            <div class="pause">
+                <img src="./img/play.png"  id="pause">
+            </div>
+            <div id="gameover">
+                <img src="img/youwon.png" alt="" id="youwon">
+                <img src="img/gameover.png" alt="" id="youlose">
+                <div id="restart">Play Again!</div>
+            </div>
+            <canvas id="breakout" width="500" height="600"></canvas>
+        </div>
+    </div> 
+    <script src="./menu.js"></script>
     <script src="components.js"></script>
     <script src="game.js"></script>
 </body>

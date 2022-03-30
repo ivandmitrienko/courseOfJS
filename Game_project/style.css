@@ -19,6 +19,35 @@ html, body {
     align-items: center;
 }
 
+@media screen and (max-width: 768px){
+    h1 {
+        font-size: 30px;
+        top: 40%;
+    }  
+}
+
+@media screen and (min-width: 769px){
+    h1 {
+        font-size: 40px;
+    }
+}
+
+#menu {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+
+h1 {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 30%;
+    color: #ffffff;
+}
+
 .gameMenu{
     position: absolute;
     top: 50%;
@@ -32,22 +61,36 @@ nav {
     background-color: #ffffff;
     padding: 20px;
     width: 80px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 3px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     transition: width 0.6s linear;
     overflow-x: hidden; 
 }
 
+@media screen and (max-width:610px) {
+    nav.active {
+        width: 320px;
+    }
+}
+
+@media screen and (min-width:611px) {
+    nav.active{
+        width: 550px;
+    }
+
+}
 nav.active {
-   width: 350px;
+   margin: 0px 5px;
 } 
 
 nav ul {
     display: flex;
     list-style-type: none;
+    font-size: 20px;
     padding: 0;
     margin: 0;
     width: 0;
@@ -115,6 +158,11 @@ nav.active .icon .line2 {
     transform: rotate(765deg) translateY(-5.5px);
 } 
 
+#myGame {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
 
 .arkanoid {
     font-size: 60px;
