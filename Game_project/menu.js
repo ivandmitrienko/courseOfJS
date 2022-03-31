@@ -48,6 +48,8 @@ closeAbout.addEventListener('touchstart', aboutGameClose);
 function aboutGameClose() {
     document.getElementById('aboutGame').classList.remove('--show')
 }
+
+
     
 
 

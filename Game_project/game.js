@@ -164,7 +164,8 @@ function InitApp() { //RESIZE CANVAS
 
         if(Math.abs(checkSwipe) > sensitivity) {
             if(checkSwipe > 0) {
-                console.log('top')
+                controlGame = 1;
+               
             } 
         }
 

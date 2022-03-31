@@ -134,7 +134,7 @@ nav {
 
 @media screen and (min-width:611px) {
     nav.active{
-        width: 550px;
+        width: 450px;
     }
 
 }
@@ -172,8 +172,16 @@ nav ul a {
     position: relative;
     color: black;
     text-decoration: none;
-    margin: 0 10px;
+    margin: 0 30px;
+
 }
+
+@media screen and (max-width: 900px) {
+    nav ul a {
+        margin: 0 12px;
+    } 
+}
+
 
 .icon {
 background-color: #ffffff;
