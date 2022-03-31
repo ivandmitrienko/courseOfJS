@@ -64,6 +64,10 @@ function InitApp() { //RESIZE CANVAS
     
     let pauseElement = document.getElementById('pause');
 
+    pauseElement.addEventListener("click", switchImgPause);
+
+    pauseElement.addEventListener("touchstart", switchImgPause);
+
     function switchImgPause(){
 
         let pauseSrc = pauseElement.getAttribute('src');
@@ -77,9 +81,6 @@ function InitApp() { //RESIZE CANVAS
 
     }
     
-    pauseElement.addEventListener("click", switchImgPause);
-
-    pauseElement.addEventListener("touchstart", switchImgPause);
     
     // CONTROL THE PADDLE AND PUSH BALL
     
@@ -163,9 +164,8 @@ function InitApp() { //RESIZE CANVAS
         let checkSwipe = y1 - y2;
 
         if(Math.abs(checkSwipe) > sensitivity) {
-            if(checkSwipe > 0) {
-                controlGame = 1;
-               
+            if(checkSwipe > 0) { 
+              location.reload(); //exit
             } 
         }
 
