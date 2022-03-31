@@ -151,7 +151,7 @@ function InitApp() { //RESIZE CANVAS
         EO = EO || window.event;
         EO.preventDefault();
 
-        checkAction(); //Determine which gesture the user made
+        checkAction(); //Determine which gesture the user made (swipe)
 
         touchStart = null;
         touchPosition = null;
