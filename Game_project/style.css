@@ -175,6 +175,12 @@ nav.active .icon .line2 {
 
 #myGame{
     display: none;
+    animation: fadein 2s ease-in alternate;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .arkanoid {
