@@ -8,6 +8,7 @@ const about = document.getElementById('about');
 const closeAbout = document.getElementById('closeAbout');
 const closeRecords  = document.getElementById('closeRecords');
 const records = document.getElementById('records');
+const showRecords = document.getElementById('showRecords');
 
 toggle.addEventListener('click', () => {
     nav.classList.toggle('active');
@@ -51,7 +52,11 @@ function aboutGameClose() {
     document.getElementById('aboutGame').classList.remove('--show')
 }
 
+records.addEventListener('click', showRecordsGame);
+records.addEventListener('click', showRecordsGame); 
 
-    
+function showRecordsGame(){
+    showRecords.style.display = "block";
+}
 
 
