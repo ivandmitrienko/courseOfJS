@@ -63,7 +63,7 @@ closeRecords.addEventListener('click', closeRecordsGame);
 closeRecords.addEventListener('touchstart', closeRecordsGame);
 
 function closeRecordsGame(){
-     
+
     showRecords.animate([
         { // from
           opacity: 1,
@@ -71,9 +71,9 @@ function closeRecordsGame(){
         { // to
           opacity: 0,
         }
-      ], 3000);
+      ], 2500);
 
-    setTimeout(()=>showRecords.style.display = "none", 3000);  
+    setTimeout(()=>showRecords.style.display = "none", 2500);  
 }
 
 
