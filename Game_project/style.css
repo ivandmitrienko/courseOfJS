@@ -59,6 +59,7 @@ html, body {
     background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(54,25,31,1) 100%);
     width: 28%;
     height: 50%;
+    margin: 5px 0px;
     z-index: 3;
     animation: fadein 1s ease-in alternate;
 }
