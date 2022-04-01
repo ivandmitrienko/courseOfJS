@@ -6,6 +6,8 @@ const start = document.getElementById('start');
 const myGame =  document.getElementById('myGame');
 const about = document.getElementById('about');
 const closeAbout = document.getElementById('closeAbout');
+const closeRecords  = document.getElementById('closeRecords');
+const records = document.getElementById('records');
 
 toggle.addEventListener('click', () => {
     nav.classList.toggle('active');

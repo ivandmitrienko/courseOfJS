@@ -12,6 +12,7 @@
     <!-- menu -->
 
     <div id="menu">
+        <div id="showRecords"><p id="allRecords"></p><button id="closeRecords">CLOSE</button></div>
         <div id="aboutGame">
             <p>НЕМНОГО ИСТОРИИ</p>
             <p>
@@ -22,7 +23,7 @@
             </p>
             <p>КАК ИГРАТЬ</p>
             <p>Управлять ракеткой можно мышкой, клавишами «лево» и «право» или используя тачскрин на мобильном телефоне. Чтобы начать игру, нужно перейти на страницу «ИГРАТЬ» и нажать на кнопку «play». Игру можно приостановить, нажав на кнопку «stop». Во время паузы мяч и ракетка замирают. Если же хотите закрыть игру и выйти в меню просто сделайте "swipe-top". Вот, в общем-то, и все. УДАЧИ!!!</p>
-            <button id="closeAbout">ЗАКРЫТЬ</button>
+            <button id="closeAbout">CLOSE</button>
         </div>
         <h1 id="help">Click on the hamburger icon</h1>
         <div class="gameMenu">
@@ -30,7 +31,7 @@
                 <ul>
                     <li id="start"><a href="#myGame">Start</a></li>
                     <li id="about"><a href="#aboutGame">About</a></li>
-                    <li><a href="">Records</a></li>
+                    <li id="records"><a href="">Records</a></li>
                 </ul>
                 <button class="icon" id="toggle">
                     <div class="line line1"></div>
@@ -59,7 +60,8 @@
             </div>
             <canvas id="breakout" width="500" height="600"></canvas>
         </div>
-    </div> 
+    </div>
+    <script src="http://fe.it-academy.by/JQ/jquery.js"></script> 
     <script src="./menu.js"></script>
     <script src="components.js"></script>
     <script src="game.js"></script>

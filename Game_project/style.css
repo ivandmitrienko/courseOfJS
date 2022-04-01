@@ -46,6 +46,29 @@ html, body {
     }  
 }
 
+#showRecords {
+    display: block;
+    position: fixed;
+    border-radius: 10%;
+    border: 2px solid yellow;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(54,25,31,1) 100%);
+    width: 25%;
+    height: 50%;
+    /* z-index: 3; */
+
+}
+
+#closeRecords {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+
 #aboutGame {
     font-size: 20px;
     padding: 0px 5px;
