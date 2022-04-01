@@ -53,10 +53,27 @@ function aboutGameClose() {
 }
 
 records.addEventListener('click', showRecordsGame);
-records.addEventListener('click', showRecordsGame); 
+records.addEventListener('touchstart', showRecordsGame); 
 
 function showRecordsGame(){
     showRecords.style.display = "block";
+}
+
+closeRecords.addEventListener('click', closeRecordsGame);
+closeRecords.addEventListener('touchstart', closeRecordsGame);
+
+function closeRecordsGame(){
+     
+    showRecords.animate([
+        { // from
+          opacity: 1,
+        },
+        { // to
+          opacity: 0,
+        }
+      ], 3000);
+
+    setTimeout(()=>showRecords.style.display = "none", 3000);  
 }
 
 

@@ -43,10 +43,11 @@ html, body {
     #aboutGame p {
         font-size: 12px;
         padding: 0px 10px; 
-    }  
+    }   
 }
-
+ 
 #showRecords {
+    text-align: center;
     display: none;
     position: fixed;
     border-radius: 10%;
@@ -75,7 +76,9 @@ html, body {
     left: 50%;
     transform: translate(-50%,0%);
     font-size: 15px;
-}
+    animation: fadein 1s ease-in alternate;
+}  
+
 
 #aboutGame {
     font-size: 20px;
