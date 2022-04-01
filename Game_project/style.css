@@ -47,6 +47,7 @@ html, body {
 }
  
 #showRecords {
+    color: #ffffff;
     text-align: center;
     display: none;
     position: fixed;

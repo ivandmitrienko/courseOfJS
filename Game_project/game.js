@@ -4,6 +4,7 @@ const ctx = cvs.getContext("2d");
 cvs.style.border = "1px solid #0ff";
 cvs.style.marginBottom = '10px'
 ctx.lineWidth = 3;
+let SCORE = 0;
 
 window.addEventListener("resize", InitApp); //При растягивании окна приложение будет инициализироваться заново
 
@@ -26,7 +27,7 @@ function InitApp() { //RESIZE CANVAS
     const BALL_RADIUS = cvs.width/62.5;
     let LIFE = 3; // PLAYER HAS 3 LIVES
     const SCORE_LIFE = 3; //3
-    let SCORE = 0;
+    // let SCORE = 0;
     const SCORE_UNIT = 10;
     let LEVEL = 1;
     const MAX_LEVEL = 3; //3
@@ -41,6 +42,12 @@ function InitApp() { //RESIZE CANVAS
     // swipe variables
     let y1 = null; 
     let y2 = null;
+    //for ajax
+    // let ajaxHandlerScript="https://fe.it-academy.by/AjaxStringStorage2.php";
+    // let messages; // ELEMENT OF ARRAY - {name:'Иванов',score:'101'};
+    // let updatePassword;
+    // let stringName='DMITRY_AR_RECORDS';
+    // let name;
 
     // CREATE THE PADDLE
     let paddle = {
@@ -525,8 +532,148 @@ function InitApp() { //RESIZE CANVAS
     function showYouLose(){
         gameover.style.display = "block";
         youlose.style.display = "block";
+       
+        if(SCORE > 10) {
+            sendMessage();
+            
+        }      
     }
+   
 
 }
 
 InitApp();
+
+
+
+    let ajaxHandlerScript="https://fe.it-academy.by/AjaxStringStorage2.php";
+    let messages; // ELEMENT OF ARRAY - {name:'Иванов',score:'101'};
+    let updatePassword;
+    let stringName='DMITRYIENKO_ARKANOID_RECORDS';
+    
+
+        
+    function showMessages() {
+        let str='';
+        for ( let m=0; m<messages.length; m++ ) {
+            let message=messages[m];
+            str+="<b>"+escapeHTML(message.name)+":</b> "
+                +escapeHTML(message.score)+"<br />";
+        }
+        document.getElementById('allRecords').innerHTML=str;
+    }
+    
+    function escapeHTML(text) {
+        if ( !text )
+            return text;
+        text=text.toString()
+            .split("&").join("&amp;")
+            .split("<").join("&lt;")
+            .split(">").join("&gt;")
+            .split('"').join("&quot;")
+            .split("'").join("&#039;");
+        return text;
+    }
+    
+    function refreshMessages() {
+        $.ajax( {
+                url : ajaxHandlerScript,
+                type : 'POST', dataType:'json',
+                data : { f : 'READ', n : stringName },
+                cache : false,
+                success : readReady,
+                error : errorHandler
+            }
+        );
+
+        showMessages()
+    }
+    
+    function readReady(callresult) {
+        if ( callresult.error!=undefined )
+            alert(callresult.error);
+        else {
+            messages=[];
+            if ( callresult.result!="" ) { 
+                messages=JSON.parse(callresult.result);
+                if ( !Array.isArray(messages) )
+                    messages=[];
+            }
+            showMessages();
+        }
+    }
+    
+    function sendMessage() {
+        updatePassword=Math.random();
+        $.ajax( {
+                url : ajaxHandlerScript,
+                type : 'POST', dataType:'json',
+                data : { f : 'LOCKGET', n : stringName,
+                    p : updatePassword },
+                cache : false,
+                success : lockGetReady,
+                error : errorHandler
+            }
+        );
+    }
+    
+    function lockGetReady(callresult) {
+        if ( callresult.error!=undefined )
+            alert(callresult.error);
+            else {
+                messages=[];
+                if ( callresult.result!="" ) { 
+                    messages=JSON.parse(callresult.result);
+                    if ( !Array.isArray(messages) )
+                        messages=[];
+                }
+                let name = prompt ('ENTER YOUR NAME', );
+                messages.push( { name:name, score:SCORE } );
+            if ( messages.length>10 )
+                messages=messages.slice(messages.length-10);
+    
+            showMessages();
+    
+            $.ajax( {
+                    url : ajaxHandlerScript,
+                    type : 'POST', dataType:'json',
+                    data : { f : 'UPDATE', n : stringName,
+                        v : JSON.stringify(messages), p : updatePassword },
+                    cache : false,
+                    success : updateReady,
+                    error : errorHandler
+                }
+            );
+        }
+
+    }
+    
+    function updateReady(callresult) {
+        if ( callresult.error!=undefined )
+            alert(callresult.error);
+    }
+    
+    function errorHandler(jqXHR,statusStr,errorStr) {
+        alert(statusStr+' '+errorStr);
+    }
+    
+
+
+
+
+
+
+
+
+
+    
+
+   
+
+    
+    
+
+
+
+
+          

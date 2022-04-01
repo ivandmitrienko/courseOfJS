@@ -57,6 +57,8 @@ records.addEventListener('touchstart', showRecordsGame);
 
 function showRecordsGame(){
     showRecords.style.display = "block";
+    refreshMessages();
+
 }
 
 closeRecords.addEventListener('click', closeRecordsGame);
@@ -73,7 +75,10 @@ function closeRecordsGame(){
         }
       ], 2500);
 
-    setTimeout(()=>showRecords.style.display = "none", 2500);  
+    setTimeout(()=>showRecords.style.display = "none", 2500); 
+    
 }
+
+
 
 
