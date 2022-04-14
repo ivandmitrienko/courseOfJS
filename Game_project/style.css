@@ -204,16 +204,16 @@ nav.active ul li {
     transform: rotateY(360deg);
 }
 
-nav ul a { 
+nav ul li { 
     position: relative;
     color: black;
-    text-decoration: none;
     margin: 0 30px;
+    cursor: pointer;
 
 }
 
 @media screen and (max-width: 900px) {
-    nav ul a {
+    nav ul li {
         margin: 0 12px;
     } 
 }

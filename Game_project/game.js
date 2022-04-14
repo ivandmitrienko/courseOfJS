@@ -42,13 +42,7 @@ function InitApp() { //RESIZE CANVAS
     // swipe variables
     let y1 = null; 
     let y2 = null;
-    //for ajax
-    // let ajaxHandlerScript="https://fe.it-academy.by/AjaxStringStorage2.php";
-    // let messages; // ELEMENT OF ARRAY - {name:'Иванов',score:'101'};
-    // let updatePassword;
-    // let stringName='DMITRY_AR_RECORDS';
-    // let name;
-
+    
     // CREATE THE PADDLE
     let paddle = {
         x : cvs.width/2 - PADDLE_WIDTH/2,
@@ -657,7 +651,13 @@ InitApp();
         alert(statusStr+' '+errorStr);
     }
     
+    window.onbeforeunload=befUnload;
 
+    function befUnload(EO) {
+      EO=EO||window.event;
+      if(SCORE > 10)
+        EO.returnValue='А у вас есть несохранённый результат!';
+    }
 
 
 
