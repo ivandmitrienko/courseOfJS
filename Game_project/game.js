@@ -657,7 +657,7 @@ InitApp();
       EO=EO||window.event;
       if(SCORE > 10)
         EO.returnValue='А у вас есть несохранённый результат!';
-    }в
+    }
 
 
 
