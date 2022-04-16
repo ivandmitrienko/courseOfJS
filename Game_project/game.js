@@ -655,7 +655,7 @@ InitApp();
 
     function befUnload(EO) {
       EO=EO||window.event;
-      if(SCORE > 10)
+      if(SCORE > 0)
         EO.returnValue='А у вас есть несохранённый результат!';
     }
 
